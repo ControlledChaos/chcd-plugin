@@ -1,6 +1,6 @@
 # CHCD Plugin
 
-ClassicPress/WordPress plugin for a client site.
+ClassicPress or WordPress plugin for a client site.
 
 ![WordPress tested on version 5.5.3](https://img.shields.io/badge/WordPress-5.5.3-0073aa.svg?style=flat-square)
 ![ClassicPress tested on version 1.2.0](https://img.shields.io/badge/ClassicPress-1.2.0-03768e.svg?style=flat-square)
