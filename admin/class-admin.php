@@ -114,24 +114,9 @@ class Admin {
 		// The core settings class for the plugin.
 		require_once CHCD_PATH . 'admin/class-settings.php';
 
-		// Add icons to the titles of ACF tab and accordion fields, if active.
-		if ( chcd_acf_pro() && ! get_option( 'chcd_acf_activate_settings_page' ) ) {
-			include_once CHCD_PATH . 'admin/class-acf-tab-icons.php';
-		}
-
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( chcd_acf_pro() ) {
 			include_once CHCD_PATH . 'admin/class-settings-fields-site-acf.php';
-		}
-
-		// Restore the TinyMCE editor.
-		if ( chcd_acf_pro() ) {
-			$editor = get_field( 'chcd_classic_editor', 'option' );
-		} else {
-			$editor = get_option( 'chcd_classic_editor' );
-		}
-		if ( ( chcd_classicpress() || chcd_new_cms() ) && $editor ) {
-			include_once CHCD_PATH . 'admin/classic-editor/classic-editor.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
@@ -145,14 +130,6 @@ class Admin {
 
 		// Functions for various admin pages and edit screens.
 		require_once CHCD_PATH . 'admin/class-admin-pages.php';
-
-		// Add WYSIWYG editor to user bio field.
-		require_once CHCD_PATH . 'admin/class-user-bio.php';
-
-		// Import custom fields for editing, if ACF Pro is active.
-		if ( chcd_acf_options() ) {
-			include_once CHCD_PATH . 'admin/class-fields-import.php';
-		}
 
 		// Filter by page template.
 		require_once CHCD_PATH . 'admin/class-admin-template-filter.php';

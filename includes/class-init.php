@@ -67,10 +67,6 @@ final class Init {
 		remove_filter( 'the_title', 'capital_P_dangit', 11 );
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
-
-		// Load classes to extend plugins.
-		add_action( 'init', [ $this, 'plugin_support' ] );
-
 	}
 
 	/**
@@ -94,20 +90,6 @@ final class Init {
 		// Various media and media library functionality.
 		require_once CHCD_PATH . 'includes/media/class-media.php';
 
-		/**
-		 * Register custom editor blocks.
-		 *
-		 * @todo Remove conditional statement when Gutenberg is in core?
-		 */
-		if ( chcd_acf_pro() ) {
-			$editor = get_field( 'chcd_classic_editor', 'option' );
-		} else {
-			$editor = get_option( 'chcd_classic_editor' );
-		}
-		if ( ( chcd_classicpress() || chcd_new_cms() ) && ! $editor || is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-			require_once CHCD_PATH . 'includes/editor-blocks/class-register-block-types.php';
-		}
-
 		// Post types and taxonomies.
 		require_once CHCD_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
 
@@ -118,33 +100,6 @@ final class Init {
 		require_once CHCD_PATH . 'includes/tools/class-tools.php';
 
 	}
-
-	/**
-	 * Load classes to extend plugins.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function plugin_support() {
-
-		// Add Advanced Custom Fields Support.
-		if ( chcd_acf() ) {
-			include_once CHCD_PATH . 'includes/acf/class-extend-acf.php';
-		}
-
-		// Add Beaver Builder support.
-		if ( class_exists( 'FLBuilder' ) ) {
-			include_once CHCD_PATH . 'includes/beaver/class-beaver-builder.php';
-		}
-
-		// Add Elementor support.
-		if ( class_exists( '\Elementor\Plugin' ) ) {
-			include_once CHCD_PATH . 'includes/elementor/class-elementor.php';
-		}
-
-	}
-
 }
 
 /**
