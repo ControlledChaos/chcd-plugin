@@ -7,4 +7,4 @@ ClassicPress/WordPress plugin for a client site.
 ![PHP tested on version 7.4.8](https://img.shields.io/badge/PHP-tested%207.4.8-8892bf.svg?style=flat-square)
 ![ACF Pro Ready](https://img.shields.io/badge/ACF%20Pro-ready-00d3ae.svg?style=flat-square)
 
-![CHCD Plugin Cover Image](https://raw.githubusercontent.com/ControlledChaos/chcd-plugin/master/cover.jpg)
+![CHCD Plugin Cover Image](https://github.com/ControlledChaos/chcd-plugin/raw/master/cover.jpg)
