@@ -2,14 +2,14 @@
 /**
  * Callbacks for the Meta/SEO tab on the Site Settings page.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    CHCD_Plugin
  * @subpackage Admin\Partials\Field_Callbacks
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials\Field_Callbacks;
+namespace CHCD_Plugin\Admin\Partials\Field_Callbacks;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -67,11 +67,11 @@ class Meta_SEO_Callbacks {
 	 */
 	public function disable_meta( $args ) {
 
-		$option = get_option( 'ccp_meta_disable' );
+		$option = get_option( 'chcd_meta_disable' );
 
-		$html = '<p><input type="checkbox" id="ccp_meta_disable" name="ccp_meta_disable" value="1" ' . checked( 1, $option, false ) . '/>';
+		$html = '<p><input type="checkbox" id="chcd_meta_disable" name="chcd_meta_disable" value="1" ' . checked( 1, $option, false ) . '/>';
 
-		$html .= '<label for="ccp_meta_disable"> '  . $args[0] . '</label></p>';
+		$html .= '<label for="chcd_meta_disable"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 
@@ -88,7 +88,7 @@ class Meta_SEO_Callbacks {
 	public function  schema_org_type( $args ) {
 
 		// Get the field file.
-		include_once CCP_PATH . 'admin/partials/field-callbacks/schema-org-type.php';
+		include_once CHCD_PATH . 'admin/partials/field-callbacks/schema-org-type.php';
 
 	}
 
@@ -101,11 +101,11 @@ class Meta_SEO_Callbacks {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_meta_seo_callbacks() {
+function chcd_meta_seo_callbacks() {
 
 	return Meta_SEO_Callbacks::instance();
 
 }
 
 // Run an instance of the class.
-ccp_meta_seo_callbacks();
+chcd_meta_seo_callbacks();

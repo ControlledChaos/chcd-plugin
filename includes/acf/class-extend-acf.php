@@ -4,14 +4,14 @@
  *
  * ACF version 4 or earlier is not supported.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    CHCD_Plugin
  * @subpackage Includes\ACF
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes\ACF;
+namespace CHCD_Plugin\Includes\ACF;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -88,9 +88,9 @@ class Extend_ACF {
 	public function include_fields() {
 
 		// Get the sample field class.
-		include_once CCP_PATH . 'includes/acf/fields/acf-sample-field/class-acf-sample-field.php';
+		include_once CHCD_PATH . 'includes/acf/fields/acf-sample-field/class-acf-sample-field.php';
 
-		include_once CCP_PATH . 'includes/acf/acf-field-name/acf-field-name.php';
+		include_once CHCD_PATH . 'includes/acf/acf-field-name/acf-field-name.php';
 
 	}
 
@@ -104,7 +104,7 @@ class Extend_ACF {
 	public function admin_styles() {
 
 		// Uncomment to enqueue.
-		// wp_enqueue_style( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/css/admin.min.css', [], CCP_VERSION, 'screen' );
+		// wp_enqueue_style( CHCD_ADMIN_SLUG . '-acf-admin', CHCD_URL . 'includes/acf/assets/css/admin.min.css', [], CHCD_VERSION, 'screen' );
 
 	}
 
@@ -118,7 +118,7 @@ class Extend_ACF {
 	public function admin_scripts() {
 
 		// Uncomment to enqueue.
-		// wp_enqueue_script( CCP_ADMIN_SLUG . '-acf-admin', CCP_URL . 'includes/acf/assets/js/admin.min.js', [ 'jquery' ], CCP_VERSION, true );
+		// wp_enqueue_script( CHCD_ADMIN_SLUG . '-acf-admin', CHCD_URL . 'includes/acf/assets/js/admin.min.js', [ 'jquery' ], CHCD_VERSION, true );
 
 	}
 
@@ -131,11 +131,11 @@ class Extend_ACF {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_extend_acf() {
+function chcd_extend_acf() {
 
 	return Extend_ACF::instance();
 
 }
 
 // Run an instance of the class.
-ccp_extend_acf();
+chcd_extend_acf();

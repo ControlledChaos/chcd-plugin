@@ -2,14 +2,14 @@
 /**
  * Initialize the plugin
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    CHCD_Plugin
  * @subpackage Includes
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Includes;
+namespace CHCD_Plugin\Includes;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -83,39 +83,39 @@ final class Init {
 	private function dependencies() {
 
 		// Translation functionality.
-		require_once CCP_PATH . 'includes/class-i18n.php';
+		require_once CHCD_PATH . 'includes/class-i18n.php';
 
 		// Admin/backend functionality, scripts and styles.
-		require_once CCP_PATH . 'admin/class-admin.php';
+		require_once CHCD_PATH . 'admin/class-admin.php';
 
 		// Frontend functionality, scripts and styles.
-		require_once CCP_PATH . 'frontend/class-frontend.php';
+		require_once CHCD_PATH . 'frontend/class-frontend.php';
 
 		// Various media and media library functionality.
-		require_once CCP_PATH . 'includes/media/class-media.php';
+		require_once CHCD_PATH . 'includes/media/class-media.php';
 
 		/**
 		 * Register custom editor blocks.
 		 *
 		 * @todo Remove conditional statement when Gutenberg is in core?
 		 */
-		if ( ccp_acf_pro() ) {
-			$editor = get_field( 'ccp_classic_editor', 'option' );
+		if ( chcd_acf_pro() ) {
+			$editor = get_field( 'chcd_classic_editor', 'option' );
 		} else {
-			$editor = get_option( 'ccp_classic_editor' );
+			$editor = get_option( 'chcd_classic_editor' );
 		}
-		if ( ( ccp_classicpress() || ccp_new_cms() ) && ! $editor || is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
-			require_once CCP_PATH . 'includes/editor-blocks/class-register-block-types.php';
+		if ( ( chcd_classicpress() || chcd_new_cms() ) && ! $editor || is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+			require_once CHCD_PATH . 'includes/editor-blocks/class-register-block-types.php';
 		}
 
 		// Post types and taxonomies.
-		require_once CCP_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
+		require_once CHCD_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
 
 		// User funtionality.
-		require_once CCP_PATH . 'includes/users/class-users.php';
+		require_once CHCD_PATH . 'includes/users/class-users.php';
 
 		// Dev and maintenance tools.
-		require_once CCP_PATH . 'includes/tools/class-tools.php';
+		require_once CHCD_PATH . 'includes/tools/class-tools.php';
 
 	}
 
@@ -129,18 +129,18 @@ final class Init {
 	public function plugin_support() {
 
 		// Add Advanced Custom Fields Support.
-		if ( ccp_acf() ) {
-			include_once CCP_PATH . 'includes/acf/class-extend-acf.php';
+		if ( chcd_acf() ) {
+			include_once CHCD_PATH . 'includes/acf/class-extend-acf.php';
 		}
 
 		// Add Beaver Builder support.
 		if ( class_exists( 'FLBuilder' ) ) {
-			include_once CCP_PATH . 'includes/beaver/class-beaver-builder.php';
+			include_once CHCD_PATH . 'includes/beaver/class-beaver-builder.php';
 		}
 
 		// Add Elementor support.
 		if ( class_exists( '\Elementor\Plugin' ) ) {
-			include_once CCP_PATH . 'includes/elementor/class-elementor.php';
+			include_once CHCD_PATH . 'includes/elementor/class-elementor.php';
 		}
 
 	}
@@ -154,11 +154,11 @@ final class Init {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_init() {
+function chcd_init() {
 
 	return Init::instance();
 
 }
 
 // Run an instance of the class.
-ccp_init();
+chcd_init();

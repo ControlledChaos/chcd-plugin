@@ -8,7 +8,7 @@
  *
  * @link       https://github.com/WordPress/classic-editor
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    CHCD_Plugin
  * @subpackage Admin
  *
  * @since      1.0.0
@@ -18,7 +18,7 @@
  *             Gutenberg and Gutenberg is in core.
  */
 
-// namespace CC_Plugin\Admin;
+// namespace CHCD_Plugin\Admin;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {

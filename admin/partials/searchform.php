@@ -2,23 +2,23 @@
 /**
  * Backend search form template.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    CHCD_Plugin
  * @subpackage Admin\Partials
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Admin\Partials;
+namespace CHCD_Plugin\Admin\Partials;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-$label       = apply_filters( 'ccp_search_label', esc_html__( 'Search for:', 'controlled-chaos-plugin' ) );
-$placeholder = apply_filters( 'ccp_search_placeholder', esc_attr( esc_html__( 'Search ', 'controlled-chaos-plugin' ) . get_bloginfo( 'name' ) ) );
-$submit      = apply_filters( 'ccp_search_submit', esc_html__( 'Submit', 'controlled-chaos-plugin' ) );
+$label       = apply_filters( 'chcd_search_label', esc_html__( 'Search for:', 'chcd-plugin' ) );
+$placeholder = apply_filters( 'chcd_search_placeholder', esc_attr( esc_html__( 'Search ', 'chcd-plugin' ) . get_bloginfo( 'name' ) ) );
+$submit      = apply_filters( 'chcd_search_submit', esc_html__( 'Submit', 'chcd-plugin' ) );
 ?>
 <form class="search-form" role="search" method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
     <label class="search-label">

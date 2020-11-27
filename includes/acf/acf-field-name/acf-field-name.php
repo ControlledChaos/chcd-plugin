@@ -68,7 +68,7 @@ class NAMESPACE_acf_plugin_FIELD_NAME {
 
 
 		// include
-		include_once CCP_PATH . 'includes/acf/acf-field-name/fields/class-NAMESPACE-acf-field-FIELD-NAME-v5.php';
+		include_once CHCD_PATH . 'includes/acf/acf-field-name/fields/class-NAMESPACE-acf-field-FIELD-NAME-v5.php';
 	}
 
 }

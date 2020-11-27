@@ -2,14 +2,14 @@
 /**
  * Enqueue frontend scripts.
  *
- * @package    Controlled_Chaos_Plugin
+ * @package    CHCD_Plugin
  * @subpackage Frontend
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
  */
 
-namespace CC_Plugin\Frontend;
+namespace CHCD_Plugin\Frontend;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -74,30 +74,30 @@ class Enqueue_Frontend_Scripts {
 	public function scripts() {
 
 		// Non-vendor plugin script. Uncomment to use.
-		// wp_enqueue_script( CCP_ADMIN_SLUG, CCP_URL . 'frontend/assets/js/frontend.js', [ 'jquery' ], CCP_VERSION, true );
+		// wp_enqueue_script( CHCD_ADMIN_SLUG, CHCD_URL . 'frontend/assets/js/frontend.js', [ 'jquery' ], CHCD_VERSION, true );
 
 		// Fancybox 3.
-		if ( get_option( 'ccp_enqueue_fancybox_script' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-fancybox', CCP_URL . 'frontend/assets/js/jquery.fancybox.min.js', [ 'jquery' ], CCP_VERSION, true );
+		if ( get_option( 'chcd_enqueue_fancybox_script' ) ) {
+			wp_enqueue_script( CHCD_ADMIN_SLUG . '-fancybox', CHCD_URL . 'frontend/assets/js/jquery.fancybox.min.js', [ 'jquery' ], CHCD_VERSION, true );
 		}
 
 		// Slick.
-		if ( get_option( 'ccp_enqueue_slick' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-slick', CCP_URL . 'frontend/assets/js/slick.min.js', [ 'jquery' ], CCP_VERSION, true );
+		if ( get_option( 'chcd_enqueue_slick' ) ) {
+			wp_enqueue_script( CHCD_ADMIN_SLUG . '-slick', CHCD_URL . 'frontend/assets/js/slick.min.js', [ 'jquery' ], CHCD_VERSION, true );
 		}
 
 		// Tabslet.
-		if ( get_option( 'ccp_enqueue_tabslet' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-tabslet', CCP_URL . 'frontend/assets/js/jquery.tabslet.min.js', [ 'jquery' ], CCP_VERSION, true );
+		if ( get_option( 'chcd_enqueue_tabslet' ) ) {
+			wp_enqueue_script( CHCD_ADMIN_SLUG . '-tabslet', CHCD_URL . 'frontend/assets/js/jquery.tabslet.min.js', [ 'jquery' ], CHCD_VERSION, true );
 		}
 
 		// Tooltipster.
-		if ( get_option( 'ccp_enqueue_tooltipster' ) ) {
-			wp_enqueue_script( CCP_ADMIN_SLUG . '-tooltipster', CCP_URL . 'frontend/assets/js/tooltipster.bundle.min.js', [ 'jquery' ], CCP_VERSION, true );
+		if ( get_option( 'chcd_enqueue_tooltipster' ) ) {
+			wp_enqueue_script( CHCD_ADMIN_SLUG . '-tooltipster', CHCD_URL . 'frontend/assets/js/tooltipster.bundle.min.js', [ 'jquery' ], CHCD_VERSION, true );
 		}
 
 		// FitVids.
-		wp_enqueue_script( CCP_ADMIN_SLUG . '-fitvids', CCP_URL . 'frontend/assets/js/jquery.fitvids.min.js', [ 'jquery' ], CCP_VERSION, true );
+		wp_enqueue_script( CHCD_ADMIN_SLUG . '-fitvids', CHCD_URL . 'frontend/assets/js/jquery.fitvids.min.js', [ 'jquery' ], CHCD_VERSION, true );
 
 	}
 
@@ -110,11 +110,11 @@ class Enqueue_Frontend_Scripts {
  * @access public
  * @return object Returns an instance of the class.
  */
-function ccp_enqueue_frontend_scripts() {
+function chcd_enqueue_frontend_scripts() {
 
 	return Enqueue_Frontend_Scripts::instance();
 
 }
 
 // Run an instance of the class.
-ccp_enqueue_frontend_scripts();
+chcd_enqueue_frontend_scripts();
