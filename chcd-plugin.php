@@ -81,12 +81,10 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 
 				// Require the core plugin class files.
 				$instance->dependencies();
-
 			}
 
 			// Return the instance.
 			return $instance;
-
 		}
 
 		/**
@@ -190,7 +188,6 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 					plugins_url( 'frontend/assets/images/default-meta-image.jpg', __FILE__ )
 				);
 			}
-
 		}
 
 		/**
@@ -204,7 +201,6 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 
 			// Cloning instances of the class is forbidden.
 			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'chcd-plugin' ), '1.0.0' );
-
 		}
 
 		/**
@@ -218,7 +214,6 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 
 			// Unserializing instances of the class is forbidden.
 			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'chcd-plugin' ), '1.0.0' );
-
 		}
 
 		/**
@@ -238,9 +233,7 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 
 			// Include the deactivation class.
 			require_once CHCD_PATH . 'includes/class-deactivate.php';
-
 		}
-
 	}
 	// End core plugin class.
 
@@ -252,9 +245,7 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 	 * @return object Returns the instance of the `CHCD_Plugin` class.
 	 */
 	function chcd_plugin() {
-
 		return CHCD_Plugin::instance();
-
 	}
 
 	// Begin plugin functionality.
@@ -284,7 +275,6 @@ function chcd_activate_plugin() {
 
 	// Run the activation class.
 	chcd_activate();
-
 }
 
 // Bail out now if the core class was not run.
@@ -303,7 +293,6 @@ function chcd_deactivate_plugin() {
 
 	// Run the deactivation class.
 	chcd_deactivate();
-
 }
 
 /**
@@ -378,7 +367,6 @@ function chcd_about_link( $links ) {
 		return array_merge( $about_page, $links );
 
 	}
-
 }
 // Filter the default settings links with new array.
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'chcd_about_link' );
@@ -450,22 +438,12 @@ function chcd_settings_links( $links, $file ) {
 				admin_url( 'options-general.php?page=' . CHCD_ADMIN_SLUG . '-scripts' ),
 				esc_attr( 'Script Options', 'chcd-plugin' )
 			);
-
-			// Add a placeholder for an upgrade link.
-			$links[] = sprintf(
-				'<a href="%1s" title="%2s" class="' . CHCD_ADMIN_SLUG . '-upgrade-link" style="color: #888; cursor: default;">%3s</a>',
-				''/* Add upgrade URL here */,
-				__( 'Upgrade not available', 'chcd-plugin' ),
-				esc_attr( 'Upgrade', 'chcd-plugin' )
-			);
-
 		}
 
 		// Return the full array of links.
 		return $links;
 
 	}
-
 }
 add_filter( 'plugin_row_meta', 'chcd_settings_links', 10, 2 );
 
@@ -486,7 +464,6 @@ function chcd_new_cms() {
 	} else {
 		return false;
 	}
-
 }
 
 /**
@@ -503,7 +480,6 @@ function chcd_classicpress() {
 	} else {
 		return false;
 	}
-
 }
 
 /**
@@ -520,7 +496,6 @@ function chcd_acf() {
 	} else {
 		return false;
 	}
-
 }
 
 /**
@@ -537,7 +512,6 @@ function chcd_acf_pro() {
 	} else {
 		return false;
 	}
-
 }
 
 /**
@@ -557,5 +531,4 @@ function chcd_acf_options() {
 	} else {
 		return false;
 	}
-
 }
