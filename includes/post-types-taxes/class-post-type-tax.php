@@ -73,6 +73,12 @@ class Post_Types_Taxes {
 		// Resister cutsom post types.
 		require_once CHCD_PATH . 'includes/post-types-taxes/class-register-post-types.php';
 
+		// Register fields for Advanced Custom Fields Pro.
+		if ( class_exists( 'acf_pro' ) ) {
+			// require_once CHCD_PATH . 'admin/class-post-type-fields-features.php';
+			// require_once CHCD_PATH . 'admin/class-post-type-fields-commercials.php';
+		}
+
 		// Resister cutsom taxonomies.
 		require_once CHCD_PATH . 'includes/post-types-taxes/class-register-taxonomies.php';
 
