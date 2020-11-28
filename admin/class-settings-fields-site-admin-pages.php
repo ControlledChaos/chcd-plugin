@@ -55,7 +55,6 @@ class Settings_Fields_Site_Admin_Pages {
 
 		// Return the instance.
 		return $instance;
-
 	}
 
 	/**
@@ -69,7 +68,6 @@ class Settings_Fields_Site_Admin_Pages {
 
 		// Register settings sections and fields.
 		add_action( 'admin_init', [ $this, 'settings' ] );
-
 	}
 
 	/**
@@ -83,7 +81,6 @@ class Settings_Fields_Site_Admin_Pages {
 
 		// Callbacks for the Admin Pages tab.
 		require CHCD_PATH . 'admin/partials/field-callbacks/class-admin-pages-callbacks.php';
-
 	}
 
 	/**
@@ -149,39 +146,7 @@ class Settings_Fields_Site_Admin_Pages {
 			'chcd-site-admin-pages',
 			'chcd_use_custom_sort_order'
 		);
-
-		// Admin footer credit.
-		add_settings_field(
-			'chcd_footer_credit',
-			__( 'Admin Footer Credit', 'chcd-plugin' ),
-			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'footer_credit' ],
-			'chcd-site-admin-pages',
-			'chcd-site-admin-pages',
-			[ esc_html__( 'The "developed by" credit.', 'chcd-plugin' ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-pages',
-			'chcd_footer_credit'
-		);
-
-		// Admin footer link.
-		add_settings_field(
-			'chcd_footer_link',
-			__( 'Admin Footer Link', 'chcd-plugin' ),
-			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'footer_link' ],
-			'chcd-site-admin-pages',
-			'chcd-site-admin-pages',
-			[ esc_html__( 'Link to the website devoloper.', 'chcd-plugin' ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-pages',
-			'chcd_footer_link'
-		);
-
 	}
-
 }
 
 /**
@@ -192,9 +157,7 @@ class Settings_Fields_Site_Admin_Pages {
  * @return object Returns an instance of the class.
  */
 function chcd_settings_fields_site_admin_pages() {
-
 	return Settings_Fields_Site_Admin_Pages::instance();
-
 }
 
 // Run an instance of the class.

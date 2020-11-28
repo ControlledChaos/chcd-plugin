@@ -348,41 +348,6 @@ final class Settings_Fields_ACF {
 						'ui_on_text'        => __( 'Yes', 'chcd-plugin' ),
 						'ui_off_text'       => __( 'No', 'chcd-plugin' ),
 					],
-					[
-						'key'               => 'field_5a0cbb5e73e56',
-						'label'             => __( 'Admin Footer Credit', 'chcd-plugin' ),
-						'name'              => 'chcd_admin_footer_credit',
-						'type'              => 'text',
-						'instructions'      => __( 'The "developed by" credit.', 'chcd-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'default_value'     => '',
-						'placeholder'       => '',
-						'prepend'           => '',
-						'append'            => '',
-						'maxlength'         => '',
-					],
-					[
-						'key'               => 'field_5a0cbba573e57',
-						'label'             => __( 'Admin Footer Link', 'chcd-plugin' ),
-						'name'              => 'chcd_admin_footer_link',
-						'type'              => 'url',
-						'instructions'      => __( 'Link to the website devoloper.', 'chcd-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'default_value'     => '',
-						'placeholder'       => '',
-					],
 
 					/**
 					 * Meta/SEO tab settings.
