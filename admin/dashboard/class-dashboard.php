@@ -64,6 +64,9 @@ class Dashboard {
 		// Remove metaboxes.
 		add_action( 'wp_dashboard_setup', [ $this, 'metaboxes' ] );
 
+		// Remove screen options.
+		add_filter( 'screen_options_show_screen', [ $this, 'remove_screen_options' ], 10, 2 );
+
 		// Remove contextual help content.
 		add_action( 'admin_head', [ $this, 'remove_help' ] );
 
@@ -176,6 +179,27 @@ class Dashboard {
 
 		// Hide Activity widget.
 		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+	}
+
+	/**
+	 * Removes screen options tab.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @param  boolean $display_boolean
+	 * @param  object $wp_screen_object
+	 * @return boolean Returns false for the screens in the array.
+	 */
+	public function remove_screen_options( $display_boolean, $wp_screen_object ) {
+
+		if ( in_array( $GLOBALS['pagenow'], [ 'index.php' ] ) ) {
+			$wp_screen_object->render_screen_layout();
+			$wp_screen_object->render_per_page_options();
+
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
