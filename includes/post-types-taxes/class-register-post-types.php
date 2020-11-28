@@ -103,7 +103,7 @@ final class Post_Types_Register {
 			],
 			'query_var'           => true,
 			'menu_position'       => 5,
-			'menu_icon'           => 'dashicons-editor-video',
+			'menu_icon'           => 'dashicons-format-video',
 			'supports'            => [
 				'title',
 				'editor',
@@ -164,7 +164,7 @@ final class Post_Types_Register {
 			],
 			'query_var'           => true,
 			'menu_position'       => 5,
-			'menu_icon'           => 'dashicons-video-alt2',
+			'menu_icon'           => 'dashicons-megaphone',
 			'supports'            => [
 				'title',
 				'editor',
