@@ -45,7 +45,6 @@ class Admin_Menu {
 
 		// Return the instance.
 		return $instance;
-
 	}
 
 	/**
@@ -67,7 +66,6 @@ class Admin_Menu {
 			if ( $options && in_array( 'fields', $options ) ) {
 				add_filter( 'acf/settings/show_admin', '__return_false' );
 			}
-
 		}
 
 		// Move the Menus & Widgets menu items.
@@ -78,7 +76,6 @@ class Admin_Menu {
 
 		// Set the user capability for the pages.
 		add_filter( 'user_has_cap', [ $this, 'set_capability' ], 20, 4 );
-
 	}
 
 	/**
@@ -153,9 +150,7 @@ class Admin_Menu {
 			if ( $tools ) {
 				remove_menu_page( 'tools.php' );
 			}
-
 		}
-
 	}
 
 	/**
@@ -258,7 +253,7 @@ class Admin_Menu {
 	}
 
 	/**
-	 * Set the new Menus and Widgets parent file URL.
+	 * Set the new Menus parent file URL.
 	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
@@ -280,16 +275,10 @@ class Admin_Menu {
 
 			// Get the ACF field registered by this plugin.
 			$menus_link   = get_field( 'chcd_menus_position', 'option' );
-			$widgets_link = get_field( 'chcd_widgets_position', 'option' );
 
 			// Set Menus parent as self.
 			if ( $current_screen->base == 'nav-menus' && 'default' != $menus_link ) {
 				$parent_file = 'nav-menus.php';
-			}
-
-			// Set Widgets parent as self.
-			if ( $current_screen->base == 'widgets' && 'default' != $widgets_link ) {
-				$parent_file = 'widgets.php';
 			}
 
 			// Return the new parent URL.
@@ -300,23 +289,16 @@ class Admin_Menu {
 
 			// Get the options from the standard fields.
 			$menus_link   = get_option( 'chcd_menus_position' );
-			$widgets_link = get_option( 'chcd_widgets_position' );
 
 			// Set Menus parent as self.
 			if ( $current_screen->base == 'nav-menus' && $menus_link ) {
 				$parent_file = 'nav-menus.php';
 			}
 
-			// Set Widgets parent as self.
-			if ( $current_screen->base == 'widgets' && $widgets_link ) {
-				$parent_file = 'widgets.php';
-			}
-
 			// Return the new parent URL.
 			return $parent_file;
 
 		}
-
 	}
 
 	/**
@@ -340,14 +322,8 @@ class Admin_Menu {
 			$caps['edit_theme_options'] = true;
 		}
 
-		// Allow Editors access to the Widgets page.
-		if ( strpos( $url, 'widgets.php' ) !== false && in_array( 'edit_theme_options', $cap ) && in_array( 'editor', $user->roles ) ) {
-			$caps['edit_theme_options'] = true;
-		}
-
 		// Return the new capabilities.
 		return $caps;
-
 	}
 
 }
@@ -360,9 +336,7 @@ class Admin_Menu {
  * @return object Returns an instance of the class.
  */
 function chcd_admin_menu() {
-
 	return Admin_Menu::instance();
-
 }
 
 // Run an instance of the class.
