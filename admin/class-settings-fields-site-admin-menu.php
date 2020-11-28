@@ -55,7 +55,6 @@ class Settings_Fields_Site_Admin_Menu {
 
 		// Return the instance.
 		return $instance;
-
 	}
 
 	/**
@@ -69,7 +68,6 @@ class Settings_Fields_Site_Admin_Menu {
 
 		// Register settings sections and fields.
 		add_action( 'admin_init', [ $this, 'settings' ] );
-
 	}
 
 	/**
@@ -83,7 +81,6 @@ class Settings_Fields_Site_Admin_Menu {
 
 		// Callbacks for the Admin Menu tab.
 		require CHCD_PATH . 'admin/partials/field-callbacks/class-admin-menu-callbacks.php';
-
 	}
 
 	/**
@@ -270,7 +267,6 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd_hide_tools'
 		);
 	}
-
 }
 
 /**

@@ -58,7 +58,6 @@ class Settings_Fields_Site {
 
 		// Return the instance.
 		return $instance;
-
 	}
 
 	/**
@@ -90,7 +89,6 @@ class Settings_Fields_Site {
 
 		// Callbacks for the Meta/SEO tab.
 		require CHCD_PATH . 'admin/class-settings-fields-site-meta-seo.php';
-
 	}
 
 	/**
@@ -127,9 +125,7 @@ class Settings_Fields_Site {
 		];
 
 		return apply_filters ( 'chcd_site_settings', $defaults );
-
 	}
-
 }
 
 /**
@@ -140,9 +136,7 @@ class Settings_Fields_Site {
  * @return object Returns an instance of the class.
  */
 function chcd_settings_fields_site() {
-
 	return Settings_Fields_Site::instance();
-
 }
 
 // Run an instance of the class.
