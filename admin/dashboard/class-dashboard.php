@@ -24,7 +24,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 class Dashboard {
 
-    /**
+	/**
 	 * Instance of the class
 	 *
 	 * @since  1.0.0
@@ -39,45 +39,39 @@ class Dashboard {
 		if ( is_null( $instance ) ) {
 
 			// Set variable for new instance.
-            $instance = new self;
+			$instance = new self;
 
-            // Require the class files.
+			// Require the class files.
 			$instance->dependencies();
-
 		}
 
 		// Return the instance.
 		return $instance;
-
 	}
 
-    /**
+	/**
 	 * Constructor method
 	 *
 	 * @since  1.0.0
 	 * @access public
 	 * @return self
 	 */
-    public function __construct() {
+	public function __construct() {
 
-        // "At a Glance" dashboard widget.
-        add_action( 'dashboard_glance_items', [ $this, 'at_glance' ] );
+		// "At a Glance" dashboard widget.
+		add_action( 'dashboard_glance_items', [ $this, 'at_glance' ] );
 
-        // Remove metaboxes.
-        add_action( 'wp_dashboard_setup', [ $this, 'metaboxes' ] );
+		// Remove metaboxes.
+		add_action( 'wp_dashboard_setup', [ $this, 'metaboxes' ] );
 
-        // Remove contextual help content.
-        add_action( 'admin_head', [ $this, 'remove_help' ] );
+		// Remove contextual help content.
+		add_action( 'admin_head', [ $this, 'remove_help' ] );
 
-        // Add contextual help content.
-        add_action( 'admin_head', [ $this, 'add_help' ] );
+		// Enqueue dashboard stylesheet.
+		add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
+	}
 
-        // Enqueue dashboard stylesheet.
-        add_action( 'admin_enqueue_scripts', [ $this, 'styles' ] );
-
-    }
-
-    /**
+	/**
 	 * Class dependency files.
 	 *
 	 * @since  1.0.0
@@ -86,320 +80,153 @@ class Dashboard {
 	 */
 	private function dependencies() {
 
-        // Get the dashboard widget class.
-        require CHCD_PATH . 'admin/dashboard/class-dashboard-widget.php';
+		// Get the welcome panel class.
+		require CHCD_PATH . 'admin/dashboard/class-welcome.php';
+	}
 
-        // Get the welcome panel class.
-        require CHCD_PATH . 'admin/dashboard/class-welcome.php';
-
-    }
-
-    /**
-     * Add custom post types to "At a Glance" dashboard widget.
-     *
-     * @since  1.0.0
+	/**
+	 * Add custom post types to "At a Glance" dashboard widget.
+	 *
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
-     */
-    public function at_glance() {
+	 */
+	public function at_glance() {
 
-        // Post type query arguments.
-        $args       = [
-            'public'   => true,
-            '_builtin' => false
-        ];
+		// Post type query arguments.
+		$args       = [
+			'public'   => true,
+			'_builtin' => false
+		];
 
-        // The type of output to return, either 'names' or 'objects'.
-        $output     = 'object';
+		// The type of output to return, either 'names' or 'objects'.
+		$output     = 'object';
 
-        // The operator (and/or) to use with multiple $args.
-        $operator   = 'and';
+		// The operator (and/or) to use with multiple $args.
+		$operator   = 'and';
 
-        // Get post types according to above.
-        $post_types = get_post_types( $args, $output, $operator );
+		// Get post types according to above.
+		$post_types = get_post_types( $args, $output, $operator );
 
-        // Prepare an entry for each post type mathing the query.
-        foreach ( $post_types as $post_type ) {
+		// Prepare an entry for each post type mathing the query.
+		foreach ( $post_types as $post_type ) {
 
-            // Count the number of posts.
-            $count  = wp_count_posts( $post_type->name );
+			// Count the number of posts.
+			$count  = wp_count_posts( $post_type->name );
 
-            // Get the number of published posts.
-            $number = number_format_i18n( $count->publish );
+			// Get the number of published posts.
+			$number = number_format_i18n( $count->publish );
 
-            // Get the plural or single name based on the count.
-            $name   = _n( $post_type->labels->singular_name, $post_type->labels->name, intval( $count->publish ) );
+			// Get the plural or single name based on the count.
+			$name   = _n( $post_type->labels->singular_name, $post_type->labels->name, intval( $count->publish ) );
 
-            // Supply an edit link if the user can edit posts.
-            if ( current_user_can( 'edit_posts' ) ) {
-                echo sprintf(
-                    '<li class="post-count %1s-count"><a href="edit.php?post_type=%2s">%3s %4s</a></li>',
-                    $post_type->name,
-                    $post_type->name,
-                    $number,
-                    $name
-                );
+			// Supply an edit link if the user can edit posts.
+			if ( current_user_can( 'edit_posts' ) ) {
+				echo sprintf(
+					'<li class="post-count %1s-count"><a href="edit.php?post_type=%2s">%3s %4s</a></li>',
+					$post_type->name,
+					$post_type->name,
+					$number,
+					$name
+				);
 
-            // Otherwise just the count and post type name.
-            } else {
-                echo sprintf(
-                    '<li class="post-count %1s-count">%2s %3s</li>',
-                    $post_type->name,
-                    $number,
-                    $name
-                );
+			// Otherwise just the count and post type name.
+			} else {
+				echo sprintf(
+					'<li class="post-count %1s-count">%2s %3s</li>',
+					$post_type->name,
+					$number,
+					$name
+				);
 
-            }
-        }
+			}
+		}
+	}
 
-    }
-
-    /**
-     * Remove Dashboard metaboxes.
-     *
-     * Check for the Advanced Custom Fields PRO plugin, or the Options Page
+	/**
+	 * Remove Dashboard metaboxes.
+	 *
+	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
-     * otherwise use the options from the standard 'Site Settings' page.
-     *
-     * @since  1.0.0
+	 * otherwise use the options from the standard 'Site Settings' page.
+	 *
+	 * @since  1.0.0
 	 * @access public
-     * @global array wp_meta_boxes The metaboxes array holds all the widgets for wp-admin.
+	 * @global array wp_meta_boxes The metaboxes array holds all the widgets for wp-admin.
 	 * @return void
-     */
-    public function metaboxes() {
+	 */
+	public function metaboxes() {
 
-        global $wp_meta_boxes;
+		global $wp_meta_boxes;
 
-        // If Advanced Custom Fields Pro is active.
-        if ( chcd_acf_options() ) {
+		// Hide the Welcome panel.
+		remove_action( 'welcome_panel', 'wp_welcome_panel' );
 
-            // Get the multiple checkbox field.
-            $hide = get_field( 'chcd_dashboard_hide_widgets', 'option' );
+		// Hide the WordPress News widget.
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_primary'] );
 
-            // Hide the Welcome panel.
-            if ( $hide && in_array( 'welcome', $hide ) ) {
-                remove_action( 'welcome_panel', 'wp_welcome_panel' );
-            }
+		// Hide Quick Draft (QuickPress) widget.
+		unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
 
-            // Hide the try Gutenberg panel.
-            $editor = get_field( 'chcd_classic_editor', 'option' );
-            if ( ( $hide && in_array( 'gutenberg', $hide ) ) || $editor ) {
-                remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
-            }
+		// Hide At a Glance widget.
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
 
-            // Hide the WordPress News widget.
-            if ( $hide && in_array( 'news', $hide ) ) {
-                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-            }
+		// Hide Site Health widget.
+		unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_site_health'] );
 
-            // Hide Quick Draft (QuickPress) widget.
-            if ( $hide && in_array( 'quick', $hide ) ) {
-                unset( $wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press'] );
-            }
+		// Hide Activity widget.
+		remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
+	}
 
-            // Hide At a Glance widget.
-            if ( $hide && in_array( 'at_glance', $hide ) ) {
-                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-            }
-
-            // Hide Activity widget.
-            if ( $hide && in_array( 'activity', $hide ) ) {
-                remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
-            }
-
-        // If Advanced Custom Fields is not active.
-        } else {
-
-            /**
-             * Get WordPress fields, not ACF.
-             */
-
-            // Get options.
-            $welcome    = get_option( 'chcd_hide_welcome' );
-            $gutenberg  = get_option( 'chcd_hide_try_gutenberg' );
-            $editor     = get_option( 'chcd_classic_editor' );
-            $wp_news    = get_option( 'chcd_hide_wp_news' );
-            $quickpress = get_option( 'chcd_hide_quickpress' );
-            $at_glance  = get_option( 'chcd_hide_at_glance' );
-            $activity   = get_option( 'chcd_hide_activity' );
-
-            // Hide the Welcome panel.
-            if ( $welcome ) {
-                remove_action( 'welcome_panel', 'wp_welcome_panel' );
-            }
-
-            // Hide the try Gutenberg panel.
-            if ( $gutenberg || $editor ) {
-                remove_action( 'try_gutenberg_panel', 'wp_try_gutenberg_panel' );
-            }
-
-            // Hide the WordPress News widget.
-            if ( $wp_news ) {
-                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
-            }
-
-            // Hide Quick Draft (QuickPress) widget.
-            if ( $quickpress ) {
-                unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
-            }
-
-            // Hide At a Glance widget.
-            if ( $at_glance ) {
-                unset( $wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now'] );
-            }
-
-            // Hide Activity widget.
-            if ( $activity ) {
-                remove_meta_box( 'dashboard_activity', 'dashboard', 'normal' );
-            }
-
-        }
-
-    }
-
-    /**
-     * Remove contextual help content.
-     *
-     * Much of the default help content does not apply to
-     * the cleaned up Dashboard so we'll remove it.
-     *
-     * @since  1.0.0
+	/**
+	 * Remove contextual help content.
+	 *
+	 * Much of the default help content does not apply to
+	 * the cleaned up Dashboard so we'll remove it.
+	 *
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
-     */
-    public function remove_help() {
+	 */
+	public function remove_help() {
 
-        // Get the screen ID to target the Dashboard.
-        $screen = get_current_screen();
+		// Get the screen ID to target the Dashboard.
+		$screen = get_current_screen();
 
-        // Bail if not on the Dashboard screen.
-        if ( $screen->id != 'dashboard' ) {
+		// Bail if not on the Dashboard screen.
+		if ( $screen->id != 'dashboard' ) {
 			return;
 		}
 
-        // Remove individual content tabs.
-        $screen->remove_help_tab( 'overview' );
-        $screen->remove_help_tab( 'help-content' );
-        $screen->remove_help_tab( 'help-layout' );
-        $screen->remove_help_tab( 'help-navigation' );
+		// Remove individual content tabs.
+		$screen->remove_help_tab( 'overview' );
+		$screen->remove_help_tab( 'help-content' );
+		$screen->remove_help_tab( 'help-layout' );
+		$screen->remove_help_tab( 'help-navigation' );
 
-        // Remove the help sidebar.
-        $screen->set_help_sidebar(
+		// Remove the help sidebar.
+		$screen->set_help_sidebar(
 			null
 		);
-
-    }
-
-    /**
-     * Add contextual help content.
-     *
-     * @since  1.0.0
-	 * @access public
-	 * @return void
-     */
-    public function add_help() {
-
-        // Get the screen ID to target the Dashboard.
-        $screen = get_current_screen();
-
-        // Bail if not on the Dashboard screen.
-        if ( $screen->id != 'dashboard' ) {
-			return;
-        }
-
-        // Dashboard widget tab.
-		$screen->add_help_tab( [
-			'id'       => 'help_welcome_panel',
-			'title'    => __( 'Welcome Panel', 'chcd-plugin' ),
-			'content'  => null,
-			'callback' => [ $this, 'help_welcome_panel' ]
-        ] );
-
-        // Dashboard widget tab.
-		$screen->add_help_tab( [
-			'id'       => 'help_dashboard_widgets',
-			'title'    => __( 'Dashboard Widgets', 'chcd-plugin' ),
-			'content'  => null,
-			'callback' => [ $this, 'help_dashboard_widgets' ]
-		] );
-
-        // Add a new sidebar.
-		$screen->set_help_sidebar(
-			$this->help_dashboard_sidebar()
-		);
-
-    }
-
-    /**
-     * Get welcome panel help tab content.
-	 *
-	 * @since      1.0.0
-     */
-	public function help_welcome_panel() {
-
-        include_once CHCD_PATH . 'admin/dashboard/partials/help/help-welcome-panel.php';
-
-    }
-
-    /**
-     * Get dashboard widget help tab content.
-	 *
-	 * @since      1.0.0
-     */
-	public function help_dashboard_widgets() {
-
-        include_once CHCD_PATH . 'admin/dashboard/partials/help/help-dashboard-widgets.php';
-
-    }
-
-    /**
-     * The dashboard widget contextual tab sidebar content.
-     *
-     * Uses the universal slug partial for admin pages. Set this
-     * slug in the core plugin file.
-	 *
-	 * @since      1.0.0
-     */
-    public function help_dashboard_sidebar() {
-
-        $html  = sprintf(
-            '<h4>%1s %2s</h4>',
-            __( 'Custom Dashboard for', 'chcd-plugin' ),
-             get_bloginfo( 'name' )
-        );
-
-        $html .= '<hr />';
-
-        $html .= sprintf(
-            '<p>%1s <a href="%2s">%3s</a></p>',
-            __( 'Customize your' ),
-            esc_url( 'http://localhost/controlledchaos/wp-admin/index.php?page=' . CHCD_ADMIN_SLUG . '-settings' ),
-            __( 'Dashboard Settings' )
-        );
-
-		return $html;
-
 	}
 
-    /**
+	/**
 	 * Enqueue dashboard stylesheet.
-     *
-     * @since  1.0.0
+	 *
+	 * @since  1.0.0
 	 * @access public
 	 * @return void
 	 */
 	public function styles() {
 
-        // Get the screen ID to target the Dashboard.
-        $screen = get_current_screen();
+		// Get the screen ID to target the Dashboard.
+		$screen = get_current_screen();
 
-        // Enqueue only on the Dashboard screen.
-        if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( CHCD_ADMIN_SLUG . '-dashboard', CHCD_URL .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
-        }
-
+		// Enqueue only on the Dashboard screen.
+		if ( $screen->id == 'dashboard' ) {
+			wp_enqueue_style( CHCD_ADMIN_SLUG . '-dashboard', CHCD_URL .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
+		}
 	}
-
 }
 
 /**
@@ -410,9 +237,7 @@ class Dashboard {
  * @return object Returns an instance of the class.
  */
 function chcd_dashboard() {
-
 	return Dashboard::instance();
-
 }
 
 // Run an instance of the class.

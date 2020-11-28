@@ -79,9 +79,6 @@ class Settings_Fields_Site {
 	 */
 	private function dependencies() {
 
-		// Settings for the Dashboard tab.
-		require CHCD_PATH . 'admin/class-settings-fields-site-dashboard.php';
-
 		// Settings for the Admin Menu tab.
 		require CHCD_PATH . 'admin/class-settings-fields-site-admin-menu.php';
 
