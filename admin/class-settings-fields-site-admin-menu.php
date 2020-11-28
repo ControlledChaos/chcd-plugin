@@ -284,22 +284,6 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd-site-admin-menu',
 			'chcd_hide_tools'
 		);
-
-		// Show/Hide Links Manager link.
-		add_settings_field(
-			'chcd_hide_links',
-			__( 'Restore Links Manager', 'chcd-plugin' ),
-			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_links' ],
-			'chcd-site-admin-menu',
-			'chcd-site-admin-menu',
-			[ esc_html__( 'The old Links Manager is hidden by default in newer WordPress/ClassicPress installations', 'chcd-plugin' ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-menu',
-			'chcd_hide_links'
-		);
-
 	}
 
 }
@@ -312,9 +296,7 @@ class Settings_Fields_Site_Admin_Menu {
  * @return object Returns an instance of the class.
  */
 function chcd_settings_fields_site_admin_menu() {
-
 	return Settings_Fields_Site_Admin_Menu::instance();
-
 }
 
 // Run an instance of the class.

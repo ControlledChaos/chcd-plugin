@@ -288,25 +288,6 @@ final class Settings_Fields_ACF {
 						'toggle'            => 1,
 						'return_format'     => 'value',
 					],
-					[
-						'key'               => 'field_5aaa73e38deb3',
-						'label'             => __( 'Restore Links Manager', 'chcd-plugin' ),
-						'name'              => 'chcd_links_manager',
-						'type'              => 'true_false',
-						'instructions'      => __( 'The old Links Manager is hidden by default in newer WordPress installations.', 'chcd-plugin' ),
-						'required'          => 0,
-						'conditional_logic' => 0,
-						'wrapper'           => [
-							'width' => '',
-							'class' => '',
-							'id'    => '',
-						],
-						'message'           => '',
-						'default_value'     => 0,
-						'ui'                => 1,
-						'ui_on_text'        => __( 'Enabled', 'chcd-plugin' ),
-						'ui_off_text'       => __( 'Disabled', 'chcd-plugin' ),
-					],
 
 					/**
 					 * Admin Pages tab settings.
