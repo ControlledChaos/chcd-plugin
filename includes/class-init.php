@@ -67,6 +67,44 @@ final class Init {
 		remove_filter( 'the_title', 'capital_P_dangit', 11 );
 		remove_filter( 'the_content', 'capital_P_dangit', 11 );
 		remove_filter( 'comment_text', 'capital_P_dangit', 31 );
+
+		// Remove blog.
+		add_action( 'admin_menu', [ $this, 'remove_default_post_type' ] );
+		add_action( 'admin_bar_menu', [ $this, 'remove_default_post_type_menu_bar' ], 999 );
+		add_action( 'wp_dashboard_setup', [ $this, 'remove_draft_widget' ], 999 );
+	}
+
+	/**
+	 * Remove posts from admin menu
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function remove_default_post_type() {
+		remove_menu_page( 'edit.php' );
+	}
+
+	/**
+	 * Remove posts from admin toolbar
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function remove_default_post_type_menu_bar( $wp_admin_bar ) {
+		$wp_admin_bar->remove_node( 'new-post' );
+	}
+
+	/**
+	 * Remove post quick draft
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function remove_draft_widget(){
+		remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
 	}
 
 	/**
