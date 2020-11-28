@@ -1,6 +1,6 @@
 <?php
 /**
- * Register post types.
+ * Register post types
  *
  * @package    CHCD_Plugin
  * @subpackage Includes\Post_Types_Taxes
@@ -37,7 +37,6 @@ final class Post_Types_Register {
 
 		// Register custom post types.
 		add_action( 'init', [ $this, 'register' ] );
-
 	}
 
 	/**
@@ -175,7 +174,6 @@ final class Post_Types_Register {
 		];
 		register_post_type( 'commercials', $args );
 	}
-
 }
 
 // Run the class.
