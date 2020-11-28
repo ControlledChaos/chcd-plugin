@@ -210,21 +210,6 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd_menus_position'
 		);
 
-		// Widgets link position.
-		add_settings_field(
-			'chcd_widgets_position',
-			__( 'Widgets Position', 'chcd-plugin' ),
-			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'widgets_position' ],
-			'chcd-site-admin-menu',
-			'chcd-site-admin-menu',
-			[ esc_html__( 'Make Widgets a top-level link', 'chcd-plugin' ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-menu',
-			'chcd_widgets_position'
-		);
-
 		// Hide Appearance link.
 		add_settings_field(
 			'chcd_hide_appearance',

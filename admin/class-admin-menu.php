@@ -71,7 +71,7 @@ class Admin_Menu {
 		}
 
 		// Move the Menus & Widgets menu items.
-		add_action( 'admin_menu', [ $this, 'menus_widgets' ] );
+		add_action( 'admin_menu', [ $this, 'nav_menus' ] );
 
 		// Set the new parent file URL.
 		add_filter( 'parent_file', [ $this, 'set_parent_file' ] );
@@ -159,7 +159,7 @@ class Admin_Menu {
 	}
 
 	/**
-	 * Menus and Widgets menu position.
+	 * Navigation menus position.
 	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
@@ -171,7 +171,7 @@ class Admin_Menu {
 	 * @global array submenu The admin submenu array.
 	 * @return void
 	 */
-	public function menus_widgets() {
+	public function nav_menus() {
 
 		global $menu, $submenu;
 
@@ -180,26 +180,18 @@ class Admin_Menu {
 
 			// Get the ACF field registered by this plugin.
 			$menus_link   = get_field( 'chcd_menus_position', 'option' );
-			$widgets_link = get_field( 'chcd_widgets_position', 'option' );
 
-			// Remove Menus and Widgets as submenu items of Appearances.
+			// Remove Menus as submenu items of Appearances.
 			if ( isset( $submenu['themes.php'] ) ) {
 
 				// Look for menu items under Appearances.
 				foreach ( $submenu['themes.php'] as $key => $item ) {
 
 					// Unset Menus if it is found.
-					if ( $item[2] === 'nav-menus.php' && 'default' != $menus_link ) {
-						unset($submenu['themes.php'][$key] );
-					}
-
-					// Unset Widgets if it is found.
-					if ( $item[2] === 'widgets.php' && 'default' != $widgets_link ) {
+					if ( $item[2] === 'nav-menus.php' && 'top' == $menus_link ) {
 						unset( $submenu['themes.php'][$key] );
 					}
-
 				}
-
 			}
 
 			// Get the current user info.
@@ -211,7 +203,7 @@ class Admin_Menu {
 			}
 
 			// Add a new top-level Menus page.
-			if ( 'default' != $menus_link ) {
+			if ( 'top' == $menus_link ) {
 				add_menu_page(
 					__( 'Menus', 'chcd-plugin' ),
 					__( 'Menus', 'chcd-plugin' ),
@@ -223,27 +215,13 @@ class Admin_Menu {
 				);
 			}
 
-			// Add a new top-level Widgets page.
-			if ( 'default' != $widgets_link ) {
-				add_menu_page(
-					__( 'Widgets', 'chcd-plugin' ),
-					__( 'Widgets', 'chcd-plugin' ),
-					'delete_others_pages',
-					'widgets.php',
-					'',
-					'dashicons-welcome-widgets-menus',
-					62
-				);
-			}
-
 		// If ACF is not active.
 		} else {
 
 			// Get the options from the standard fields.
 			$menus_link   = get_option( 'chcd_menus_position' );
-			$widgets_link = get_option( 'chcd_widgets_position' );
 
-			// Remove Menus and Widgets as submenu items of Appearances.
+			// Remove Menus as submenu items of Appearances.
 			if ( isset( $submenu['themes.php'] ) ) {
 
 				// Look for menu items under Appearances.
@@ -253,14 +231,7 @@ class Admin_Menu {
 					if ( $item[2] === 'nav-menus.php' && $menus_link ) {
 						unset($submenu['themes.php'][$key] );
 					}
-
-					// Unset Widgets if it is found.
-					if ( $item[2] === 'widgets.php' && $widgets_link ) {
-						unset( $submenu['themes.php'][$key] );
-					}
-
 				}
-
 			}
 
 			// Get the current user info.
@@ -283,20 +254,6 @@ class Admin_Menu {
 					61
 				);
 			}
-
-			// Add a new top-level Widgets page.
-			if ( $widgets_link ) {
-				add_menu_page(
-					__( 'Widgets', 'chcd-plugin' ),
-					__( 'Widgets', 'chcd-plugin' ),
-					'delete_others_pages',
-					'widgets.php',
-					'',
-					'dashicons-welcome-widgets-menus',
-					62
-				);
-			}
-
 		}
 	}
 

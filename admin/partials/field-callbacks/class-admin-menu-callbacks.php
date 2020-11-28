@@ -45,7 +45,6 @@ class Admin_Menu_Callbacks {
 
 		// Return the instance.
 		return $instance;
-
 	}
 
 	/**
@@ -74,7 +73,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_site_settings_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -94,7 +92,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_site_settings_link_label"> ' . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -116,7 +113,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -136,7 +132,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_site_plugin_link_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -156,7 +151,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_site_plugin_link_label"> ' . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -178,7 +172,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -198,27 +191,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_menus_position"> '  . $args[0] . '</label></p>';
 
 		echo $html;
-
-	}
-
-	/**
-	 * Widgets link position.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function widgets_position( $args ) {
-
-		$option = get_option( 'chcd_widgets_position' );
-
-		$html = '<p><input type="checkbox" id="chcd_widgets_position" name="chcd_widgets_position" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="chcd_widgets_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
 	}
 
 	/**
@@ -238,7 +210,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_hide_appearance"> '  . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -258,7 +229,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_hide_plugins"> '  . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -278,7 +248,6 @@ class Admin_Menu_Callbacks {
 		$html .= '<label for="chcd_hide_users"> '  . $args[0] . '</label></p>';
 
 		echo $html;
-
 	}
 
 	/**
@@ -310,9 +279,7 @@ class Admin_Menu_Callbacks {
  * @return object Returns an instance of the class.
  */
 function chcd_admin_menu_callbacks() {
-
 	return Admin_Menu_Callbacks::instance();
-
 }
 
 // Run an instance of the class.
