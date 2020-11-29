@@ -30,7 +30,7 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // If Advanced Custom Fields is active.
-if ( chcd_acf_options() ) {
+if ( chcd_plugin()->has_acf() ) {
     $sort_order = get_field( 'chcd_use_custom_sort_order', 'option' );
 
 // If Advanced Custom Fields is not active.

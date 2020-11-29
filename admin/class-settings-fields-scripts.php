@@ -180,7 +180,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Site Settings section.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			add_settings_section( 'chcd-registered-fields-activate', __( 'Registered Fields Activation', chcd_plugin() :: DOMAIN ), [ $this, 'registered_fields_activate' ], 'chcd-registered-fields-activate' );
 
@@ -469,7 +469,7 @@ class Settings_Fields_Scripts {
 	 */
 	public function registered_fields_activate() {
 
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', chcd_plugin() :: DOMAIN ) );
 
@@ -486,7 +486,7 @@ class Settings_Fields_Scripts {
 	 */
 	public function registered_fields_page_callback( $args ) {
 
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			$html = '<p><input type="checkbox" id="chcd_acf_activate_settings_page" name="chcd_acf_activate_settings_page" value="1" ' . checked( 1, get_option( 'chcd_acf_activate_settings_page' ), false ) . '/>';
 

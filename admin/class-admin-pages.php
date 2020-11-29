@@ -61,7 +61,7 @@ class Admin_Pages {
         add_action( 'admin_menu', [ $this, 'about_plugin' ] );
 
         // Add admin header.
-        if ( chcd_acf_options() ) {
+        if ( chcd_plugin()->has_acf() ) {
 
             // If the ACF free plus the Options Page addon or Pro plugin is active.
             $admin_header = get_field( 'chcd_use_admin_header', 'option' );
@@ -135,7 +135,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( chcd_acf_options() ) {
+        if ( chcd_plugin()->has_acf() ) {
 
             // Get the field.
             $acf_position = get_field( 'chcd_site_plugin_link_position', 'option' );
@@ -164,7 +164,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( chcd_acf_options() ) {
+        if ( chcd_plugin()->has_acf() ) {
 
             // Get the field.
             $link_label = get_field( 'chcd_site_plugin_link_label', 'option' );
@@ -195,7 +195,7 @@ class Admin_Pages {
          */
 
         // If ACF is active, get the field from the ACF options page.
-        if ( chcd_acf_options() ) {
+        if ( chcd_plugin()->has_acf() ) {
 
             // Get the field.
             $link_icon  = get_field( 'chcd_site_plugin_link_icon', 'option' );

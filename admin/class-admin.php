@@ -115,7 +115,7 @@ class Admin {
 		require_once chcd_plugin()->path() . 'admin/class-settings.php';
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
-		if ( chcd_acf_pro() ) {
+		if ( chcd_plugin()->has_acf() ) {
 			include_once chcd_plugin()->path() . 'admin/class-settings-fields-site-acf.php';
 		}
 
@@ -278,16 +278,16 @@ class Admin {
 	public function enqueue_styles() {
 
 		/**
-		 * Enqueue the general backend styles.
+		 * Enqueue the general backend styles
 		 *
 		 * Included are just a few style rules for features added by this plugin.
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( chcd_plugin() :: VERSION . '-admin', chcd_plugin()->url() . 'admin/assets/css/admin.min.css', [], chcd_plugin() :: VERSION, 'all' );
+		wp_enqueue_style( chcd_plugin() :: SLUG . '-admin', chcd_plugin()->url() . 'admin/assets/css/admin.min.css', [], chcd_plugin() :: VERSION, 'all' );
 
 		/**
-		 * Enqueue the jQuery tooltips styles.
+		 * Enqueue the jQuery tooltips styles
 		 *
 		 * These are the default styles from jQuery. Design the as you see fir
 		 * to jive with your backend styles.
@@ -297,21 +297,21 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( chcd_plugin() :: VERSION . '-tooltips', chcd_plugin()->url() . 'admin/assets/css/tooltips.min.css', [], chcd_plugin() :: VERSION, 'all' );
+		wp_enqueue_style( chcd_plugin() :: SLUG . '-tooltips', chcd_plugin()->url() . 'admin/assets/css/tooltips.min.css', [], chcd_plugin() :: VERSION, 'all' );
 
 		/**
-		 * Enqueue Advanced Custom Fields styles.
+		 * Enqueue Advanced Custom Fields Pro styles
 		 *
 		 * Only if the free or pro version of the plugin is active.
 		 *
 		 * @since 1.0.0
 		 */
-		if ( chcd_acf() ) {
-			wp_enqueue_style( chcd_plugin() :: VERSION . '-acf', chcd_plugin()->url() . 'admin/assets/css/acf.css', [], chcd_plugin() :: VERSION, 'all' );
+		if ( chcd_plugin()->has_acf() ) {
+			wp_enqueue_style( chcd_plugin() :: SLUG . '-acf', chcd_plugin()->url() . 'admin/assets/css/acf.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 		/**
-		 * Enqueue the custom welcome panel styles.
+		 * Enqueue the custom welcome panel styles
 		 *
 		 * Will only enqueue if the option is selected to use the panel.
 		 *
@@ -319,13 +319,13 @@ class Admin {
 		 */
 		$welcome = get_option( 'chcd_custom_welcome' );
 		if ( $welcome ) {
-			wp_enqueue_style( chcd_plugin() :: VERSION . '-welcome', chcd_plugin()->url() . 'admin/assets/css/welcome.css', [], chcd_plugin() :: VERSION, 'all' );
+			wp_enqueue_style( chcd_plugin() :: SLUG . '-welcome', chcd_plugin()->url() . 'admin/assets/css/welcome.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 	}
 
 	/**
-	 * Get the backend search form template.
+	 * Get the backend search form template
 	 *
 	 * @since  1.0.0
 	 * @return mixed Returns the HTML of the search form.
@@ -391,10 +391,10 @@ class Admin {
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
 		// Enqueue scripts for backend functionality of this plugin.
-		wp_enqueue_script( chcd_plugin() :: VERSION . '-admin', chcd_plugin()->url() . 'admin/assets/js/admin.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+		wp_enqueue_script( chcd_plugin() :: SLUG . '-admin', chcd_plugin()->url() . 'admin/assets/js/admin.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 
 		// Enqueue Conditionalize for conditional form fields.
-		wp_enqueue_script( chcd_plugin() :: VERSION . '-conditionalize', chcd_plugin()->url() . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+		wp_enqueue_script( chcd_plugin() :: SLUG . '-conditionalize', chcd_plugin()->url() . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 
 	}
 

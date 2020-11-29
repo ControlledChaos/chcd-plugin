@@ -74,30 +74,30 @@ class Enqueue_Frontend_Scripts {
 	public function scripts() {
 
 		// Non-vendor plugin script. Uncomment to use.
-		// wp_enqueue_script( chcd_plugin() :: VERSION, chcd_plugin()->url() . 'frontend/assets/js/frontend.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+		// wp_enqueue_script( chcd_plugin() :: SLUG, chcd_plugin()->url() . 'frontend/assets/js/frontend.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 
 		// Fancybox 3.
 		if ( get_option( 'chcd_enqueue_fancybox_script' ) ) {
-			wp_enqueue_script( chcd_plugin() :: VERSION . '-fancybox', chcd_plugin()->url() . 'frontend/assets/js/jquery.fancybox.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+			wp_enqueue_script( chcd_plugin() :: SLUG . '-fancybox', chcd_plugin()->url() . 'frontend/assets/js/jquery.fancybox.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 		}
 
 		// Slick.
 		if ( get_option( 'chcd_enqueue_slick' ) ) {
-			wp_enqueue_script( chcd_plugin() :: VERSION . '-slick', chcd_plugin()->url() . 'frontend/assets/js/slick.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+			wp_enqueue_script( chcd_plugin() :: SLUG . '-slick', chcd_plugin()->url() . 'frontend/assets/js/slick.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 		}
 
 		// Tabslet.
 		if ( get_option( 'chcd_enqueue_tabslet' ) ) {
-			wp_enqueue_script( chcd_plugin() :: VERSION . '-tabslet', chcd_plugin()->url() . 'frontend/assets/js/jquery.tabslet.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+			wp_enqueue_script( chcd_plugin() :: SLUG . '-tabslet', chcd_plugin()->url() . 'frontend/assets/js/jquery.tabslet.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'chcd_enqueue_tooltipster' ) ) {
-			wp_enqueue_script( chcd_plugin() :: VERSION . '-tooltipster', chcd_plugin()->url() . 'frontend/assets/js/tooltipster.bundle.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+			wp_enqueue_script( chcd_plugin() :: SLUG . '-tooltipster', chcd_plugin()->url() . 'frontend/assets/js/tooltipster.bundle.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 		}
 
 		// FitVids.
-		wp_enqueue_script( chcd_plugin() :: VERSION . '-fitvids', chcd_plugin()->url() . 'frontend/assets/js/jquery.fitvids.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
+		wp_enqueue_script( chcd_plugin() :: SLUG . '-fitvids', chcd_plugin()->url() . 'frontend/assets/js/jquery.fitvids.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 
 	}
 

@@ -84,7 +84,7 @@ class Meta_Image {
 		global $post;
 
 		// If ACF is active.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			// Get the ACF image fields.
 			$blog_image    = get_field( 'chcd_meta_blog_image', 'option' );

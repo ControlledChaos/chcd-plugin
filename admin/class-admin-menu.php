@@ -60,7 +60,7 @@ class Admin_Menu {
 		add_action( 'admin_menu', [ $this, 'hide' ] );
 
 		// Hide ACF field groups UI.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			$options = get_field( 'chcd_admin_hide_links', 'option' );
 			if ( $options && in_array( 'fields', $options ) ) {
@@ -94,7 +94,7 @@ class Admin_Menu {
 		/**
 		 * If Advanced Custom Fields is active.
 		 */
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			// Get the multiple checkbox field.
 			$options = get_field( 'chcd_admin_hide_links', 'option' );
@@ -171,7 +171,7 @@ class Admin_Menu {
 		global $menu, $submenu;
 
 		// If ACF is active.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			// Get the ACF field registered by this plugin.
 			$menus_link   = get_field( 'chcd_menus_position', 'option' );
@@ -271,7 +271,7 @@ class Admin_Menu {
 		global $current_screen;
 
 		// If ACF is active.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			// Get the ACF field registered by this plugin.
 			$menus_link   = get_field( 'chcd_menus_position', 'option' );

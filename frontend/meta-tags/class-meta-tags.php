@@ -99,7 +99,7 @@ class Meta_Tags {
 	 */
 	public function meta_tags() {
 
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 			$disable_tags = get_field( 'chcd_meta_disable_tags', 'option' );
 		} else {
 			$disable_tags = get_option( 'chcd_meta_disable' );

@@ -187,6 +187,22 @@ if ( ! class_exists( 'CHCD' ) ) :
 			// Include the deactivation class.
 			require_once $this->path() . 'includes/class-deactivate.php';
 		}
+
+		/**
+		 * Check for Advanced Custom Fields Pro
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return bool Returns true if the ACF Pro plugin is active.
+		 */
+		function has_acf() {
+
+			if ( class_exists( 'acf_pro' ) ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 	// End core plugin class.
 
@@ -280,7 +296,7 @@ function chcd_about_link( $links ) {
 	if ( is_admin() ) {
 
 		// If Advanced Custom Fields is active.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			// Get the field.
 			$acf_position = get_field( 'chcd_site_plugin_link_position', 'option' );
@@ -312,7 +328,7 @@ function chcd_about_link( $links ) {
 			sprintf(
 				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-page-link">%2s</a>',
 				admin_url( 'plugins.php?page=' . chcd_plugin() :: SLUG . '-page' ),
-				esc_attr( 'Documentation', $this :: DOMAIN )
+				esc_attr( 'Documentation', chcd_plugin() :: DOMAIN )
 			),
 		];
 
@@ -351,7 +367,7 @@ function chcd_settings_links( $links, $file ) {
 		 */
 
 		// If Advanced Custom Fields is active.
-		if ( chcd_acf_options() ) {
+		if ( chcd_plugin()->has_acf() ) {
 
 			// Get the field.
 			$acf_position = get_field( 'chcd_settings_link_position', 'option' );
@@ -384,12 +400,12 @@ function chcd_settings_links( $links, $file ) {
 			$links[] = sprintf(
 				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-settings-link">%2s</a>',
 				$url,
-				esc_attr( 'Site Settings', $this :: DOMAIN )
+				esc_attr( 'Site Settings', chcd_plugin() :: DOMAIN )
 			);
 			$links[] = sprintf(
 				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-scripts-link">%2s</a>',
 				admin_url( 'options-general.php?page=' . chcd_plugin() :: SLUG . '-scripts' ),
-				esc_attr( 'Script Options', $this :: DOMAIN )
+				esc_attr( 'Script Options', chcd_plugin() :: DOMAIN )
 			);
 		}
 
@@ -399,89 +415,3 @@ function chcd_settings_links( $links, $file ) {
 	}
 }
 add_filter( 'plugin_row_meta', 'chcd_settings_links', 10, 2 );
-
-/**
- * Check if WordPress is 5.0 or greater.
- *
- * @since  1.0.0
- * @access public
- * @return bool Returns true if the WordPress version is 5.0 or greater.
- */
-function chcd_new_cms() {
-
-	// Get the WordPress version.
-	$version = get_bloginfo( 'version' );
-
-	if ( $version >= 5.0 ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Check if the CMS is ClassicPress.
- *
- * @since  1.0.0
- * @access public
- * @return bool Returns true if ClassicPress is running.
- */
-function chcd_classicpress() {
-
-	if ( function_exists( 'classicpress_version' ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Check for Advanced Custom Fields
- *
- * @since  1.0.0
- * @access public
- * @return bool Returns true if the ACF free or Pro plugin is active.
- */
-function chcd_acf() {
-
-	if ( class_exists( 'acf' ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Check for Advanced Custom Fields Pro
- *
- * @since  1.0.0
- * @access public
- * @return bool Returns true if the ACF Pro plugin is active.
- */
-function chcd_acf_pro() {
-
-	if ( class_exists( 'acf_pro' ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Check for Advanced Custom Fields options page
- *
- * @since  1.0.0
- * @access public
- * @return bool Returns true if ACF 4.0 free plus the
- *              Options Page addon or Pro plugin is active.
- */
-function chcd_acf_options() {
-
-	if ( class_exists( 'acf_pro' ) ) {
-		return true;
-	} elseif ( ( class_exists( 'acf' ) && class_exists( 'acf_options_page' ) ) ) {
-		return true;
-	} else {
-		return false;
-	}
-}

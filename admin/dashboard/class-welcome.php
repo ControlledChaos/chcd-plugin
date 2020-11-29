@@ -124,7 +124,7 @@ class Welcome {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( chcd_plugin() :: VERSION . '-welcome', chcd_plugin()->url() .  'assets/css/welcome.min.css', [], null, 'screen' );
+            wp_enqueue_style( chcd_plugin() :: SLUG . '-welcome', chcd_plugin()->url() .  'assets/css/welcome.min.css', [], null, 'screen' );
         }
 	}
 }

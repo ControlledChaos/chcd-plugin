@@ -248,7 +248,7 @@ class Dashboard {
 
 		// Enqueue only on the Dashboard screen.
 		if ( $screen->id == 'dashboard' ) {
-			wp_enqueue_style( chcd_plugin() :: VERSION . '-dashboard', chcd_plugin()->url() .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
+			wp_enqueue_style( chcd_plugin() :: SLUG . '-dashboard', chcd_plugin()->url() .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
 		}
 	}
 }
