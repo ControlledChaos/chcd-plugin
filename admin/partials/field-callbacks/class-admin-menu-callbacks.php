@@ -116,65 +116,6 @@ class Admin_Menu_Callbacks {
 	}
 
 	/**
-	 * Site Plugin page position.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function site_plugin_position( $args ) {
-
-		$option = get_option( 'chcd_site_plugin_link_position' );
-
-		$html = '<p><input type="checkbox" id="chcd_site_plugin_link_position" name="chcd_site_plugin_link_position" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="chcd_site_plugin_link_position"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-	}
-
-	/**
-	 * Site Plugin page link label.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function site_plugin_link_label( $args ) {
-
-		$option = get_option( 'chcd_site_plugin_link_label' );
-
-		$html = '<p><input type="text" size="50" id="chcd_site_plugin_link_label" name="chcd_site_plugin_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Plugin', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
-
-		$html .= '<label for="chcd_site_plugin_link_label"> ' . $args[0] . '</label></p>';
-
-		echo $html;
-	}
-
-	/**
-	 * Site Plugin page link icon.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @param  array $args Extra arguments passed into the callback function.
-	 * @return string
-	 */
-	public function site_plugin_link_icon( $args ) {
-
-		$option = get_option( 'chcd_site_plugin_link_icon' );
-
-		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_icon" name="chcd_site_plugin_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-welcome-learn-more', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
-
-		$html .= '<label for="chcd_site_plugin_link_icon"> ' . $args[0] . '</label>';
-
-		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
-
-		echo $html;
-	}
-
-	/**
 	 * Menus link position.
 	 *
 	 * @since  1.0.0

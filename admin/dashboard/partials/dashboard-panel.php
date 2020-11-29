@@ -20,28 +20,129 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-// Get the current user name for the greeting.
-$current_user = wp_get_current_user();
-$user_name    = $current_user->display_name;
+if ( ! current_user_can( 'edit_posts' ) ) {
+	return;
+}
 
-// Add a filterable subheading.
-$subheading = sprintf(
-	'<h3>%1s %2s %3s.</h3>',
-	esc_html__( 'This is your custom', chcd_plugin() :: DOMAIN ),
-	get_bloginfo( 'name' ),
-	esc_html__( 'welcome panel', chcd_plugin() :: DOMAIN )
-);
-$subheading = apply_filters( 'chcd_welcome_subheading', $subheading );
+/**
+ * Get pages by slug
+ *
+ * Look for specific page slaug and add edit links
+ * by ID if they exist.
+ */
 
-// Add a filterable description.
-$about_desc = apply_filters( 'chcd_welcome_about', __( 'Put your welcome message here.', chcd_plugin() :: DOMAIN ) );
+// Resume & bio page.
+$resume_page = get_page_by_path( 'resume' );
+$resume_id   = null;
+
+if ( $resume_page ) {
+	$resume_id = $resume_page->ID;
+}
+
+// Contact page.
+$contact_page = get_page_by_path( 'contact' );
+$contact_id   = null;
+
+if ( $contact_page ) {
+	$contact_id = $contact_page->ID;
+}
 
 ?>
 
-<?php echo sprintf(
-	'<h2 class="welcome-panel-title">%1s %2s.</h2>',
-	esc_html__( 'Welcome,', chcd_plugin() :: DOMAIN ),
-	$user_name
-); ?>
-<p class="welcome-panel-description"><?php echo $about_desc; ?></p>
-<?php echo $subheading; ?>
+<div class="chcd-dashboard-summary">
+
+	<h2><?php _e( 'Website Summary', chcd_plugin() :: DOMAIN ); ?></h2>
+
+	<?php do_action( 'before_right_now' ); ?>
+
+	<?php wp_dashboard_right_now(); ?>
+
+	<?php do_action( 'after_right_now' ); ?>
+
+	<?php echo sprintf(
+		'<p class="chcd-website-help-link">%s <a href="%s">%s</a></p>',
+		__( 'For tips and assistance managing this website visit the', chcd_plugin() :: DOMAIN ),
+		esc_url( admin_url( 'index.php?page=' . chcd_plugin() :: SLUG . '-page' ) ),
+		__( 'Website Help page', chcd_plugin() :: DOMAIN )
+	); ?>
+</div>
+
+<div class="chcd-dashboard-post-managment">
+
+	<header class="chcd-dashboard-section-header">
+		<h2><?php _e( 'Manage Your Portfolio', chcd_plugin() :: DOMAIN ); ?></h2>
+		<p class="description"><strong><?php _e( 'Remember that it is best practice to resize very images prior to upload, then add titles and descriptions, and crop as necessary prior to adding them to a project.', chcd_plugin() :: DOMAIN ); ?></strong></p>
+	</header>
+
+	<ul class="chcd-dashboard-actions-list chcd-dashboard-post-type-actions">
+		<li>
+			<h3><?php _e( 'Media', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon media-library-icon"><span class="dashicons dashicons-format-gallery"></span></div>
+			<p>
+				<a href="<?php echo admin_url( 'media-new.php' ); ?>"><?php _e( 'Add New', chcd_plugin() :: DOMAIN ); ?></a>
+				<a href="<?php echo admin_url( 'upload.php' ); ?>"><?php _e( 'Manage', chcd_plugin() :: DOMAIN ); ?></a>
+			</p>
+		</li>
+		<li>
+			<h3><?php _e( 'Projects', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon features-icon"><span class="dashicons dashicons-art"></span></div>
+			<p>
+				<a href="<?php echo admin_url( 'post-new.php?post_type=features' ); ?>"><?php _e( 'Add New', chcd_plugin() :: DOMAIN ); ?></a>
+				<a href="<?php echo admin_url( 'edit.php?post_type=features' ); ?>"><?php _e( 'View List', chcd_plugin() :: DOMAIN ); ?></a>
+			</p>
+		</li>
+		<li>
+			<h3><?php _e( 'Commercials', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon commercials-icon"><span class="dashicons dashicons-megaphone"></span></div>
+			<p>
+				<a href="<?php echo admin_url( 'post-new.php?post_type=commercials' ); ?>"><?php _e( 'Add New', chcd_plugin() :: DOMAIN ); ?></a>
+				<a href="<?php echo admin_url( 'edit.php?post_type=commercials' ); ?>"><?php _e( 'View List', chcd_plugin() :: DOMAIN ); ?></a>
+			</p>
+		</li>
+	</ul>
+</div>
+
+<div class="chcd-dashboard-content-managment">
+
+	<header class="chcd-dashboard-section-header">
+		<h2><?php _e( 'Manage Your Content', chcd_plugin() :: DOMAIN ); ?></h2>
+
+		<p class="description"><strong><?php _e( 'Following are links to manage the primary pages on your site.', chcd_plugin() :: DOMAIN ); ?></strong></p>
+	</header>
+
+	<ul class="chcd-dashboard-actions-list chcd-dashboard-content-actions">
+		<?php if ( $resume_page ) : ?>
+		<li>
+			<h3><?php _e( 'Resume', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon resume-icon"><span class="dashicons dashicons-businessman"></span></div>
+			<p>
+				<a href="<?php echo admin_url( 'post.php?post=' . $resume_id . '&action=edit' ); ?>"><?php _e( 'Manage Info', chcd_plugin() :: DOMAIN ); ?></a>
+			</p>
+		</li>
+		<?php endif; // $resume_page ?>
+		<?php if ( $contact_page ) : ?>
+		<li>
+			<h3><?php _e( 'Contact', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon contact-icon"><span class="dashicons dashicons-email"></span></div>
+			<p>
+				<a href="<?php echo admin_url( 'post.php?post=' . $contact_id . '&action=edit' ); ?>"><?php _e( 'Manage Info', chcd_plugin() :: DOMAIN ); ?></a>
+			</p>
+		</li>
+		<?php endif; // $contact_page ?>
+		<li>
+			<h3><?php _e( 'Front Page', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon front-icon"><span class="dashicons dashicons-admin-home"></span></div>
+			<p>
+				<a href="<?php echo admin_url( 'post.php?post=' . get_option( 'page_on_front' ) . '&action=edit' ); ?>"><?php _e( 'Manage Display', chcd_plugin() :: DOMAIN ); ?></a>
+			</p>
+		</li>
+	</ul>
+</div>
+
+<?php
+/**
+ * Custom development hook.
+ *
+ * @since 1.0.0
+ */
+do_action( 'chcd_dashboard' );

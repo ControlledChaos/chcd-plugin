@@ -147,51 +147,6 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd_site_settings_link_icon'
 		);
 
-		// Site Plugin page position.
-		add_settings_field(
-			'chcd_site_plugin_link_position',
-			__( 'Site Plugin Position', chcd_plugin() :: DOMAIN ),
-			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_position' ],
-			'chcd-site-admin-menu',
-			'chcd-site-admin-menu',
-			[ esc_html__( 'Make the site-specific plugin admin page a top-level link.', chcd_plugin() :: DOMAIN ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-menu',
-			'chcd_site_plugin_link_position'
-		);
-
-		// Site Plugin page link label.
-		add_settings_field(
-			'chcd_site_plugin_link_label',
-			__( 'Site Plugin Label', chcd_plugin() :: DOMAIN ),
-			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_link_label' ],
-			'chcd-site-admin-menu',
-			'chcd-site-admin-menu',
-			[ esc_html__( 'Change the label of the link to the site-specific plugin page', chcd_plugin() :: DOMAIN ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-menu',
-			'chcd_site_plugin_link_label'
-		);
-
-		// Site Plugin page link icon if set to top level.
-		add_settings_field(
-			'chcd_site_plugin_link_icon',
-			__( 'Site Plugin Icon', chcd_plugin() :: DOMAIN ),
-			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_link_icon' ],
-			'chcd-site-admin-menu',
-			'chcd-site-admin-menu',
-			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to the site-specific plugin page', chcd_plugin() :: DOMAIN ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-menu',
-			'chcd_site_plugin_link_icon'
-		);
-
 		// Menus link position.
 		add_settings_field(
 			'chcd_menus_position',

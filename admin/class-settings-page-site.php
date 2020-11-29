@@ -165,7 +165,7 @@ class Settings_Page_Site {
 					'menu_title' => $label,
 					'menu_slug'  => chcd_plugin() :: VERSION . '-settings',
 					'parent'     => 'index.php',
-					'capability' => 'manage_options'
+					'capability' => 'manage_options',
 				] );
 
 				// Add the settings page.
@@ -241,7 +241,8 @@ class Settings_Page_Site {
 					$label,
 					'manage_options',
 					chcd_plugin() :: VERSION . '-settings',
-					[ $this, 'page_output' ]
+					[ $this, 'page_output' ],
+					60
 				);
 
 				// Add content to the Help tab.
