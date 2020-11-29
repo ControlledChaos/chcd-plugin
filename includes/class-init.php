@@ -106,9 +106,6 @@ final class Init {
 
 		// Post types and taxonomies.
 		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-post-type-tax.php';
-
-		// User funtionality.
-		require_once chcd_plugin()->path() . 'includes/users/class-users.php';
 	}
 }
 
