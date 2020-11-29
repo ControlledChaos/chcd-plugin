@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin activation class.
+ * Plugin activation class
  *
  * This file must not be namespaced.
  *
@@ -17,12 +17,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Plugin activation class.
+ * Plugin activation class
  *
  * @since  1.0.0
  * @access public
  */
-class Controlled_Chaos_Activate {
+class CHCD_Activate {
 
 	/**
 	 * Instance of the class
@@ -32,23 +32,7 @@ class Controlled_Chaos_Activate {
 	 * @return object Returns the instance.
 	 */
 	public static function instance() {
-
-		// Varialbe for the instance to be used outside the class.
-		static $instance = null;
-
-		if ( is_null( $instance ) ) {
-
-			// Set variable for new instance.
-			$instance = new self;
-
-			// Activation function
-			$instance->activate();
-
-		}
-
-		// Return the instance.
-		return $instance;
-
+		return new self;
 	}
 
 	/**
@@ -56,8 +40,7 @@ class Controlled_Chaos_Activate {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void Constructor method is empty.
-	 *              Change to `self` if used.
+	 * @return self
 	 */
 	public function __construct() {}
 
@@ -80,7 +63,5 @@ class Controlled_Chaos_Activate {
  * @return object Returns an instance of the class.
  */
 function chcd_activate() {
-
-	return Controlled_Chaos_Activate::instance();
-
+	return CHCD_Activate :: instance();
 }

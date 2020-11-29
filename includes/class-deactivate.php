@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin deactivation class.
+ * Plugin deactivation class
  *
  * This file must not be namespaced.
  *
@@ -17,12 +17,12 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Plugin deactivation class.
+ * Plugin deactivation class
  *
  * @since  1.0.0
  * @access public
  */
-class Controlled_Chaos_Deactivate {
+class CHCD_Deactivate {
 
 	/**
 	 * Instance of the class
@@ -32,23 +32,7 @@ class Controlled_Chaos_Deactivate {
 	 * @return object Returns the instance.
 	 */
 	public static function instance() {
-
-		// Varialbe for the instance to be used outside the class.
-		static $instance = null;
-
-		if ( is_null( $instance ) ) {
-
-			// Set variable for new instance.
-			$instance = new self;
-
-			// Deactivation function
-			$instance->deactivate();
-
-		}
-
-		// Return the instance.
-		return $instance;
-
+		return new self;
 	}
 
 	/**
@@ -56,8 +40,7 @@ class Controlled_Chaos_Deactivate {
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return void Constructor method is empty.
-	 *              Change to `self` if used.
+	 * @return self
 	 */
 	public function __construct() {}
 
@@ -80,7 +63,5 @@ class Controlled_Chaos_Deactivate {
  * @return object Returns an instance of the class.
  */
 function chcd_deactivate() {
-
-	return Controlled_Chaos_Deactivate::instance();
-
+	return CHCD_Deactivate :: instance();
 }

@@ -28,41 +28,13 @@ if ( ! defined( 'WPINC' ) ) {
 class i18n {
 
 	/**
-	 * Instance of the class
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return object Returns the instance.
-	 */
-	public static function instance() {
-
-		// Varialbe for the instance to be used outside the class.
-		static $instance = null;
-
-		if ( is_null( $instance ) ) {
-
-			// Set variable for new instance.
-			$instance = new self;
-
-			// Load the text domain.
-			$instance->load_plugin_textdomain();
-
-		}
-
-		// Return the instance.
-		return $instance;
-
-	}
-
-	/**
 	 * Constructor method
 	 *
 	 * @since  1.0.0
-	 * @access private
-	 * @return void Constructor method is empty.
-	 *              Change to `self` if used.
+	 * @access public
+	 * @return self`
 	 */
-	private function __construct() {}
+	public function __construct() {}
 
 	/**
 	 * Load the plugin text domain for translation.
@@ -78,23 +50,8 @@ class i18n {
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
-
 	}
-
-}
-
-/**
- * Put an instance of the class into a function.
- *
- * @since  1.0.0
- * @access public
- * @return object Returns an instance of the class.
- */
-function chcd_i18n() {
-
-	return i18n::instance();
-
 }
 
 // Run an instance of the class.
-chcd_i18n();
+new i18n;
