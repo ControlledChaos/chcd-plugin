@@ -133,15 +133,31 @@ class Media {
 	 */
 	public function image_sizes() {
 
+		// 1:1 square.
+		add_image_size( 'large-thumbnail', 240, 240, true );
+		add_image_size( 'x-large-thumbnail', 320, 320, true );
+
+		// 16:9 HD Video.
+		add_image_size( 'large-video', 1280, 720, true );
+		add_image_size( 'medium-video', 960, 540, true );
+		add_image_size( 'small-video', 640, 360, true );
+		add_image_size( 'video-thumbnail', 320, 180, true );
+
+		// 2:3 Poster images.
+		add_image_size( 'poster-preview', 160, 240, true );
+		add_image_size( 'poster-small', 213, 320, true );
+		add_image_size( 'poster-medium', 426, 640, true );
+		add_image_size( 'poster-large', 853, 1280, true );
+
 		// For link embedding and sharing on social sites.
-		add_image_size( __( 'meta-image', chcd_plugin() :: DOMAIN ), 1200, 630, true );
+		add_image_size( 'meta-image', 1280, 720, true );
 
 		/**
 		 * For use as featured image in admin columns.
 		 *
 		 * @see admin/class-admin-pages.php
 		 */
-		add_image_size( __( 'column-thumbnail', chcd_plugin() :: DOMAIN ), 48, 48, true );
+		add_image_size( 'column-thumbnail', 48, 48, true );
 
 	}
 
