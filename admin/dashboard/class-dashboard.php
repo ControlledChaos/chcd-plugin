@@ -40,9 +40,6 @@ class Dashboard {
 
 			// Set variable for new instance.
 			$instance = new self;
-
-			// Require the class files.
-			$instance->dependencies();
 		}
 
 		// Return the instance.
@@ -57,6 +54,13 @@ class Dashboard {
 	 * @return self
 	 */
 	public function __construct() {
+
+		// Remove the welcome panel dismiss button.
+		add_action( 'admin_head', [ $this, 'dismiss' ] );
+
+		// Use the custom dashboard panel.
+		remove_action( 'welcome_panel', 'wp_welcome_panel' );
+		add_action( 'welcome_panel', [ $this, 'dashboard_panel' ], 25 );
 
 		// "At a Glance" dashboard widget.
 		add_action( 'dashboard_glance_items', [ $this, 'at_glance' ] );
@@ -75,16 +79,48 @@ class Dashboard {
 	}
 
 	/**
-	 * Class dependency files.
+	 * Remove the welcome panel dismiss button.
 	 *
 	 * @since  1.0.0
-	 * @access private
+	 * @access public
 	 * @return void
 	 */
-	private function dependencies() {
+	public function dismiss() {
 
-		// Get the welcome panel class.
-		require chcd_plugin()->path() . 'admin/dashboard/class-welcome.php';
+		$dismiss = '
+			<style>
+				/*
+				* Welcome panel user dismiss option
+				* is disabled in the Customizer
+				*/
+				a.welcome-panel-close, #wp_welcome_panel-hide, .metabox-prefs label[for="wp_welcome_panel-hide"] {
+					display: none !important;
+				}
+				.welcome-panel {
+					display: block !important;
+				}
+			</style>
+			';
+
+		echo $dismiss;
+	}
+
+	/**
+	 * Custom dashboard panel
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function dashboard_panel() {
+
+		$panel = locate_template( 'template-parts/admin/dashboard-panel.php' );
+
+		if ( ! empty( $panel ) ) {
+			get_template_part( 'template-parts/admin/dashboard-panel' );
+		} else {
+			include_once chcd_plugin()->path() . 'admin/dashboard/partials/dashboard-panel.php';
+		}
 	}
 
 	/**
