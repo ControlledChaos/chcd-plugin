@@ -3,7 +3,7 @@
  * Post Type Fields for Features
  *
  * @package    CHCD_Plugin
- * @subpackage controlled-chaos\admin
+ * @subpackage Admin
  * @since      1.0.0
  */
 

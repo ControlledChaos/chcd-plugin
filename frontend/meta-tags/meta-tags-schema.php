@@ -4,7 +4,7 @@
  *
  * @package    CHCD_Plugin
  * @subpackage Frontend\Meta_Tags
- * @since      controlled-chaos 1.0.0
+ * @since      1.0.0
  */
 
 namespace CHCD_Plugin\Frontend\Meta_Tags;

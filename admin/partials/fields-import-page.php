@@ -3,8 +3,8 @@
  * Field import page.
  *
  * @package    CHCD_Plugin
- * @subpackage controlled-chaos
- * @since controlled-chaos 1.0.0
+ * @subpackage Settings
+ * @since      1.0.0
  */
 
 namespace CHCD_Plugin\Fields_Import_Page;
