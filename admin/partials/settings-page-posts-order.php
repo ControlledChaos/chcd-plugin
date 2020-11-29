@@ -37,17 +37,17 @@ if ( isset( $chcd_order_options['tags'] ) ) {
     $chcd_order_taxonomies = [];
 } ?>
 <div class="wrap">
-    <h1><?php _e( 'Posts & Taxonomies Sort Orders', 'chcd-plugin' ); ?></h1>
-    <p class="description"><?php _e( 'Add drag & drop sort order functionality to post types and taxonomies.', 'chcd-plugin' ); ?></p>
+    <h1><?php _e( 'Posts & Taxonomies Sort Orders', chcd_plugin() :: DOMAIN ); ?></h1>
+    <p class="description"><?php _e( 'Add drag & drop sort order functionality to post types and taxonomies.', chcd_plugin() :: DOMAIN ); ?></p>
     <hr />
-    <p><?php _e( 'When posts and taxonomies are selected for custom sort order functionality, the table rows on their respective admin management screen can be dragged up or down.', 'chcd-plugin' ); ?></p>
-    <p><?php _e( 'The order you set on the admin management screens will automatically set the order of the posts in the blog index pages and in archive pages.', 'chcd-plugin' ); ?></p>
+    <p><?php _e( 'When posts and taxonomies are selected for custom sort order functionality, the table rows on their respective admin management screen can be dragged up or down.', chcd_plugin() :: DOMAIN ); ?></p>
+    <p><?php _e( 'The order you set on the admin management screens will automatically set the order of the posts in the blog index pages and in archive pages.', chcd_plugin() :: DOMAIN ); ?></p>
     <?php if ( isset( $_GET['msg'] ) ) : ?>
         <div id="message" class="notice notice-success is-dismissible">
             <?php if ( $_GET['msg'] == 'updated' ) {
                 echo sprintf(
                     '<p>%1s</p>',
-                    __( 'Settings saved.', 'chcd-plugin' )
+                    __( 'Settings saved.', chcd_plugin() :: DOMAIN )
                 );
             } ?>
         </div>
@@ -58,9 +58,9 @@ if ( isset( $chcd_order_options['tags'] ) ) {
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
-                        <th scope="row"><?php _e( 'Check to Sort Post Types', 'chcd-plugin' ) ?></th>
+                        <th scope="row"><?php _e( 'Check to Sort Post Types', chcd_plugin() :: DOMAIN ) ?></th>
                         <td>
-                            <label><input type="checkbox" id="chcd_order_check_all_post_types"> <?php _e( 'Check All', 'chcd-plugin' ) ?></label><br>
+                            <label><input type="checkbox" id="chcd_order_check_all_post_types"> <?php _e( 'Check All', chcd_plugin() :: DOMAIN ) ?></label><br>
                             <?php
                             // Get all registered public post types.
                             $post_types = get_post_types(
@@ -95,9 +95,9 @@ if ( isset( $chcd_order_options['tags'] ) ) {
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
-                        <th scope="row"><?php _e( 'Check to Sort Taxonomies', 'chcd-plugin' ) ?></th>
+                        <th scope="row"><?php _e( 'Check to Sort Taxonomies', chcd_plugin() :: DOMAIN ) ?></th>
                         <td>
-                            <label><input type="checkbox" id="chcd_order_check_all_taxonomies"> <?php _e( 'Check All', 'chcd-plugin' ) ?></label><br>
+                            <label><input type="checkbox" id="chcd_order_check_all_taxonomies"> <?php _e( 'Check All', chcd_plugin() :: DOMAIN ) ?></label><br>
                             <?php
                             // Get all registered public taxonomies.
                             $taxonomies = get_taxonomies(
@@ -127,7 +127,7 @@ if ( isset( $chcd_order_options['tags'] ) ) {
             </table>
         </div>
         <p class="submit">
-            <input type="submit" class="button-primary" name="chcd_posts_order_submit" value="<?php _e( 'Save Changes', 'chcd-plugin' ); ?>">
+            <input type="submit" class="button-primary" name="chcd_posts_order_submit" value="<?php _e( 'Save Changes', chcd_plugin() :: DOMAIN ); ?>">
         </p>
     </form>
 </div>

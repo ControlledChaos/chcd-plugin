@@ -80,7 +80,7 @@ class User_Avatars {
 		add_action( 'bbp_user_edit_after_about', [ $this, 'bbpress_user_profile' ] );
 
 		// Shortcode.
-		add_shortcode( 'chcd-plugin', [ $this, 'shortcode' ] );
+		add_shortcode( chcd_plugin() :: DOMAIN, [ $this, 'shortcode' ] );
 
 		// Filters.
 		add_filter( 'get_avatar', [ $this, 'get_avatar' ], 10, 5 );
@@ -100,11 +100,11 @@ class User_Avatars {
 		// Discussion setting to restrict avatar upload capabilites.
 		add_settings_field(
 			'basic-user-avatars-caps',
-			__( 'Local Avatar Permissions',	'chcd-plugin' ),
+			__( 'Local Avatar Permissions',	chcd_plugin() :: DOMAIN ),
 			[ $this, 'avatar_settings_field' ],
 			'discussion',
 			'avatars',
-			[ esc_html__( 'Only allow users with file upload capabilities to upload local avatars (Authors and above).', 'chcd-plugin' ) ]
+			[ esc_html__( 'Only allow users with file upload capabilities to upload local avatars (Authors and above).', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -213,10 +213,10 @@ class User_Avatars {
 			return;
 		?>
 
-		<h3><?php _e( 'Avatar', 'chcd-plugin' ); ?></h3>
+		<h3><?php _e( 'Avatar', chcd_plugin() :: DOMAIN ); ?></h3>
 		<table class="form-table">
 			<tr>
-				<th><label for="basic-user-avatar"><?php _e( 'Upload Avatar', 'chcd-plugin' ); ?></label></th>
+				<th><label for="basic-user-avatar"><?php _e( 'Upload Avatar', chcd_plugin() :: DOMAIN ); ?></label></th>
 				<td style="width: 50px;" valign="top">
 					<?php echo get_avatar( $profileuser->ID ); ?>
 				</td>
@@ -231,17 +231,17 @@ class User_Avatars {
 					echo '<input type="file" name="basic-user-avatar" id="basic-local-avatar" /><br />';
 
 					if ( empty( $profileuser->chcd_user_avatar ) ) {
-						echo '<span class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'chcd-plugin' ) . '</span>';
+						echo '<span class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', chcd_plugin() :: DOMAIN ) . '</span>';
 					} else {
-						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', 'chcd-plugin' ) . '<br />';
-						echo '<span class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'chcd-plugin' ) . '</span>';
+						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', chcd_plugin() :: DOMAIN ) . '<br />';
+						echo '<span class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', chcd_plugin() :: DOMAIN ) . '</span>';
 					}
 
 				} else {
 					if ( empty( $profileuser->chcd_user_avatar ) ) {
-						echo '<span class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'chcd-plugin' ) . '</span>';
+						echo '<span class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', chcd_plugin() :: DOMAIN ) . '</span>';
 					} else {
-						echo '<span class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'chcd-plugin' ) . '</span>';
+						echo '<span class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', chcd_plugin() :: DOMAIN ) . '</span>';
 					}
 				}
 				?>
@@ -348,21 +348,21 @@ class User_Avatars {
 				echo '<p><input type="file" name="basic-user-avatar" id="basic-local-avatar" /></p>';
 
 				if ( empty( $profileuser->chcd_user_avatar ) ) {
-					echo '<p class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'chcd-plugin' ) . '</p>';
+					echo '<p class="description">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', chcd_plugin() :: DOMAIN ) . '</p>';
 				} else {
-					echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', 'chcd-plugin' ) . '<br />';
-					echo '<p class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'chcd-plugin' ) . '</p>';
+					echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" /> ' . __( 'Delete local avatar', chcd_plugin() :: DOMAIN ) . '<br />';
+					echo '<p class="description">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', chcd_plugin() :: DOMAIN ) . '</p>';
 				}
 
 			} else {
 				if ( empty( $profileuser->chcd_user_avatar ) ) {
-					echo '<p class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'chcd-plugin' ) . '</p>';
+					echo '<p class="description">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', chcd_plugin() :: DOMAIN ) . '</p>';
 				} else {
-					echo '<p class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'chcd-plugin' ) . '</p>';
+					echo '<p class="description">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', chcd_plugin() :: DOMAIN ) . '</p>';
 				}
 			}
 			?>
-			<input type="submit" name="manage_avatar_submit" value="<?php _e( 'Update Avatar', 'chcd-plugin' ); ?>" />
+			<input type="submit" name="manage_avatar_submit" value="<?php _e( 'Update Avatar', chcd_plugin() :: DOMAIN ); ?>" />
 		</form>
 		<?php
 
@@ -386,7 +386,7 @@ class User_Avatars {
 		$profileuser = get_userdata( $user_id );
 
 		echo '<div>';
-			echo '<label for="basic-local-avatar">' . __( 'Avatar', 'chcd-plugin' ) . '</label>';
+			echo '<label for="basic-local-avatar">' . __( 'Avatar', chcd_plugin() :: DOMAIN ) . '</label>';
  			echo '<fieldset class="bbp-form avatar">';
 
 	 			echo get_avatar( $profileuser->ID );
@@ -399,17 +399,17 @@ class User_Avatars {
 					echo '<br /><input type="file" name="basic-user-avatar" id="basic-local-avatar" /><br />';
 
 					if ( empty( $profileuser->chcd_user_avatar ) ) {
-						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', 'chcd-plugin' ) . '</span>';
+						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Use the upload field to add a local avatar.', chcd_plugin() :: DOMAIN ) . '</span>';
 					} else {
-						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" style="width:auto" /> ' . __( 'Delete local avatar', 'chcd-plugin' ) . '<br />';
-						echo '<span class="description" style="margin-left:0;">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', 'chcd-plugin' ) . '</span>';
+						echo '<input type="checkbox" name="basic-user-avatar-erase" value="1" style="width:auto" /> ' . __( 'Delete local avatar', chcd_plugin() :: DOMAIN ) . '<br />';
+						echo '<span class="description" style="margin-left:0;">' . __( 'Replace the local avatar by uploading a new avatar, or erase the local avatar (falling back to a gravatar) by checking the delete option.', chcd_plugin() :: DOMAIN ) . '</span>';
 					}
 
 				} else {
 					if ( empty( $profileuser->chcd_user_avatar ) ) {
-						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', 'chcd-plugin' ) . '</span>';
+						echo '<span class="description" style="margin-left:0;">' . __( 'No local avatar is set. Set up your avatar at Gravatar.com.', chcd_plugin() :: DOMAIN ) . '</span>';
 					} else {
-						echo '<span class="description" style="margin-left:0;">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', 'chcd-plugin' ) . '</span>';
+						echo '<span class="description" style="margin-left:0;">' . __( 'You do not have media management permissions. To change your local avatar, contact the site administrator.', chcd_plugin() :: DOMAIN ) . '</span>';
 					}
 				}
 
@@ -439,8 +439,8 @@ class User_Avatars {
 		// Maybe block Gravatars
 		if ( get_option( 'chcd_block_gravatar' ) ) {
 			$new_avatar_defaults = [
-				'mystery' => __( 'Mystery Person', 'chcd-plugin' ),
-				'blank'   => __( 'Blank', 'chcd-plugin' )
+				'mystery' => __( 'Mystery Person', chcd_plugin() :: DOMAIN ),
+				'blank'   => __( 'Blank', chcd_plugin() :: DOMAIN )
 			];
 		}
 

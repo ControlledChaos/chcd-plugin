@@ -37,7 +37,7 @@ if ( ! empty( $title ) ) {
 if ( ! empty( $description ) ) {
     $description = get_bloginfo( 'description' );
 } else {
-    $description = __( 'Add a tagline in Settings > General or change this in', 'chcd-plugin' ) . ' <code>chcd-plugin/admin/partials/admin-header.php</code>';
+    $description = __( 'Add a tagline in Settings > General or change this in', chcd_plugin() :: DOMAIN ) . ' <code>chcd-plugin/admin/partials/admin-header.php</code>';
 }
 
 // Get the admin menu registered in `class-admin-pages.php`.

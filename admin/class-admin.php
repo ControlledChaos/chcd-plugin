@@ -112,27 +112,27 @@ class Admin {
 	private function dependencies() {
 
 		// The core settings class for the plugin.
-		require_once CHCD_PATH . 'admin/class-settings.php';
+		require_once chcd_plugin()->path() . 'admin/class-settings.php';
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( chcd_acf_pro() ) {
-			include_once CHCD_PATH . 'admin/class-settings-fields-site-acf.php';
+			include_once chcd_plugin()->path() . 'admin/class-settings-fields-site-acf.php';
 		}
 
 		// Functions for dasboard widgets, excluding the welcome panel.
-		require_once CHCD_PATH . 'admin/dashboard/class-dashboard.php';
+		require_once chcd_plugin()->path() . 'admin/dashboard/class-dashboard.php';
 
 		// Functions for admin menu item positions and visibility.
-		require_once CHCD_PATH . 'admin/class-admin-menu.php';
+		require_once chcd_plugin()->path() . 'admin/class-admin-menu.php';
 
 		// Add menus to the admin toolbar.
-		require_once CHCD_PATH . 'admin/class-admin-toolbar-menus.php';
+		require_once chcd_plugin()->path() . 'admin/class-admin-toolbar-menus.php';
 
 		// Functions for various admin pages and edit screens.
-		require_once CHCD_PATH . 'admin/class-admin-pages.php';
+		require_once chcd_plugin()->path() . 'admin/class-admin-pages.php';
 
 		// Filter by page template.
-		require_once CHCD_PATH . 'admin/class-admin-template-filter.php';
+		require_once chcd_plugin()->path() . 'admin/class-admin-template-filter.php';
 
 	}
 
@@ -253,8 +253,8 @@ class Admin {
 		$footer = sprintf(
 			'%1s %2s <a href="https://ccdzine.com/" target="_blank" rel="noopener">%3s</a> ',
 			$site,
-			esc_html__( 'website designed & developed by', 'chcd-plugin' ),
-			esc_html__( 'Controlled Chaos Design', 'chcd-plugin' )
+			esc_html__( 'website designed & developed by', chcd_plugin() :: DOMAIN ),
+			esc_html__( 'Controlled Chaos Design', chcd_plugin() :: DOMAIN )
 		);
 
 		// Apply a filter for unforseen possibilities.
@@ -284,7 +284,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CHCD_ADMIN_SLUG . '-admin', CHCD_URL . 'admin/assets/css/admin.min.css', [], CHCD_VERSION, 'all' );
+		wp_enqueue_style( chcd_plugin() :: VERSION . '-admin', chcd_plugin()->url() . 'admin/assets/css/admin.min.css', [], chcd_plugin() :: VERSION, 'all' );
 
 		/**
 		 * Enqueue the jQuery tooltips styles.
@@ -297,7 +297,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( CHCD_ADMIN_SLUG . '-tooltips', CHCD_URL . 'admin/assets/css/tooltips.min.css', [], CHCD_VERSION, 'all' );
+		wp_enqueue_style( chcd_plugin() :: VERSION . '-tooltips', chcd_plugin()->url() . 'admin/assets/css/tooltips.min.css', [], chcd_plugin() :: VERSION, 'all' );
 
 		/**
 		 * Enqueue Advanced Custom Fields styles.
@@ -307,7 +307,7 @@ class Admin {
 		 * @since 1.0.0
 		 */
 		if ( chcd_acf() ) {
-			wp_enqueue_style( CHCD_ADMIN_SLUG . '-acf', CHCD_URL . 'admin/assets/css/acf.css', [], CHCD_VERSION, 'all' );
+			wp_enqueue_style( chcd_plugin() :: VERSION . '-acf', chcd_plugin()->url() . 'admin/assets/css/acf.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 		/**
@@ -319,7 +319,7 @@ class Admin {
 		 */
 		$welcome = get_option( 'chcd_custom_welcome' );
 		if ( $welcome ) {
-			wp_enqueue_style( CHCD_ADMIN_SLUG . '-welcome', CHCD_URL . 'admin/assets/css/welcome.css', [], CHCD_VERSION, 'all' );
+			wp_enqueue_style( chcd_plugin() :: VERSION . '-welcome', chcd_plugin()->url() . 'admin/assets/css/welcome.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 	}
@@ -339,7 +339,7 @@ class Admin {
 
 		ob_start();
 
-		require CHCD_PATH . 'admin/partials/searchform.php';
+		require chcd_plugin()->path() . 'admin/partials/searchform.php';
 
 		$form = ob_get_clean();
 
@@ -391,10 +391,10 @@ class Admin {
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 
 		// Enqueue scripts for backend functionality of this plugin.
-		wp_enqueue_script( CHCD_ADMIN_SLUG . '-admin', CHCD_URL . 'admin/assets/js/admin.js', [ 'jquery' ], CHCD_VERSION, true );
+		wp_enqueue_script( chcd_plugin() :: VERSION . '-admin', chcd_plugin()->url() . 'admin/assets/js/admin.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 
 		// Enqueue Conditionalize for conditional form fields.
-		wp_enqueue_script( CHCD_ADMIN_SLUG . '-conditionalize', CHCD_URL . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], CHCD_VERSION, true );
+		wp_enqueue_script( chcd_plugin() :: VERSION . '-conditionalize', chcd_plugin()->url() . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
 
 	}
 

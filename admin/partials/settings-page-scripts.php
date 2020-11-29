@@ -40,17 +40,17 @@ $tabs = [
     // General options tab.
     sprintf(
         '<a href="?page=%1s-scripts&tab=general" class="nav-tab %2s"><span class="dashicons dashicons-admin-tools"></span> %3s</a>',
-        CHCD_ADMIN_SLUG,
+        chcd_plugin() :: VERSION,
         $active_tab == 'general' ? 'nav-tab-active' : '',
-        esc_html__( 'General', 'chcd-plugin' )
+        esc_html__( 'General', chcd_plugin() :: DOMAIN )
     ),
 
     // Vendor options tab.
     sprintf(
         '<a href="?page=%1s-scripts&tab=vendor" class="nav-tab %2s"><span class="dashicons dashicons-admin-plugins"></span> %3s</a>',
-        CHCD_ADMIN_SLUG,
+        chcd_plugin() :: VERSION,
         $active_tab == 'vendor' ? 'nav-tab-active' : '',
-        esc_html__( 'Vendor', 'chcd-plugin' )
+        esc_html__( 'Vendor', chcd_plugin() :: DOMAIN )
     )
 
 ];
@@ -87,11 +87,11 @@ $do_fields  = apply_filters( 'chcd_fields_script_options', $fields );
  * @return string Returns the button label.
  */
 if ( 'general' == $active_tab  ) {
-    $save = __( 'Save General', 'chcd-plugin' );
+    $save = __( 'Save General', chcd_plugin() :: DOMAIN );
 } elseif ( 'vendor' == $active_tab ) {
-    $save = __( 'Save Vendor', 'chcd-plugin' );
+    $save = __( 'Save Vendor', chcd_plugin() :: DOMAIN );
 } else {
-    $save = __( 'Save Settings', 'chcd-plugin' );
+    $save = __( 'Save Settings', chcd_plugin() :: DOMAIN );
 }
 
 // Apply a filter for new tabs added by another plugin or from a theme.
@@ -99,11 +99,11 @@ $button = apply_filters( 'chcd_save_script_options', $save );
 
 ?>
 <div class="wrap">
-    <h1 class="wp-heading-inline"><?php esc_html_e( 'Script Options', 'chcd-plugin' ); ?></h1>
+    <h1 class="wp-heading-inline"><?php esc_html_e( 'Script Options', chcd_plugin() :: DOMAIN ); ?></h1>
     <?php if ( is_rtl() ) : ?>
-    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper left.', 'chcd-plugin' ); ?></p>
+    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper left.', chcd_plugin() :: DOMAIN ); ?></p>
     <?php else : ?>
-    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper right.', 'chcd-plugin' ); ?></p>
+    <p class="description"><?php esc_html_e( 'Script settings from the Controlled Chaos plugin. More information in the Help tab at upper right.', chcd_plugin() :: DOMAIN ); ?></p>
     <?php endif; ?>
     <hr class="wp-header-end">
     <h2 class="nav-tab-wrapper">

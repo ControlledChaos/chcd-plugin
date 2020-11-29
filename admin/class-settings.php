@@ -76,10 +76,10 @@ class Settings {
 		 */
 
 		// Settings fields for script loading and more.
-		require_once CHCD_PATH . 'admin/class-settings-page-scripts.php';
+		require_once chcd_plugin()->path() . 'admin/class-settings-page-scripts.php';
 
 		// Settings fields for site customization.
-		require_once CHCD_PATH . 'admin/class-settings-page-site.php';
+		require_once chcd_plugin()->path() . 'admin/class-settings-page-site.php';
 
 		/**
 		 * Settings fields.
@@ -88,13 +88,13 @@ class Settings {
 		 */
 
 		// Settings fields for script loading and more.
-		require_once CHCD_PATH . 'admin/class-settings-fields-scripts.php';
+		require_once chcd_plugin()->path() . 'admin/class-settings-fields-scripts.php';
 
 		// Settings fields for site customization.
-		require_once CHCD_PATH . 'admin/class-settings-fields-site.php';
+		require_once chcd_plugin()->path() . 'admin/class-settings-fields-site.php';
 
 		// Settings fields for the media settings page.
-		require_once CHCD_PATH . 'admin/class-settings-fields-media.php';
+		require_once chcd_plugin()->path() . 'admin/class-settings-fields-media.php';
 	}
 }
 

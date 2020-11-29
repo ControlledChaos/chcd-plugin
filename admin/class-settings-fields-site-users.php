@@ -77,7 +77,7 @@ class Settings_Fields_Users {
 	private function dependencies() {
 
 		// Callbacks for the Dashboard tab.
-		require CHCD_PATH . 'admin/partials/field-callbacks/class-users-callbacks.php';
+		require chcd_plugin()->path() . 'admin/partials/field-callbacks/class-users-callbacks.php';
 
 	}
 
@@ -93,7 +93,7 @@ class Settings_Fields_Users {
         // User settings section.
         add_settings_section(
             'chcd-site-users',
-            __( 'User Settings', 'chcd-plugin' ),
+            __( 'User Settings', chcd_plugin() :: DOMAIN ),
             [],
             'chcd-site-users'
         );
@@ -101,11 +101,11 @@ class Settings_Fields_Users {
         // Local avatars only (no Gravatars).
 		add_settings_field(
 			'chcd_block_gravatar',
-			__( 'Block Gravatars', 'chcd-plugin' ),
+			__( 'Block Gravatars', chcd_plugin() :: DOMAIN ),
 			[ Callbacks::instance(), 'block_gravatar' ],
 			'chcd-site-users',
 			'chcd-site-users',
-			[ esc_html__( 'Prevent avatar requests from Gravatar.com', 'chcd-plugin' ) ]
+			[ esc_html__( 'Prevent avatar requests from Gravatar.com', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(

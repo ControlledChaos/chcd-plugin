@@ -80,7 +80,7 @@ class Settings_Fields_Site_Admin_Pages {
 	private function dependencies() {
 
 		// Callbacks for the Admin Pages tab.
-		require CHCD_PATH . 'admin/partials/field-callbacks/class-admin-pages-callbacks.php';
+		require chcd_plugin()->path() . 'admin/partials/field-callbacks/class-admin-pages-callbacks.php';
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Settings_Fields_Site_Admin_Pages {
 		// Admin pages settings section.
 		add_settings_section(
 			'chcd-site-admin-pages',
-			__( 'Admin Pages Settings', 'chcd-plugin' ),
+			__( 'Admin Pages Settings', chcd_plugin() :: DOMAIN ),
 			[],
 			'chcd-site-admin-pages'
 		);
@@ -105,11 +105,11 @@ class Settings_Fields_Site_Admin_Pages {
 		// Restore the TinyMCE editor.
 		add_settings_field(
 			'chcd_classic_editor',
-			__( 'Classic Editor', 'chcd-plugin' ),
+			__( 'Classic Editor', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'classic_editor' ],
 			'chcd-site-admin-pages',
 			'chcd-site-admin-pages',
-			[ esc_html__( 'Disable the block editor (a.k.a. Gutenberg) and restore the TinyMCE editor.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Disable the block editor (a.k.a. Gutenberg) and restore the TinyMCE editor.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -120,11 +120,11 @@ class Settings_Fields_Site_Admin_Pages {
 		// Use the admin header.
 		add_settings_field(
 			'chcd_use_admin_header',
-			__( 'Admin Header', 'chcd-plugin' ),
+			__( 'Admin Header', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'admin_header' ],
 			'chcd-site-admin-pages',
 			'chcd-site-admin-pages',
-			[ esc_html__( 'Add the site title, site tagline, and a nav menu to the top of admin pages.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Add the site title, site tagline, and a nav menu to the top of admin pages.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -135,11 +135,11 @@ class Settings_Fields_Site_Admin_Pages {
 		// Use custom sort order.
 		add_settings_field(
 			'chcd_use_custom_sort_order',
-			__( 'Drag & Drop Sort Order', 'chcd-plugin' ),
+			__( 'Drag & Drop Sort Order', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'custom_sort_order' ],
 			'chcd-site-admin-pages',
 			'chcd-site-admin-pages',
-			[ esc_html__( 'Add drag & drop sort order functionality to post types and taxonomies.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Add drag & drop sort order functionality to post types and taxonomies.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(

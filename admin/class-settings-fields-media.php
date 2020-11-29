@@ -77,9 +77,9 @@ class Settings_Fields_Media {
         /**
          * Image crop settings.
          */
-        add_settings_field( 'chcd_hard_crop_medium', __( 'Medium size crop', 'chcd-plugin' ), [ $this, 'medium_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'chcd-plugin' ) ] );
+        add_settings_field( 'chcd_hard_crop_medium', __( 'Medium size crop', chcd_plugin() :: DOMAIN ), [ $this, 'medium_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', chcd_plugin() :: DOMAIN ) ] );
 
-        add_settings_field( 'chcd_hard_crop_large', __( 'Large size crop', 'chcd-plugin' ), [ $this, 'large_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', 'chcd-plugin' ) ] );
+        add_settings_field( 'chcd_hard_crop_large', __( 'Large size crop', chcd_plugin() :: DOMAIN ), [ $this, 'large_crop' ], 'media', 'default', [ __( 'Crop thumbnail to exact dimensions (normally thumbnails are proportional)', chcd_plugin() :: DOMAIN ) ] );
 
         register_setting(
             'media',
@@ -94,9 +94,9 @@ class Settings_Fields_Media {
         /**
          * SVG options.
          */
-        add_settings_section( 'chcd-svg-settings', __( 'SVG Images', 'chcd-plugin' ), [ $this, 'svg_notice' ], 'media' );
+        add_settings_section( 'chcd-svg-settings', __( 'SVG Images', chcd_plugin() :: DOMAIN ), [ $this, 'svg_notice' ], 'media' );
 
-        add_settings_field( 'chcd_add_svg_support', __( 'SVG Support', 'chcd-plugin' ), [ $this, 'svg_support' ], 'media', 'chcd-svg-settings', [ __( 'Add ability to upload SVG images to the media library.', 'chcd-plugin' ) ] );
+        add_settings_field( 'chcd_add_svg_support', __( 'SVG Support', chcd_plugin() :: DOMAIN ), [ $this, 'svg_support' ], 'media', 'chcd-svg-settings', [ __( 'Add ability to upload SVG images to the media library.', chcd_plugin() :: DOMAIN ) ] );
 
         register_setting(
             'media',
@@ -106,12 +106,12 @@ class Settings_Fields_Media {
         /**
          * Fancybox settings.
          */
-        add_settings_section( 'chcd-media-settings', __( 'Fancybox', 'chcd-plugin' ), [ $this, 'fancybox_description' ], 'media' );
+        add_settings_section( 'chcd-media-settings', __( 'Fancybox', chcd_plugin() :: DOMAIN ), [ $this, 'fancybox_description' ], 'media' );
 
-        add_settings_field( 'chcd_enqueue_fancybox_script', __( 'Enqueue Fancybox script', 'chcd-plugin' ), [ $this, 'fancybox_script' ], 'media', 'chcd-media-settings', [ __( 'Needed for lightbox functionality.', 'chcd-plugin' ) ] );
+        add_settings_field( 'chcd_enqueue_fancybox_script', __( 'Enqueue Fancybox script', chcd_plugin() :: DOMAIN ), [ $this, 'fancybox_script' ], 'media', 'chcd-media-settings', [ __( 'Needed for lightbox functionality.', chcd_plugin() :: DOMAIN ) ] );
 
         if ( ! current_theme_supports( 'ccd-fancybox' ) ) {
-            add_settings_field( 'chcd_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', 'chcd-plugin' ), [ $this, 'fancybox_styles' ], 'media', 'chcd-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', 'chcd-plugin' ) ] );
+            add_settings_field( 'chcd_enqueue_fancybox_styles', __( 'Enqueue Fancybox styles', chcd_plugin() :: DOMAIN ), [ $this, 'fancybox_styles' ], 'media', 'chcd-media-settings', [ __( 'Leave unchecked to use a custom stylesheet in a theme.', chcd_plugin() :: DOMAIN ) ] );
         }
 
         register_setting(
@@ -194,7 +194,7 @@ class Settings_Fields_Media {
      */
     public function svg_notice() {
 
-        $html = sprintf( '<p>%1s</p>', esc_html__( 'Use SVG images with caution! Only add support if you trust or examine each SVG file that you upload.', 'chcd-plugin' ) );
+        $html = sprintf( '<p>%1s</p>', esc_html__( 'Use SVG images with caution! Only add support if you trust or examine each SVG file that you upload.', chcd_plugin() :: DOMAIN ) );
 
         echo $html;
 
@@ -229,7 +229,7 @@ class Settings_Fields_Media {
     public function fancybox_description() {
 
         $url  = 'http://fancyapps.com/fancybox/3/';
-        $html = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Documentation on the Fancybox website:', 'chcd-plugin' ), esc_url( $url ), $url );
+        $html = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'Documentation on the Fancybox website:', chcd_plugin() :: DOMAIN ), esc_url( $url ), $url );
 
         echo $html;
 

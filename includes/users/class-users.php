@@ -71,7 +71,7 @@ class Users {
 	private function dependencies() {
 
 		// User avatars.
-		require_once CHCD_PATH . 'includes/users/class-user-avatars.php';
+		require_once chcd_plugin()->path() . 'includes/users/class-user-avatars.php';
 
 	}
 

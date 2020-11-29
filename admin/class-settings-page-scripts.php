@@ -75,10 +75,10 @@ class Settings_Page_Scripts {
     public function settings_page() {
 
 		$this->page_help_section = add_options_page(
-			__( 'Script Options', 'chcd-plugin' ),
-			__( 'Script Options', 'chcd-plugin' ),
+			__( 'Script Options', chcd_plugin() :: DOMAIN ),
+			__( 'Script Options', chcd_plugin() :: DOMAIN ),
 			'manage_options',
-			CHCD_ADMIN_SLUG . '-scripts',
+			chcd_plugin() :: VERSION . '-scripts',
 			[ $this, 'page_output' ]
 		);
 
@@ -96,7 +96,7 @@ class Settings_Page_Scripts {
 	 */
     public function page_output() {
 
-		require CHCD_PATH . 'admin/partials/settings-page-scripts.php';
+		require chcd_plugin()->path() . 'admin/partials/settings-page-scripts.php';
 
 	}
 
@@ -118,7 +118,7 @@ class Settings_Page_Scripts {
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_scripts',
-			'title'    => __( 'Inline Scripts', 'chcd-plugin' ),
+			'title'    => __( 'Inline Scripts', chcd_plugin() :: DOMAIN ),
 			'content'  => null,
 			'callback' => [ $this, 'help_inline_scripts' ]
 		] );
@@ -126,7 +126,7 @@ class Settings_Page_Scripts {
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_jquery',
-			'title'    => __( 'Inline jQuery', 'chcd-plugin' ),
+			'title'    => __( 'Inline jQuery', chcd_plugin() :: DOMAIN ),
 			'content'  => null,
 			'callback' => [ $this, 'help_inline_jquery' ]
 		] );
@@ -134,7 +134,7 @@ class Settings_Page_Scripts {
 		// Remove Emoji Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'remove_emoji',
-			'title'    => __( 'Emoji Script', 'chcd-plugin' ),
+			'title'    => __( 'Emoji Script', chcd_plugin() :: DOMAIN ),
 			'content'  => null,
 			'callback' => [ $this, 'help_remove_emoji' ]
 		] );
@@ -155,7 +155,7 @@ class Settings_Page_Scripts {
      */
 	public function help_inline_scripts() {
 
-		include_once CHCD_PATH . 'admin/partials/help/help-inline-scripts.php';
+		include_once chcd_plugin()->path() . 'admin/partials/help/help-inline-scripts.php';
 
 	}
 
@@ -168,7 +168,7 @@ class Settings_Page_Scripts {
      */
 	public function help_inline_jquery() {
 
-		include_once CHCD_PATH . 'admin/partials/help/help-inline-jquery.php';
+		include_once chcd_plugin()->path() . 'admin/partials/help/help-inline-jquery.php';
 
 	}
 
@@ -181,7 +181,7 @@ class Settings_Page_Scripts {
      */
 	public function help_remove_emoji() {
 
-		include_once CHCD_PATH . 'admin/partials/help/help-remove-emoji.php';
+		include_once chcd_plugin()->path() . 'admin/partials/help/help-remove-emoji.php';
 
 	}
 
@@ -195,10 +195,10 @@ class Settings_Page_Scripts {
     public function page_help_section_sidebar() {
 
 		$html = '<ul>
-			<li><a href="https://github.com/kenwheeler/slick" target="_blank" style="text-decoration: none;">' . __( 'Slick on GitHub', 'chcd-plugin' ) . '</a></li>
-			<li><a href="https://github.com/vdw/Tabslet" target="_blank" style="text-decoration: none;">' . __( 'Tabslet on GitHub', 'chcd-plugin' ) . '</a></li>
-			<li><a href="https://github.com/leafo/sticky-kit" target="_blank" style="text-decoration: none;">' . __( 'Sticky-kit on GitHub', 'chcd-plugin' ) . '</a></li>
-			<li><a href="https://github.com/iamceege/tooltipster" target="_blank" style="text-decoration: none;">' . __( 'Tooltipster on GitHub', 'chcd-plugin' ) . '</a></li>
+			<li><a href="https://github.com/kenwheeler/slick" target="_blank" style="text-decoration: none;">' . __( 'Slick on GitHub', chcd_plugin() :: DOMAIN ) . '</a></li>
+			<li><a href="https://github.com/vdw/Tabslet" target="_blank" style="text-decoration: none;">' . __( 'Tabslet on GitHub', chcd_plugin() :: DOMAIN ) . '</a></li>
+			<li><a href="https://github.com/leafo/sticky-kit" target="_blank" style="text-decoration: none;">' . __( 'Sticky-kit on GitHub', chcd_plugin() :: DOMAIN ) . '</a></li>
+			<li><a href="https://github.com/iamceege/tooltipster" target="_blank" style="text-decoration: none;">' . __( 'Tooltipster on GitHub', chcd_plugin() :: DOMAIN ) . '</a></li>
 		</ul>';
 
 		return $html;

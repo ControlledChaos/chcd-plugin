@@ -82,7 +82,7 @@ class Settings_Fields_Site_Meta_SEO {
 	private function dependencies() {
 
 		// Callbacks for the Meta/SEO tab.
-		require CHCD_PATH . 'admin/partials/field-callbacks/class-meta-seo-callbacks.php';
+		require chcd_plugin()->path() . 'admin/partials/field-callbacks/class-meta-seo-callbacks.php';
 
 	}
 
@@ -100,7 +100,7 @@ class Settings_Fields_Site_Meta_SEO {
 		// Meta/SEO settings section.
 		add_settings_section(
 			'chcd-site-meta-seo',
-			__( 'Meta & SEO Settings', 'chcd-plugin' ),
+			__( 'Meta & SEO Settings', chcd_plugin() :: DOMAIN ),
 			[],
 			'chcd-site-meta-seo'
 		);
@@ -108,11 +108,11 @@ class Settings_Fields_Site_Meta_SEO {
 		// Disable meta tags.
 		add_settings_field(
 			'chcd_meta_disable',
-			__( 'Meta Tags', 'chcd-plugin' ),
+			__( 'Meta Tags', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Meta_SEO_Callbacks::instance(), 'disable_meta' ],
 			'chcd-site-meta-seo',
 			'chcd-site-meta-seo',
-			[ esc_html__( 'Disable if your theme includes SEO meta tags or if you plan on using an SEO plugin.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Disable if your theme includes SEO meta tags or if you plan on using an SEO plugin.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -123,11 +123,11 @@ class Settings_Fields_Site_Meta_SEO {
 		// Organization Schema type.
 		add_settings_field(
 			'schema_org_type',
-			__( 'Organization Type', 'chcd-plugin' ),
+			__( 'Organization Type', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Meta_SEO_Callbacks::instance(), 'schema_org_type' ],
 			'chcd-site-meta-seo',
 			'chcd-site-meta-seo',
-			[ esc_html__( 'Select a category that generally applies to this website.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Select a category that generally applies to this website.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(

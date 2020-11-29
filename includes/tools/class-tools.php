@@ -79,7 +79,7 @@ class Tools {
 		$minify = get_option( 'chcd_html_minify' );
 
 		if ( $minify ) {
-			require_once CHCD_PATH . 'includes/tools/class-minify-process.php';
+			require_once chcd_plugin()->path() . 'includes/tools/class-minify-process.php';
 		}
 	}
 }

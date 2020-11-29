@@ -71,31 +71,31 @@ class Post_Types_Taxes {
 	public function dependencies() {
 
 		// Resister cutsom post types.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-register-post-types.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-register-post-types.php';
 
 		// Register fields for Advanced Custom Fields Pro.
 		if ( class_exists( 'acf_pro' ) ) {
-			// require_once CHCD_PATH . 'admin/class-post-type-fields-features.php';
-			// require_once CHCD_PATH . 'admin/class-post-type-fields-commercials.php';
+			// require_once chcd_plugin()->path() . 'admin/class-post-type-fields-features.php';
+			// require_once chcd_plugin()->path() . 'admin/class-post-type-fields-commercials.php';
 		}
 
 		// Resister cutsom taxonomies.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-register-taxonomies.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-register-taxonomies.php';
 
 		// Functions related to post types and taxonomies.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-post-type-tax-functions.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-post-type-tax-functions.php';
 
 		// Post types query on the blog front page.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-post-type-front-page.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-post-type-front-page.php';
 
 		// Number of posts per archive page.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-posts-per-page.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-posts-per-page.php';
 
 		// Drag & drop custom post and taxonomy orders.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-post-type-order.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-post-type-order.php';
 
 		// Capability to add custom taxonomy templates.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-taxonomy-templates.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-taxonomy-templates.php';
 
 	}
 

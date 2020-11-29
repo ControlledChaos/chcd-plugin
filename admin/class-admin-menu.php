@@ -200,8 +200,8 @@ class Admin_Menu {
 			// Add a new top-level Menus page.
 			if ( 'top' == $menus_link ) {
 				add_menu_page(
-					__( 'Menus', 'chcd-plugin' ),
-					__( 'Menus', 'chcd-plugin' ),
+					__( 'Menus', chcd_plugin() :: DOMAIN ),
+					__( 'Menus', chcd_plugin() :: DOMAIN ),
 					'delete_others_pages',
 					'nav-menus.php',
 					'',
@@ -240,8 +240,8 @@ class Admin_Menu {
 			// Add a new top-level Menus page.
 			if ( $menus_link ) {
 				add_menu_page(
-					__( 'Menus', 'chcd-plugin' ),
-					__( 'Menus', 'chcd-plugin' ),
+					__( 'Menus', chcd_plugin() :: DOMAIN ),
+					__( 'Menus', chcd_plugin() :: DOMAIN ),
 					'delete_others_pages',
 					'nav-menus.php',
 					'',

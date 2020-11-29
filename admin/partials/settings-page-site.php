@@ -40,33 +40,33 @@ $tabs = [
 	// Admin menu tab.
 	sprintf(
 		'<a href="?page=%1s-settings&tab=admin-menu" class="nav-tab %2s"><span class="dashicons dashicons-menu"></span> %3s</a>',
-		CHCD_ADMIN_SLUG,
+		chcd_plugin() :: VERSION,
 		$active_tab == 'admin-menu' ? 'nav-tab-active' : '',
-		esc_html__( 'Admin Menu', 'chcd-plugin' )
+		esc_html__( 'Admin Menu', chcd_plugin() :: DOMAIN )
 	),
 
 	// Admin pages tab.
 	sprintf(
 		'<a href="?page=%1s-settings&tab=admin-pages" class="nav-tab %2s"><span class="dashicons dashicons-admin-page"></span> %3s</a>',
-		CHCD_ADMIN_SLUG,
+		chcd_plugin() :: VERSION,
 		$active_tab == 'admin-pages' ? 'nav-tab-active' : '',
-		esc_html__( 'Admin Pages', 'chcd-plugin' )
+		esc_html__( 'Admin Pages', chcd_plugin() :: DOMAIN )
 	),
 
 	// Users tab.
 	sprintf(
 		'<a href="?page=%1s-settings&tab=users" class="nav-tab %2s"><span class="dashicons dashicons-admin-users"></span> %3s</a>',
-		CHCD_ADMIN_SLUG,
+		chcd_plugin() :: VERSION,
 		$active_tab == 'users' ? 'nav-tab-active' : '',
-		esc_html__( 'Site Users', 'chcd-plugin' )
+		esc_html__( 'Site Users', chcd_plugin() :: DOMAIN )
 	),
 
 	// Meta/SEO tab.
 	sprintf(
 		'<a href="?page=%1s-settings&tab=meta-seo" class="nav-tab %2s"><span class="dashicons dashicons-tag"></span> %3s</a>',
-		CHCD_ADMIN_SLUG,
+		chcd_plugin() :: VERSION,
 		$active_tab == 'meta-seo' ? 'nav-tab-active' : '',
-		esc_html__( 'Meta/SEO', 'chcd-plugin' )
+		esc_html__( 'Meta/SEO', chcd_plugin() :: DOMAIN )
 	)
 
 ];
@@ -108,15 +108,15 @@ $do_fields  = apply_filters( 'chcd_fields_site_settings', $fields );
  * @return string Returns the button label.
  */
 if ( 'admin-menu' == $active_tab ) {
-	$save = __( 'Save Menu', 'chcd-plugin' );
+	$save = __( 'Save Menu', chcd_plugin() :: DOMAIN );
 } elseif ( 'admin-pages' == $active_tab ) {
-	$save = __( 'Save Pages', 'chcd-plugin' );
+	$save = __( 'Save Pages', chcd_plugin() :: DOMAIN );
 } elseif ( 'users' == $active_tab ) {
-	$save = __( 'Save Users', 'chcd-plugin' );
+	$save = __( 'Save Users', chcd_plugin() :: DOMAIN );
 } elseif ( 'meta-seo' == $active_tab ) {
-	$save = __( 'Save Meta', 'chcd-plugin' );
+	$save = __( 'Save Meta', chcd_plugin() :: DOMAIN );
 } else {
-	$save = __( 'Save Settings', 'chcd-plugin' );
+	$save = __( 'Save Settings', chcd_plugin() :: DOMAIN );
 }
 
 // Apply a filter for new tabs added by another plugin or from a theme.
@@ -127,9 +127,9 @@ $button = apply_filters( 'chcd_save_site_settings', $save );
 	<?php echo sprintf(
 		'<h1 class="wp-heading-inline">%1s %2s</h1>',
 		get_bloginfo( 'name' ),
-		esc_html__( 'Settings', 'chcd-plugin' )
+		esc_html__( 'Settings', chcd_plugin() :: DOMAIN )
 	); ?>
-	<p class="description"><?php esc_html_e( 'Customize the way WordPress is used.', 'chcd-plugin' ); ?></p>
+	<p class="description"><?php esc_html_e( 'Customize the way WordPress is used.', chcd_plugin() :: DOMAIN ); ?></p>
 	<hr class="wp-header-end">
 	<h2 class="nav-tab-wrapper">
 		<?php echo implode( $page_tabs ); ?>

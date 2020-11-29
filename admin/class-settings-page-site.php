@@ -119,7 +119,7 @@ class Settings_Page_Site {
 
 			// Otherwise use "Site Settings" as the label.
 			}  else {
-				$label = __( 'Site Settings', 'chcd-plugin' );
+				$label = __( 'Site Settings', chcd_plugin() :: DOMAIN );
 			}
 
 			// Use the custom admin menu icon if the field is not empty.
@@ -139,9 +139,9 @@ class Settings_Page_Site {
 
 				// Page arguments.
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_top', [
-					'page_title' => $title . __( ' Settings', 'chcd-plugin' ),
+					'page_title' => $title . __( ' Settings', chcd_plugin() :: DOMAIN ),
 					'menu_title' => $label,
-					'menu_slug'  => CHCD_ADMIN_SLUG . '-settings',
+					'menu_slug'  => chcd_plugin() :: VERSION . '-settings',
 					'icon_url'   => $icon,
 					'position'   => 3,
 					'capability' => 'manage_options',
@@ -161,9 +161,9 @@ class Settings_Page_Site {
 			} else {
 
 				$settings = apply_filters( 'controlled_chaos_site_settings_page_default', [
-					'page_title' => $title . __( ' Settings', 'chcd-plugin' ),
+					'page_title' => $title . __( ' Settings', chcd_plugin() :: DOMAIN ),
 					'menu_title' => $label,
-					'menu_slug'  => CHCD_ADMIN_SLUG . '-settings',
+					'menu_slug'  => chcd_plugin() :: VERSION . '-settings',
 					'parent'     => 'index.php',
 					'capability' => 'manage_options'
 				] );
@@ -197,7 +197,7 @@ class Settings_Page_Site {
 
 			// Otherwise use "Site Settings" as the label.
 			}  else {
-				$label = __( 'Site Settings', 'chcd-plugin' );
+				$label = __( 'Site Settings', chcd_plugin() :: DOMAIN );
 			}
 
 			// Use the custom admin menu icon if the field is not empty.
@@ -206,7 +206,7 @@ class Settings_Page_Site {
 
 			// Otherwise use the Admin Settings icon.
 			}  else {
-				$icon = __( 'dashicons-admin-settings', 'chcd-plugin' );
+				$icon = __( 'dashicons-admin-settings', chcd_plugin() :: DOMAIN );
 			}
 
 			/**
@@ -218,7 +218,7 @@ class Settings_Page_Site {
 					$label,
 					$label,
 					'manage_options',
-					CHCD_ADMIN_SLUG . '-settings',
+					chcd_plugin() :: VERSION . '-settings',
 					[ $this, 'page_output' ],
 					$icon,
 					3
@@ -240,7 +240,7 @@ class Settings_Page_Site {
 					$label,
 					$label,
 					'manage_options',
-					CHCD_ADMIN_SLUG . '-settings',
+					chcd_plugin() :: VERSION . '-settings',
 					[ $this, 'page_output' ]
 				);
 
@@ -258,17 +258,17 @@ class Settings_Page_Site {
 				if (
 					$position
 					&& in_array( $pagenow, [ 'index.php' ] )
-					&& ( $_GET['page'] == CHCD_ADMIN_SLUG . '-settings' )
+					&& ( $_GET['page'] == chcd_plugin() :: VERSION . '-settings' )
 				) {
-					wp_redirect( admin_url( 'admin.php?page=' . CHCD_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
+					wp_redirect( admin_url( 'admin.php?page=' . chcd_plugin() :: VERSION . '-settings&tab=admin-menu' ), 302 );
 
 				// If on the top level page and top level option is not selected.
 				} elseif (
 					! $position
 					&& in_array( $pagenow, [ 'admin.php' ] )
-					&& ( $_GET['page'] == CHCD_ADMIN_SLUG . '-settings' )
+					&& ( $_GET['page'] == chcd_plugin() :: VERSION . '-settings' )
 				) {
-					wp_redirect( admin_url( 'index.php?page=' . CHCD_ADMIN_SLUG . '-settings&tab=admin-menu' ), 302 );
+					wp_redirect( admin_url( 'index.php?page=' . chcd_plugin() :: VERSION . '-settings&tab=admin-menu' ), 302 );
 				}
 			}
 
@@ -294,7 +294,7 @@ class Settings_Page_Site {
 		// Inline Scripts.
 		$screen->add_help_tab( [
 			'id'       => 'inline_scripts',
-			'title'    => __( 'ACF Notice', 'chcd-plugin' ),
+			'title'    => __( 'ACF Notice', chcd_plugin() :: DOMAIN ),
 			'content'  => null,
 			'callback' => [ $this, 'help_acf_settings_notice' ]
 		] );
@@ -315,7 +315,7 @@ class Settings_Page_Site {
      */
 	public function help_acf_settings_notice() {
 
-		include_once CHCD_PATH . 'admin/partials/help/help-acf-notice.php';
+		include_once chcd_plugin()->path() . 'admin/partials/help/help-acf-notice.php';
 
 	}
 
@@ -329,7 +329,7 @@ class Settings_Page_Site {
     public function page_help_section_sidebar() {
 
 		$html = '<ul>
-			<li><a href="https://www.advancedcustomfields.com/resources/" target="_blank" style="text-decoration: none;">' . __( 'ACF Documentation', 'chcd-plugin' ) . '</a></li>
+			<li><a href="https://www.advancedcustomfields.com/resources/" target="_blank" style="text-decoration: none;">' . __( 'ACF Documentation', chcd_plugin() :: DOMAIN ) . '</a></li>
 		</ul>';
 
 		return $html;
@@ -346,7 +346,7 @@ class Settings_Page_Site {
     public function page_output() {
 
 		// Get the partial that contains the settings page HTML.
-		require CHCD_PATH . 'admin/partials/settings-page-site.php';
+		require chcd_plugin()->path() . 'admin/partials/settings-page-site.php';
 
 	}
 
@@ -366,7 +366,7 @@ class Settings_Page_Site {
 
 			global $submenu;
 			$url = 'https://www.advancedcustomfields.com/resources/';
-			$submenu['edit.php?post_type=acf-field-group'][] = [ __( 'Documentation', 'chcd-plugin' ), 'manage_options', $url ];
+			$submenu['edit.php?post_type=acf-field-group'][] = [ __( 'Documentation', chcd_plugin() :: DOMAIN ), 'manage_options', $url ];
 
 		}
 

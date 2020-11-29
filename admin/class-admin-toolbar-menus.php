@@ -83,12 +83,12 @@ class Admin_Toolbar_Menus {
 
 		register_nav_menus(
 			[
-			'chcd_admin_toolbar_site'       => esc_html__( 'Admin Toolbar: Site Name', 'chcd-plugin' ),
-			'chcd_admin_toolbar_main'       => esc_html__( 'Admin Toolbar: Main', 'chcd-plugin' ),
-			'chcd_admin_toolbar_account'    => esc_html__( 'Admin Toolbar: My Account', 'chcd-plugin' ),
-			'chcd_frontend_toolbar_site'    => esc_html__( 'Frontend Toolbar: Site Name', 'chcd-plugin' ),
-			'chcd_frontend_toolbar_main'    => esc_html__( 'Frontend Toolbar: Main', 'chcd-plugin' ),
-			'chcd_frontend_toolbar_account' => esc_html__( 'Frontend Toolbar: My Account', 'chcd-plugin' )
+			'chcd_admin_toolbar_site'       => esc_html__( 'Admin Toolbar: Site Name', chcd_plugin() :: DOMAIN ),
+			'chcd_admin_toolbar_main'       => esc_html__( 'Admin Toolbar: Main', chcd_plugin() :: DOMAIN ),
+			'chcd_admin_toolbar_account'    => esc_html__( 'Admin Toolbar: My Account', chcd_plugin() :: DOMAIN ),
+			'chcd_frontend_toolbar_site'    => esc_html__( 'Frontend Toolbar: Site Name', chcd_plugin() :: DOMAIN ),
+			'chcd_frontend_toolbar_main'    => esc_html__( 'Frontend Toolbar: Main', chcd_plugin() :: DOMAIN ),
+			'chcd_frontend_toolbar_account' => esc_html__( 'Frontend Toolbar: My Account', chcd_plugin() :: DOMAIN )
 			]
 		);
 

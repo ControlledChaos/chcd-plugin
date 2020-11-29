@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 <meta name="DC.Source" content="<?php echo esc_attr( esc_url( site_url() ) ); ?>" />
 <meta name="DC.Relation" content="<?php echo esc_attr( esc_url( site_url() ) ); ?>" scheme="IsPartOf" />
 <?php if ( is_404() ) : ?>
-<meta name="DC.Description" content="404 <?php esc_attr( _e( 'Not Found', 'chcd-plugin' ) ); ?>" />
+<meta name="DC.Description" content="404 <?php esc_attr( _e( 'Not Found', chcd_plugin() :: DOMAIN ) ); ?>" />
 <?php else : ?>
 <meta name="DC.Description" content="<?php esc_attr( do_action( 'chcd_meta_description_tag' ) ); ?>" />
 <?php endif; ?>
@@ -40,6 +40,6 @@ if ( ! defined( 'WPINC' ) ) {
 <meta name="DC.Date" content="<?php echo esc_attr( get_the_date() ); ?>" />
 <?php endif; ?>
 <meta name="DC.Publisher" content="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" />
-<meta name="DC.Rights" content="<?php echo esc_attr( sprintf( '© Copyright %1s %2s. %3s.', get_the_time( 'Y' ), get_bloginfo( 'name' ), esc_attr__( 'All rights reserved', 'chcd-plugin' ) ) ); ?>" />
+<meta name="DC.Rights" content="<?php echo esc_attr( sprintf( '© Copyright %1s %2s. %3s.', get_the_time( 'Y' ), get_bloginfo( 'name' ), esc_attr__( 'All rights reserved', chcd_plugin() :: DOMAIN ) ) ); ?>" />
 <meta name="DC.Language" content="<?php echo esc_attr( get_locale() ); ?>" />
 

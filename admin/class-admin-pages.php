@@ -182,7 +182,7 @@ class Admin_Pages {
 
         // Otherwise use Site Plugin as the label.
         }  else {
-            $label = __( 'Site Plugin', 'chcd-plugin' );
+            $label = __( 'Site Plugin', chcd_plugin() :: DOMAIN );
         }
 
         /**
@@ -213,7 +213,7 @@ class Admin_Pages {
 
         // Otherwise use the scholar's cap icon to imply instruction.
         }  else {
-            $icon = __( 'dashicons-welcome-learn-more', 'chcd-plugin' );
+            $icon = __( 'dashicons-welcome-learn-more', chcd_plugin() :: DOMAIN );
         }
 
         if ( true == $position ) {
@@ -221,7 +221,7 @@ class Admin_Pages {
                 $label,
                 $label,
                 'manage_options',
-                CHCD_ADMIN_SLUG . '-page',
+                chcd_plugin() :: VERSION . '-page',
                 [ $this, 'about_plugin_output' ],
                 $icon,
                 3
@@ -232,7 +232,7 @@ class Admin_Pages {
                 $label,
                 $label,
                 'manage_options',
-                CHCD_ADMIN_SLUG . '-page',
+                chcd_plugin() :: VERSION . '-page',
                 [ $this, 'about_plugin_output' ]
             );
         }
@@ -251,7 +251,7 @@ class Admin_Pages {
      */
     public function about_plugin_output() {
 
-        require CHCD_PATH . 'admin/partials/plugin-page-about.php';
+        require chcd_plugin()->path() . 'admin/partials/plugin-page-about.php';
 
     }
 
@@ -271,7 +271,7 @@ class Admin_Pages {
 		// More information tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_plugin_info',
-			'title'    => __( 'More Information', 'chcd-plugin' ),
+			'title'    => __( 'More Information', chcd_plugin() :: DOMAIN ),
 			'content'  => null,
 			'callback' => [ $this, 'help_plugin_info' ]
 		] );
@@ -279,7 +279,7 @@ class Admin_Pages {
         // Convert plugin tab.
 		$screen->add_help_tab( [
 			'id'       => 'help_convert_plugin',
-			'title'    => __( 'Convert Plugin', 'chcd-plugin' ),
+			'title'    => __( 'Convert Plugin', chcd_plugin() :: DOMAIN ),
 			'content'  => null,
 			'callback' => [ $this, 'help_convert_plugin' ]
 		] );
@@ -298,7 +298,7 @@ class Admin_Pages {
      */
 	public function help_plugin_info() {
 
-		include_once CHCD_PATH . 'admin/partials/help/help-plugin-info.php';
+		include_once chcd_plugin()->path() . 'admin/partials/help/help-plugin-info.php';
 
     }
 
@@ -309,7 +309,7 @@ class Admin_Pages {
      */
 	public function help_convert_plugin() {
 
-		include_once CHCD_PATH . 'admin/partials/help/help-plugin-convert.php';
+		include_once chcd_plugin()->path() . 'admin/partials/help/help-plugin-convert.php';
 
     }
 
@@ -320,22 +320,22 @@ class Admin_Pages {
      */
     public function help_about_page_sidebar() {
 
-        $html  = sprintf( '<h4>%1s</h4>', __( 'Author Credits', 'chcd-plugin' ) );
+        $html  = sprintf( '<h4>%1s</h4>', __( 'Author Credits', chcd_plugin() :: DOMAIN ) );
         $html .= sprintf(
             '<p>%1s %2s.</p>',
-            __( 'This plugin was originally written by', 'chcd-plugin' ),
+            __( 'This plugin was originally written by', chcd_plugin() :: DOMAIN ),
             'Greg Sweet'
         );
         $html .= sprintf(
             '<p>%1s <br /><a href="%2s" target="_blank">%3s</a> <br />%4s</p>',
-            __( 'Visit:', 'chcd-plugin' ),
+            __( 'Visit:', chcd_plugin() :: DOMAIN ),
             'http://ccdzine.com/',
             'Controlled Chaos Design',
-            __( 'for more free downloads.', 'chcd-plugin' )
+            __( 'for more free downloads.', chcd_plugin() :: DOMAIN )
         );
         $html .= sprintf(
             '<p>%1s</p>',
-            __( 'Change this sidebar to give yourself credit for the hard work you did customizing this plugin.', 'chcd-plugin' )
+            __( 'Change this sidebar to give yourself credit for the hard work you did customizing this plugin.', chcd_plugin() :: DOMAIN )
          );
 
 		return $html;
@@ -352,7 +352,7 @@ class Admin_Pages {
 	public function admin_menus() {
 
 		register_nav_menus( [
-			'admin-header' => __( 'Admin Header Menu', 'chcd-plugin' )
+			'admin-header' => __( 'Admin Header Menu', chcd_plugin() :: DOMAIN )
 		] );
 
 	}
@@ -374,7 +374,7 @@ class Admin_Pages {
 		if ( ! empty( $admin_header ) ) {
 			get_template_part( 'template-parts/admin/admin-header' );
 		} else {
-			include_once CHCD_PATH . 'admin/partials/admin-header.php';
+			include_once chcd_plugin()->path() . 'admin/partials/admin-header.php';
 		}
 
     }
@@ -456,11 +456,11 @@ class Admin_Pages {
 
         // Post type: post.
         if ( 'post' == $screen->post_type ) {
-            $post_title = esc_html__( 'Post Title', 'chcd-plugin' );
+            $post_title = esc_html__( 'Post Title', chcd_plugin() :: DOMAIN );
 
         // Post type: page.
         } elseif ( 'page' == $screen->post_type ) {
-            $post_title = esc_html__( 'Page Title', 'chcd-plugin' );
+            $post_title = esc_html__( 'Page Title', chcd_plugin() :: DOMAIN );
 
         // Post type: attachment.
         } elseif ( $screen->post_type == 'attachment' ) {
@@ -468,7 +468,7 @@ class Admin_Pages {
 
         // Post type: custom, unidentified.
         } else {
-            $post_title = esc_html__( 'Enter Title', 'chcd-plugin' );
+            $post_title = esc_html__( 'Enter Title', chcd_plugin() :: DOMAIN );
         }
 
         // Apply a filter conditional modification.
@@ -607,7 +607,7 @@ class Admin_Pages {
     public function image_column_head( $defaults ) {
 
         // The column heading name.
-        $name    = __( 'Featured Image', 'chcd-plugin' );
+        $name    = __( 'Featured Image', chcd_plugin() :: DOMAIN );
 
         // Apply a filter for conditional modification.
         $heading = apply_filters( 'chcd_image_column_head', $name );

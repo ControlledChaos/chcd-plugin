@@ -146,8 +146,8 @@ class Post_Types_Taxes_Order {
     public function admin_menu() {
 
         add_options_page(
-            __( 'Posts & Taxonomies Sort Order', 'chcd-plugin' ),
-            __( 'Sort Order', 'chcd-plugin' ),
+            __( 'Posts & Taxonomies Sort Order', chcd_plugin() :: DOMAIN ),
+            __( 'Sort Order', chcd_plugin() :: DOMAIN ),
             'manage_options',
             'sort-order-settings',
             [ $this, 'admin_page' ]
@@ -166,7 +166,7 @@ class Post_Types_Taxes_Order {
      */
     public function admin_page() {
 
-        require CHCD_PATH . 'admin/partials/settings-page-posts-order.php';
+        require chcd_plugin()->path() . 'admin/partials/settings-page-posts-order.php';
 
     }
 
@@ -234,7 +234,7 @@ class Post_Types_Taxes_Order {
 
             wp_enqueue_script( 'jquery' );
             wp_enqueue_script( 'jquery-ui-sortable' );
-            wp_enqueue_script( 'post-tax-order', CHCD_URL . 'admin/assets/js/post-tax-order.js', [ 'jquery' ], null, true );
+            wp_enqueue_script( 'post-tax-order', chcd_plugin()->url() . 'admin/assets/js/post-tax-order.js', [ 'jquery' ], null, true );
 
         }
 

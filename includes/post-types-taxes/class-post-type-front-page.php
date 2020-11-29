@@ -126,7 +126,7 @@ class Post_Types_Front_Page {
 		]);
 
 		$wp_customize->add_control( 'chcd_front_page_post_type', [
-			'label'           => __( 'Front Page Post Type', 'chcd-plugin' ),
+			'label'           => __( 'Front Page Post Type', chcd_plugin() :: DOMAIN ),
 			'type'            => 'radio',
 			'choices'         => $post_types,
 			'section'         => 'static_front_page',

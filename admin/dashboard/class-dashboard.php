@@ -84,7 +84,7 @@ class Dashboard {
 	private function dependencies() {
 
 		// Get the welcome panel class.
-		require CHCD_PATH . 'admin/dashboard/class-welcome.php';
+		require chcd_plugin()->path() . 'admin/dashboard/class-welcome.php';
 	}
 
 	/**
@@ -248,7 +248,7 @@ class Dashboard {
 
 		// Enqueue only on the Dashboard screen.
 		if ( $screen->id == 'dashboard' ) {
-			wp_enqueue_style( CHCD_ADMIN_SLUG . '-dashboard', CHCD_URL .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
+			wp_enqueue_style( chcd_plugin() :: VERSION . '-dashboard', chcd_plugin()->url() .  'admin/dashboard/assets/css/dashboard.min.css', [], null, 'screen' );
 		}
 	}
 }

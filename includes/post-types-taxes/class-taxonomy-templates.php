@@ -158,9 +158,9 @@ final class Taxonomy_Templates {
 			return;
 		} ?>
 		<div class="form-field custom-taxonomy-template">
-			<label for="custom-taxonomy-template"><?php _e( 'Template', 'chcd-plugin' ); ?></label>
+			<label for="custom-taxonomy-template"><?php _e( 'Template', chcd_plugin() :: DOMAIN ); ?></label>
 			<select name="custom-taxonomy-template" id="custom-taxonomy-template" class="postform">
-				<option value="default"><?php _e( 'Default Template', 'chcd-plugin' ); ?></option>
+				<option value="default"><?php _e( 'Default Template', chcd_plugin() :: DOMAIN ); ?></option>
 				<?php $this->templates_dropdown( $taxonomy ) ?>
 			</select>
 		</div><?php
@@ -185,11 +185,11 @@ final class Taxonomy_Templates {
 
 		<tr class="form-field custom-taxonomy-template">
 			<th scope="row" valign="top">
-				<label for="custom-taxonomy-template"><?php _e( 'Template', 'chcd-plugin' ); ?></label>
+				<label for="custom-taxonomy-template"><?php _e( 'Template', chcd_plugin() :: DOMAIN ); ?></label>
 			</th>
 			<td>
 				<select name="custom-taxonomy-template" id="custom-taxonomy-template" class="postform">
-					<option value="default"><?php _e( 'Default Template', 'chcd-plugin' ); ?></option>
+					<option value="default"><?php _e( 'Default Template', chcd_plugin() :: DOMAIN ); ?></option>
 					<?php $this->templates_dropdown( $taxonomy, $template ) ?>
 				</select>
 			</td>

@@ -106,7 +106,7 @@ class Welcome {
 		if ( ! empty( $welcome ) ) {
 			get_template_part( 'template-parts/admin/welcome-panel' );
 		} else {
-			include_once CHCD_PATH . 'admin/dashboard/partials/welcome-panel.php';
+			include_once chcd_plugin()->path() . 'admin/dashboard/partials/welcome-panel.php';
 		}
 	}
 
@@ -124,7 +124,7 @@ class Welcome {
 
         // Enqueue only on the Dashboard screen.
         if ( $screen->id == 'dashboard' ) {
-            wp_enqueue_style( CHCD_ADMIN_SLUG . '-welcome', CHCD_URL .  'assets/css/welcome.min.css', [], null, 'screen' );
+            wp_enqueue_style( chcd_plugin() :: VERSION . '-welcome', chcd_plugin()->url() .  'assets/css/welcome.min.css', [], null, 'screen' );
         }
 	}
 }

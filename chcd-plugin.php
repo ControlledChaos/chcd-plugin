@@ -23,23 +23,6 @@
  * Tested up to: 5.2.2
  */
 
-/**
- * License & Warranty
- *
- * Courtney Plugin is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * any later version.
- *
- * Courtney Plugin is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Courtney Plugin. If not, see {URI to Plugin License}.
- */
-
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
 	die;
@@ -56,8 +39,38 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // First check for other classes with the same name.
-if ( ! class_exists( 'CHCD_Plugin' ) ) :
-	final class CHCD_Plugin {
+if ( ! class_exists( 'CHCD' ) ) :
+	final class CHCD {
+
+		/**
+		 * Plugin version
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the latest plugin version.
+		 */
+		const VERSION = '1.0.0';
+
+		/**
+		 * Text domain
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the text domain of the plugin.
+		 */
+		const DOMAIN = 'chcd-plugin';
+
+		/**
+		 * Universal slug
+		 *
+		 * This URL slug is used for various plugin admin & settings pages.
+		 *
+		 * The prefix will change in your search & replace in renaming the plugin.
+		 * Change the second part of the define(), here as chcd_plugin() :: DOMAIN,
+		 * to your preferred page slug.
+		 *
+		 * @since  1.0.0
+		 * @return string Returns the URL slug of the admin pages.
+		 */
+		const SLUG = 'chcd-plugin';
 
 		/**
 		 * Instance of the class
@@ -76,9 +89,6 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 				// Set variable for new instance.
 				$instance = new self;
 
-				// Define plugin constants.
-				$instance->constants();
-
 				// Require the core plugin class files.
 				$instance->dependencies();
 			}
@@ -92,102 +102,45 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 		 *
 		 * @since  1.0.0
 		 * @access protected
-		 * @return void Constructor method is empty.
-		 *              Change to `self` if used.
+		 * @return self
 		 */
 		protected function __construct() {}
 
 		/**
-		 * Define plugin constants
-		 *
-		 * Change the prefix, the text domain, and the default meta image
-		 * to that which suits the needs of your website.
-		 *
-		 * Change the version as appropriate.
+		 * Plugin folder path
 		 *
 		 * @since  1.0.0
-		 * @access private
-		 * @return void
+		 * @access public
+		 * @return string Returns the filesystem directory path (with trailing slash)
+		 *                for the plugin __FILE__ passed in.
 		 */
-		private function constants() {
+		public function path() {
+			return plugin_dir_path( __FILE__ );
+		}
 
-			/**
-			 * Plugin version
-			 *
-			 * Keeping the version at 1.0.0 as this is a starter plugin but
-			 * you may want to start counting as you develop for your use case.
-			 *
-			 * @since  1.0.0
-			 * @return string Returns the latest plugin version.
-			 */
-			if ( ! defined( 'CHCD_VERSION' ) ) {
-				define( 'CHCD_VERSION', '1.0.0' );
-			}
+		/**
+		 * Plugin folder URL
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return string Returns the URL directory path (with trailing slash)
+		 *                for the plugin __FILE__ passed in.
+		 */
+		public function url() {
+			return plugin_dir_url( __FILE__ );
+		}
 
-			/**
-			 * Text domain
-			 *
-			 * @since  1.0.0
-			 * @return string Returns the text domain of the plugin.
-			 *
-			 * @todo   Replace all strings with constant.
-			 */
-			if ( ! defined( 'CHCD_DOMAIN' ) ) {
-				define( 'CHCD_DOMAIN', 'chcd-plugin' );
-			}
-
-			/**
-			 * Plugin folder path
-			 *
-			 * @since  1.0.0
-			 * @return string Returns the filesystem directory path (with trailing slash)
-			 *                for the plugin __FILE__ passed in.
-			 */
-			if ( ! defined( 'CHCD_PATH' ) ) {
-				define( 'CHCD_PATH', plugin_dir_path( __FILE__ ) );
-			}
-
-			/**
-			 * Plugin folder URL
-			 *
-			 * @since  1.0.0
-			 * @return string Returns the URL directory path (with trailing slash)
-			 *                for the plugin __FILE__ passed in.
-			 */
-			if ( ! defined( 'CHCD_URL' ) ) {
-				define( 'CHCD_URL', plugin_dir_url( __FILE__ ) );
-			}
-
-			/**
-			 * Universal slug
-			 *
-			 * This URL slug is used for various plugin admin & settings pages.
-			 *
-			 * The prefix will change in your search & replace in renaming the plugin.
-			 * Change the second part of the define(), here as 'chcd-plugin',
-			 * to your preferred page slug.
-			 *
-			 * @since  1.0.0
-			 * @return string Returns the URL slug of the admin pages.
-			 */
-			if ( ! defined( 'CHCD_ADMIN_SLUG' ) ) {
-				define( 'CHCD_ADMIN_SLUG', 'chcd-plugin' );
-			}
-
-			/**
-			 * Default meta image
-			 *
-			 * Change the path and file name to suit your needs.
-			 *
-			 * @since  1.0.0
-			 * @return string Returns the URL of the image.
-			 */
-			if ( ! defined( 'CHCD_DEFAULT_META_IMAGE' ) ) {
-				define(
-					'CHCD_DEFAULT_META_IMAGE',
-					plugins_url( 'frontend/assets/images/default-meta-image.jpg', __FILE__ )
-				);
-			}
+		/**
+		 * Default meta image
+		 *
+		 * Change the path and file name to suit your needs.
+		 *
+		 * @since  1.0.0
+		 * @access public
+		 * @return string Returns the URL of the image.
+		 */
+		public function default_meta_image() {
+			return plugins_url( 'frontend/assets/images/default-meta-image.jpg', __FILE__ );
 		}
 
 		/**
@@ -200,7 +153,7 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 		private function __clone() {
 
 			// Cloning instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'chcd-plugin' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', $this :: DOMAIN ), '1.0.0' );
 		}
 
 		/**
@@ -213,7 +166,7 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 		private function __wakeup() {
 
 			// Unserializing instances of the class is forbidden.
-			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', 'chcd-plugin' ), '1.0.0' );
+			_doing_it_wrong( __FUNCTION__, __( 'This is not allowed.', $this :: DOMAIN ), '1.0.0' );
 		}
 
 		/**
@@ -226,13 +179,13 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 		private function dependencies() {
 
 			// The hub of all other dependency files.
-			require_once CHCD_PATH . 'includes/class-init.php';
+			require_once $this->path() . 'includes/class-init.php';
 
 			// Include the activation class.
-			require_once CHCD_PATH . 'includes/class-activate.php';
+			require_once $this->path() . 'includes/class-activate.php';
 
 			// Include the deactivation class.
-			require_once CHCD_PATH . 'includes/class-deactivate.php';
+			require_once $this->path() . 'includes/class-deactivate.php';
 		}
 	}
 	// End core plugin class.
@@ -245,7 +198,7 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 	 * @return object Returns the instance of the `CHCD_Plugin` class.
 	 */
 	function chcd_plugin() {
-		return CHCD_Plugin::instance();
+		return CHCD::instance();
 	}
 
 	// Begin plugin functionality.
@@ -349,17 +302,17 @@ function chcd_about_link( $links ) {
 		}
 
 		if ( true == $position ) {
-			$url = admin_url( 'index.php?page=' . CHCD_ADMIN_SLUG . '-settings' );
+			$url = admin_url( 'index.php?page=' . chcd_plugin() :: SLUG . '-settings' );
 		} else {
-			$url = admin_url( 'admin.php?page=' . CHCD_ADMIN_SLUG . '-settings' );
+			$url = admin_url( 'admin.php?page=' . chcd_plugin() :: SLUG . '-settings' );
 		}
 
 		// Create new settings link array as a variable.
 		$about_page = [
 			sprintf(
-				'<a href="%1s" class="' . CHCD_ADMIN_SLUG . '-page-link">%2s</a>',
-				admin_url( 'plugins.php?page=' . CHCD_ADMIN_SLUG . '-page' ),
-				esc_attr( 'Documentation', 'chcd-plugin' )
+				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-page-link">%2s</a>',
+				admin_url( 'plugins.php?page=' . chcd_plugin() :: SLUG . '-page' ),
+				esc_attr( 'Documentation', $this :: DOMAIN )
 			),
 		];
 
@@ -420,23 +373,23 @@ function chcd_settings_links( $links, $file ) {
 		}
 
 		if ( $position || true == $position ) {
-			$url = admin_url( 'admin.php?page=' . CHCD_ADMIN_SLUG . '-settings' );
+			$url = admin_url( 'admin.php?page=' . chcd_plugin() :: SLUG . '-settings' );
 		} else {
-			$url = admin_url( 'index.php?page=' . CHCD_ADMIN_SLUG . '-settings' );
+			$url = admin_url( 'index.php?page=' . chcd_plugin() :: SLUG . '-settings' );
 		}
 
 		if ( $file == plugin_basename( __FILE__ ) ) {
 
 			// Add links to settings pages.
 			$links[] = sprintf(
-				'<a href="%1s" class="' . CHCD_ADMIN_SLUG . '-settings-link">%2s</a>',
+				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-settings-link">%2s</a>',
 				$url,
-				esc_attr( 'Site Settings', 'chcd-plugin' )
+				esc_attr( 'Site Settings', $this :: DOMAIN )
 			);
 			$links[] = sprintf(
-				'<a href="%1s" class="' . CHCD_ADMIN_SLUG . '-scripts-link">%2s</a>',
-				admin_url( 'options-general.php?page=' . CHCD_ADMIN_SLUG . '-scripts' ),
-				esc_attr( 'Script Options', 'chcd-plugin' )
+				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-scripts-link">%2s</a>',
+				admin_url( 'options-general.php?page=' . chcd_plugin() :: SLUG . '-scripts' ),
+				esc_attr( 'Script Options', $this :: DOMAIN )
 			);
 		}
 

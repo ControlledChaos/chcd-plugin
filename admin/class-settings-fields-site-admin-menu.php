@@ -80,7 +80,7 @@ class Settings_Fields_Site_Admin_Menu {
 	private function dependencies() {
 
 		// Callbacks for the Admin Menu tab.
-		require CHCD_PATH . 'admin/partials/field-callbacks/class-admin-menu-callbacks.php';
+		require chcd_plugin()->path() . 'admin/partials/field-callbacks/class-admin-menu-callbacks.php';
 	}
 
 	/**
@@ -97,7 +97,7 @@ class Settings_Fields_Site_Admin_Menu {
 		// Admin menu settings section.
 		add_settings_section(
 			'chcd-site-admin-menu',
-			__( 'Admin Menu Settings', 'chcd-plugin' ),
+			__( 'Admin Menu Settings', chcd_plugin() :: DOMAIN ),
 			[],
 			'chcd-site-admin-menu'
 		);
@@ -105,11 +105,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Site Settings page position.
 		add_settings_field(
 			'chcd_site_settings_position',
-			__( 'Site Settings Position', 'chcd-plugin' ),
+			__( 'Site Settings Position', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_position' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Make this settings page a top-level link and hide other settings links.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Make this settings page a top-level link and hide other settings links.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -120,11 +120,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Site Settings page link label.
 		add_settings_field(
 			'chcd_site_settings_link_label',
-			__( 'Site Settings Label', 'chcd-plugin' ),
+			__( 'Site Settings Label', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_link_label' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Change the label of the link to this page', 'chcd-plugin' ) ]
+			[ esc_html__( 'Change the label of the link to this page', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -135,11 +135,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Site Settings page link icon if set to top level.
 		add_settings_field(
 			'chcd_site_settings_link_icon',
-			__( 'Site Settings Icon', 'chcd-plugin' ),
+			__( 'Site Settings Icon', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_link_icon' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to this page', 'chcd-plugin' ) ]
+			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to this page', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -150,11 +150,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Site Plugin page position.
 		add_settings_field(
 			'chcd_site_plugin_link_position',
-			__( 'Site Plugin Position', 'chcd-plugin' ),
+			__( 'Site Plugin Position', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_position' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Make the site-specific plugin admin page a top-level link.', 'chcd-plugin' ) ]
+			[ esc_html__( 'Make the site-specific plugin admin page a top-level link.', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -165,11 +165,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Site Plugin page link label.
 		add_settings_field(
 			'chcd_site_plugin_link_label',
-			__( 'Site Plugin Label', 'chcd-plugin' ),
+			__( 'Site Plugin Label', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_link_label' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Change the label of the link to the site-specific plugin page', 'chcd-plugin' ) ]
+			[ esc_html__( 'Change the label of the link to the site-specific plugin page', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -180,11 +180,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Site Plugin page link icon if set to top level.
 		add_settings_field(
 			'chcd_site_plugin_link_icon',
-			__( 'Site Plugin Icon', 'chcd-plugin' ),
+			__( 'Site Plugin Icon', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_plugin_link_icon' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to the site-specific plugin page', 'chcd-plugin' ) ]
+			[ esc_html__( 'Enter a Dashicons CSS class for the icon of the link to the site-specific plugin page', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -195,11 +195,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Menus link position.
 		add_settings_field(
 			'chcd_menus_position',
-			__( 'Menus Position', 'chcd-plugin' ),
+			__( 'Menus Position', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'menus_position' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Make Menus a top-level link', 'chcd-plugin' ) ]
+			[ esc_html__( 'Make Menus a top-level link', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -210,11 +210,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Hide Appearance link.
 		add_settings_field(
 			'chcd_hide_appearance',
-			__( 'Hide Appearance', 'chcd-plugin' ),
+			__( 'Hide Appearance', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_appearance' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Hide the Appearance link in the admin menu', 'chcd-plugin' ) ]
+			[ esc_html__( 'Hide the Appearance link in the admin menu', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -225,11 +225,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Hide Plugins link.
 		add_settings_field(
 			'chcd_hide_plugins',
-			__( 'Hide Plugins', 'chcd-plugin' ),
+			__( 'Hide Plugins', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_plugins' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Hide the Plugins link in the admin menu', 'chcd-plugin' ) ]
+			[ esc_html__( 'Hide the Plugins link in the admin menu', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -240,11 +240,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Hide Users link.
 		add_settings_field(
 			'chcd_hide_users',
-			__( 'Hide Users', 'chcd-plugin' ),
+			__( 'Hide Users', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_users' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Hide the Users link in the admin menu', 'chcd-plugin' ) ]
+			[ esc_html__( 'Hide the Users link in the admin menu', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(
@@ -255,11 +255,11 @@ class Settings_Fields_Site_Admin_Menu {
 		// Hide Tools link.
 		add_settings_field(
 			'chcd_hide_tools',
-			__( 'Hide Tools', 'chcd-plugin' ),
+			__( 'Hide Tools', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'hide_tools' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
-			[ esc_html__( 'Hide the Tools link in the admin menu', 'chcd-plugin' ) ]
+			[ esc_html__( 'Hide the Tools link in the admin menu', chcd_plugin() :: DOMAIN ) ]
 		);
 
 		register_setting(

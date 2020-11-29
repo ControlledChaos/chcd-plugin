@@ -40,9 +40,9 @@ $tabs = [
     // General options tab.
     sprintf(
         '<a href="?page=%1s-scripts&tab=general" class="nav-tab %2s"><span class="dashicons dashicons-admin-tools"></span> %3s</a>',
-        CHCD_ADMIN_SLUG,
+        chcd_plugin() :: VERSION,
         $active_tab == 'general' ? 'nav-tab-active' : '',
-        esc_html__( 'General', 'chcd-plugin' )
+        esc_html__( 'General', chcd_plugin() :: DOMAIN )
     )
 
 ];
@@ -75,9 +75,9 @@ $do_fields  = apply_filters( 'chcd_fields_development', $fields );
  * @return string Returns the button label.
  */
 if ( 'general' == $active_tab  ) {
-    $save = __( 'Save General', 'chcd-plugin' );
+    $save = __( 'Save General', chcd_plugin() :: DOMAIN );
 } else {
-    $save = __( 'Save Settings', 'chcd-plugin' );
+    $save = __( 'Save Settings', chcd_plugin() :: DOMAIN );
 }
 
 // Apply a filter for new tabs added by another plugin or from a theme.
@@ -86,12 +86,12 @@ $button = apply_filters( 'chcd_save_script_options', $save );
 // Settings saved notice.
 if ( isset( $_GET['settings-updated'] ) ) { ?>
 <div id="setting-error-settings_updated" class="notice notice-success is-dismissible">
-	<p><strong><?php _e( 'Settings saved.', 'chcd-plugin' ); ?></strong></p>
+	<p><strong><?php _e( 'Settings saved.', chcd_plugin() :: DOMAIN ); ?></strong></p>
 </div>
 <?php } ?>
 <div class="wrap">
-	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Development', 'chcd-plugin' ) ); ?>
-	<p class="description"><?php _e( 'A few tools that come in handy during the development of your website.', 'chcd-plugin' ); ?></p>
+	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Development', chcd_plugin() :: DOMAIN ) ); ?>
+	<p class="description"><?php _e( 'A few tools that come in handy during the development of your website.', chcd_plugin() :: DOMAIN ); ?></p>
 	<hr class="wp-header-end">
 	<h2 class="nav-tab-wrapper">
         <?php echo implode( $page_tabs ); ?>

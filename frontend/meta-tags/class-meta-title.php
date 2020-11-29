@@ -85,7 +85,7 @@ class Meta_Title {
 		// Custom author title.
 		$author_title = sprintf(
 			'%1s %2s',
-			__( 'Posts by', 'chcd-plugin' ),
+			__( 'Posts by', chcd_plugin() :: DOMAIN ),
 			get_the_author_meta( 'display_name', $author_id )
 		);
 
@@ -95,7 +95,7 @@ class Meta_Title {
 		// Custom search title.
 		$search_title = sprintf(
 			'%1s %2s',
-			__( 'Searching', 'chcd-plugin' ),
+			__( 'Searching', chcd_plugin() :: DOMAIN ),
 			get_bloginfo( 'name' )
 		);
 

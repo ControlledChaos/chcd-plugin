@@ -80,10 +80,10 @@ class Settings_Fields_Scripts {
 		/**
 		 * Generl script options.
 		 */
-		add_settings_section( 'chcd-scripts-general', __( 'General Options', 'chcd-plugin' ), [ $this, 'scripts_general_section_callback' ], 'chcd-scripts-general' );
+		add_settings_section( 'chcd-scripts-general', __( 'General Options', chcd_plugin() :: DOMAIN ), [ $this, 'scripts_general_section_callback' ], 'chcd-scripts-general' );
 
 		// Inline scripts.
-		add_settings_field( 'chcd_inline_scripts', __( 'Inline Scripts', 'chcd-plugin' ), [ $this, 'chcd_inline_scripts_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Add script contents to footer', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_inline_scripts', __( 'Inline Scripts', chcd_plugin() :: DOMAIN ), [ $this, 'chcd_inline_scripts_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Add script contents to footer', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -91,7 +91,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Inline styles.
-		add_settings_field( 'chcd_inline_styles', __( 'Inline Styles', 'chcd-plugin' ), [ $this, 'chcd_inline_styles_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_inline_styles', __( 'Inline Styles', chcd_plugin() :: DOMAIN ), [ $this, 'chcd_inline_styles_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Add script-related CSS contents to head', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -99,7 +99,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Inline jQuery.
-		add_settings_field( 'chcd_inline_jquery', __( 'Inline jQuery', 'chcd-plugin' ), [ $this, 'chcd_inline_jquery_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_inline_jquery', __( 'Inline jQuery', chcd_plugin() :: DOMAIN ), [ $this, 'chcd_inline_jquery_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Deregister jQuery and add its contents to footer', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -107,7 +107,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Include jQuery Migrate.
-		add_settings_field( 'chcd_jquery_migrate', __( 'jQuery Migrate', 'chcd-plugin' ), [ $this, 'chcd_jquery_migrate_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Use jQuery Migrate for backwards compatibility', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_jquery_migrate', __( 'jQuery Migrate', chcd_plugin() :: DOMAIN ), [ $this, 'chcd_jquery_migrate_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Use jQuery Migrate for backwards compatibility', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -115,7 +115,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Remove emoji script.
-		add_settings_field( 'chcd_remove_emoji_script', __( 'Emoji Script', 'chcd-plugin' ), [ $this, 'remove_emoji_script_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Remove emoji script from <head>', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_remove_emoji_script', __( 'Emoji Script', chcd_plugin() :: DOMAIN ), [ $this, 'remove_emoji_script_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Remove emoji script from <head>', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -123,7 +123,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Remove WordPress/ClassicPress version appended to script links.
-		add_settings_field( 'chcd_remove_script_version', __( 'Script Versions', 'chcd-plugin' ), [ $this, 'remove_script_version_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Remove WordPress/ClassicPress version from script and stylesheet links in <head>', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_remove_script_version', __( 'Script Versions', chcd_plugin() :: DOMAIN ), [ $this, 'remove_script_version_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Remove WordPress/ClassicPress version from script and stylesheet links in <head>', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -131,7 +131,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Minify HTML.
-		add_settings_field( 'chcd_html_minify', __( 'Minify HTML', 'chcd-plugin' ), [ $this, 'html_minify_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Minify HTML source code to increase load speed', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_html_minify', __( 'Minify HTML', chcd_plugin() :: DOMAIN ), [ $this, 'html_minify_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Minify HTML source code to increase load speed', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-general',
@@ -141,10 +141,10 @@ class Settings_Fields_Scripts {
 		/**
 		 * Use included vendor scripts & options.
 		 */
-		add_settings_section( 'chcd-scripts-vendor', __( 'Included Vendor Scripts', 'chcd-plugin' ), [ $this, 'scripts_vendor_section_callback' ], 'chcd-scripts-vendor' );
+		add_settings_section( 'chcd-scripts-vendor', __( 'Included Vendor Scripts', chcd_plugin() :: DOMAIN ), [ $this, 'scripts_vendor_section_callback' ], 'chcd-scripts-vendor' );
 
 		// Use Slick.
-		add_settings_field( 'chcd_enqueue_slick', __( 'Slick', 'chcd-plugin' ), [ $this, 'enqueue_slick_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Slick script and stylesheets', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_enqueue_slick', __( 'Slick', chcd_plugin() :: DOMAIN ), [ $this, 'enqueue_slick_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Slick script and stylesheets', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-vendor',
@@ -152,7 +152,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Use Tabslet.
-		add_settings_field( 'chcd_enqueue_tabslet', __( 'Tabslet', 'chcd-plugin' ), [ $this, 'enqueue_tabslet_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Tabslet script', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_enqueue_tabslet', __( 'Tabslet', chcd_plugin() :: DOMAIN ), [ $this, 'enqueue_tabslet_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Tabslet script', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-vendor',
@@ -160,7 +160,7 @@ class Settings_Fields_Scripts {
 		);
 
 		// Use Sticky-kit.
-		add_settings_field( 'chcd_enqueue_stickykit', __( 'Sticky-kit', 'chcd-plugin' ), [ $this, 'enqueue_stickykit_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Sticky-kit script', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_enqueue_stickykit', __( 'Sticky-kit', chcd_plugin() :: DOMAIN ), [ $this, 'enqueue_stickykit_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Sticky-kit script', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-vendor',
@@ -172,7 +172,7 @@ class Settings_Fields_Scripts {
 		 *
 		 * @todo Add option to enqueue on the backend.
 		 */
-		add_settings_field( 'chcd_enqueue_tooltipster', __( 'Tooltipster', 'chcd-plugin' ), [ $this, 'enqueue_tooltipster_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Tooltipster script and stylesheet', 'chcd-plugin' ) ] );
+		add_settings_field( 'chcd_enqueue_tooltipster', __( 'Tooltipster', chcd_plugin() :: DOMAIN ), [ $this, 'enqueue_tooltipster_callback' ], 'chcd-scripts-vendor', 'chcd-scripts-vendor', [ esc_html__( 'Use Tooltipster script and stylesheet', chcd_plugin() :: DOMAIN ) ] );
 
 		register_setting(
 			'chcd-scripts-vendor',
@@ -182,9 +182,9 @@ class Settings_Fields_Scripts {
 		// Site Settings section.
 		if ( chcd_acf_options() ) {
 
-			add_settings_section( 'chcd-registered-fields-activate', __( 'Registered Fields Activation', 'chcd-plugin' ), [ $this, 'registered_fields_activate' ], 'chcd-registered-fields-activate' );
+			add_settings_section( 'chcd-registered-fields-activate', __( 'Registered Fields Activation', chcd_plugin() :: DOMAIN ), [ $this, 'registered_fields_activate' ], 'chcd-registered-fields-activate' );
 
-			add_settings_field( 'chcd_acf_activate_settings_page', __( 'Site Settings Page', 'chcd-plugin' ), [ $this, 'registered_fields_page_callback' ], 'chcd-registered-fields-activate', 'chcd-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', 'chcd-plugin' ) ] );
+			add_settings_field( 'chcd_acf_activate_settings_page', __( 'Site Settings Page', chcd_plugin() :: DOMAIN ), [ $this, 'registered_fields_page_callback' ], 'chcd-registered-fields-activate', 'chcd-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', chcd_plugin() :: DOMAIN ) ] );
 
 			register_setting(
 				'chcd-registered-fields-activate',
@@ -380,7 +380,7 @@ class Settings_Fields_Scripts {
 			'<label for="chcd_enqueue_slick"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
 			$args[0],
 			esc_attr( esc_url( 'http://kenwheeler.github.io/slick/' ) ),
-			esc_attr( __( 'Learn more about Slick', 'chcd-plugin' ) )
+			esc_attr( __( 'Learn more about Slick', chcd_plugin() :: DOMAIN ) )
 		);
 		$html .= '</p>';
 
@@ -404,7 +404,7 @@ class Settings_Fields_Scripts {
 			'<label for="chcd_enqueue_tabslet"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
 			$args[0],
 			esc_attr( esc_url( 'http://vdw.github.io/Tabslet/' ) ),
-			esc_attr( __( 'Learn more about Tabslet', 'chcd-plugin' ) )
+			esc_attr( __( 'Learn more about Tabslet', chcd_plugin() :: DOMAIN ) )
 		);
 		$html .= '</p>';
 
@@ -428,7 +428,7 @@ class Settings_Fields_Scripts {
 			'<label for="chcd_enqueue_stickykit"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
 			$args[0],
 			esc_attr( esc_url( 'http://leafo.net/sticky-kit/' ) ),
-			esc_attr( __( 'Learn more about Sticky-kit', 'chcd-plugin' ) )
+			esc_attr( __( 'Learn more about Sticky-kit', chcd_plugin() :: DOMAIN ) )
 		);
 		$html .= '</p>';
 
@@ -452,7 +452,7 @@ class Settings_Fields_Scripts {
 			'<label for="chcd_enqueue_tooltipster"> %1s</label> <a href="%2s" target="_blank" class="tooltip" title="%3s"><span class="dashicons dashicons-editor-help"></span></a>',
 			$args[0],
 			esc_attr( esc_url( 'http://iamceege.github.io/tooltipster/' ) ),
-			esc_attr( __( 'Learn more about Tooltipster', 'chcd-plugin' ) )
+			esc_attr( __( 'Learn more about Tooltipster', chcd_plugin() :: DOMAIN ) )
 		);
 		$html .= '</p>';
 
@@ -471,7 +471,7 @@ class Settings_Fields_Scripts {
 
 		if ( chcd_acf_options() ) {
 
-			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', 'chcd-plugin' ) );
+			echo sprintf( '<p>%1s</p>', esc_html( 'The Controlled Chaos plugin registers custom fields for Advanced Custom Fields Pro that can be imported for editing. These built-in field goups must be deactivated for the imported field groups to take effect.', chcd_plugin() :: DOMAIN ) );
 
 		}
 

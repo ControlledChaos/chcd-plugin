@@ -24,5 +24,5 @@ if ( ! defined( 'WPINC' ) ) {
 <?php if ( is_singular() ) : ?>
 <meta name="author" content="<?php esc_attr( do_action( 'chcd_meta_author_tag' ) ); ?>" />
 <?php endif; ?>
-<meta name='copyright' content="<?php echo esc_attr( sprintf( '© Copyright %1s %2s. %3s.', get_the_time( 'Y' ), get_bloginfo( 'name' ), __( 'All rights reserved', 'chcd-plugin' ) ) ); ?>">
+<meta name='copyright' content="<?php echo esc_attr( sprintf( '© Copyright %1s %2s. %3s.', get_the_time( 'Y' ), get_bloginfo( 'name' ), __( 'All rights reserved', chcd_plugin() :: DOMAIN ) ) ); ?>">
 <meta name='language' content="<?php echo esc_attr( get_locale() ); ?>">

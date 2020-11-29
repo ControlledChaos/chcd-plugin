@@ -74,7 +74,7 @@ class Enqueue_Frontend_Styles {
 	public function styles() {
 
 		// Non-vendor plugin styles.
-		wp_enqueue_style( CHCD_ADMIN_SLUG, CHCD_URL . 'frontend/assets/css/frontend.css', [], CHCD_VERSION, 'all' );
+		wp_enqueue_style( chcd_plugin() :: VERSION, chcd_plugin()->url() . 'frontend/assets/css/frontend.css', [], chcd_plugin() :: VERSION, 'all' );
 
 		// Fancybox 3.
 		if ( get_option( 'chcd_enqueue_fancybox_styles' ) ) {
@@ -86,23 +86,23 @@ class Enqueue_Frontend_Styles {
 			if ( current_theme_supports( 'ccd-fancybox' ) ) {
 				return;
 			} else {
-				wp_enqueue_style( CHCD_ADMIN_SLUG . '-fancybox', CHCD_URL . 'frontend/assets/css/jquery.fancybox.min.css', [], CHCD_VERSION, 'all' );
+				wp_enqueue_style( chcd_plugin() :: VERSION . '-fancybox', chcd_plugin()->url() . 'frontend/assets/css/jquery.fancybox.min.css', [], chcd_plugin() :: VERSION, 'all' );
 			}
 		}
 
 		// Slick.
 		if ( get_option( 'chcd_enqueue_slick' ) ) {
-			wp_enqueue_style( CHCD_ADMIN_SLUG . '-slick', CHCD_URL . 'frontend/assets/css/slick.min.css', [], CHCD_VERSION, 'all' );
+			wp_enqueue_style( chcd_plugin() :: VERSION . '-slick', chcd_plugin()->url() . 'frontend/assets/css/slick.min.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 		// Slick theme.
 		if ( get_option( 'chcd_enqueue_slick' ) ) {
-			wp_enqueue_style( CHCD_ADMIN_SLUG . '-slick-theme', CHCD_URL . 'frontend/assets/css/slick-theme.css', [], CHCD_VERSION, 'all' );
+			wp_enqueue_style( chcd_plugin() :: VERSION . '-slick-theme', chcd_plugin()->url() . 'frontend/assets/css/slick-theme.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 		// Tooltipster.
 		if ( get_option( 'chcd_enqueue_tooltipster' ) ) {
-			wp_enqueue_style( CHCD_ADMIN_SLUG . '-tooltipster', CHCD_URL . 'frontend/assets/css/tooltipster.bundle.min.css', [], CHCD_VERSION, 'all' );
+			wp_enqueue_style( chcd_plugin() :: VERSION . '-tooltipster', chcd_plugin()->url() . 'frontend/assets/css/tooltipster.bundle.min.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
 
 	}

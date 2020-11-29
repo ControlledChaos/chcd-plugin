@@ -98,27 +98,27 @@ class Frontend {
 
 		// Add styles inline if option selected.
 		if ( $styles ) {
-			require_once CHCD_PATH . 'frontend/class-styles-inline.php';
+			require_once chcd_plugin()->path() . 'frontend/class-styles-inline.php';
 
 		// Otherwise enqueue styles.
 		} else {
-			require_once CHCD_PATH . 'frontend/class-styles-enqueue.php';
+			require_once chcd_plugin()->path() . 'frontend/class-styles-enqueue.php';
 		}
 
 		// Add scripts inline if option selected.
 		if ( $scripts ) {
-			require_once CHCD_PATH . 'frontend/class-scripts-inline.php';
+			require_once chcd_plugin()->path() . 'frontend/class-scripts-inline.php';
 
 		// Otherwise enqueue scripts.
 		} else {
-			require_once CHCD_PATH . 'frontend/class-scripts-enqueue.php';
+			require_once chcd_plugin()->path() . 'frontend/class-scripts-enqueue.php';
 		}
 
 		// Clean up some scripts in the `head` section.
-		require_once CHCD_PATH . 'frontend/class-head-scripts.php';
+		require_once chcd_plugin()->path() . 'frontend/class-head-scripts.php';
 
 		// Meta tags for SEO.
-		include_once CHCD_PATH . 'frontend/meta-tags/class-meta-tags.php';
+		include_once chcd_plugin()->path() . 'frontend/meta-tags/class-meta-tags.php';
 
 	}
 
@@ -165,7 +165,7 @@ class Frontend {
 
 		if ( ! is_customize_preview() ) {
 
-			$jquery = file_get_contents( CHCD_PATH . '/assets/js/jquery.min.js' );
+			$jquery = file_get_contents( chcd_plugin()->path() . '/assets/js/jquery.min.js' );
 
 			echo '<!-- jQuery --><script>' . $jquery . '</script>';
 

@@ -74,7 +74,7 @@ class i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'chcd-plugin',
+			chcd_plugin() :: DOMAIN,
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

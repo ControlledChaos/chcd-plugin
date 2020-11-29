@@ -79,16 +79,16 @@ class Settings_Fields_Site {
 	private function dependencies() {
 
 		// Settings for the Admin Menu tab.
-		require CHCD_PATH . 'admin/class-settings-fields-site-admin-menu.php';
+		require chcd_plugin()->path() . 'admin/class-settings-fields-site-admin-menu.php';
 
 		// Settings for the Admin Menu tab.
-		require CHCD_PATH . 'admin/class-settings-fields-site-admin-pages.php';
+		require chcd_plugin()->path() . 'admin/class-settings-fields-site-admin-pages.php';
 
 		// Settings for the Admin Menu tab.
-		require CHCD_PATH . 'admin/class-settings-fields-site-users.php';
+		require chcd_plugin()->path() . 'admin/class-settings-fields-site-users.php';
 
 		// Callbacks for the Meta/SEO tab.
-		require CHCD_PATH . 'admin/class-settings-fields-site-meta-seo.php';
+		require chcd_plugin()->path() . 'admin/class-settings-fields-site-meta-seo.php';
 	}
 
 	/**
@@ -110,7 +110,7 @@ class Settings_Fields_Site {
 			'at_glance'           => false,
 			'activity'            => false,
 			'settings_position'   => false,
-			'settings_link_label' => __( 'Site Settings', 'chcd-plugin' ),
+			'settings_link_label' => __( 'Site Settings', chcd_plugin() :: DOMAIN ),
 			'settings_link_icon'  => 'dashicons-welcome-learn-more',
 			'plugin_position'     => false,
 			'plugin_link_label'   => false,

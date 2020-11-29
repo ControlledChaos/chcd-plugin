@@ -60,7 +60,7 @@ $tabs = [
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
         '#intro',
-        esc_html__( 'Introduction', 'chcd-plugin' )
+        esc_html__( 'Introduction', chcd_plugin() :: DOMAIN )
 	),
 
 	// Site Settings tab.
@@ -68,28 +68,28 @@ $tabs = [
         '<li><a href="%1s"><span class="dashicons %2s"></span> %3s</a></li>',
 		'#settings',
 		esc_attr( $settings ),
-        esc_html__( 'Site Settings', 'chcd-plugin' )
+        esc_html__( 'Site Settings', chcd_plugin() :: DOMAIN )
 	),
 
 	// Script Options tab.
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-editor-code"></span> %2s</a></li>',
         '#scripts',
-        esc_html__( 'Script Options', 'chcd-plugin' )
+        esc_html__( 'Script Options', chcd_plugin() :: DOMAIN )
 	),
 
 	// Media Options tab.
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-admin-media"></span> %2s</a></li>',
         '#media',
-        esc_html__( 'Media Options', 'chcd-plugin' )
+        esc_html__( 'Media Options', chcd_plugin() :: DOMAIN )
 	),
 
 	// Dev Tools tab.
     sprintf(
         '<li><a href="%1s"><span class="dashicons dashicons-welcome-learn-more"></span> %2s</a></li>',
         '#tools',
-        esc_html__( 'Development Tools', 'chcd-plugin' )
+        esc_html__( 'Development Tools', chcd_plugin() :: DOMAIN )
     ),
 
 ];
@@ -101,9 +101,9 @@ $page_tabs = apply_filters( 'chcd_tabs_page_about', $tabs );
 <!-- Default WordPress/ClassicPress page wrapper -->
 <div class="wrap site-plugin-wrap">
 	<!-- Page heading -->
-	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', 'chcd-plugin' ) ); ?>
+	<?php echo sprintf( '<h1 class="wp-heading-inline">%1s %2s</h1>', get_bloginfo( 'name' ), esc_html__( 'Plugin', chcd_plugin() :: DOMAIN ) ); ?>
 	<!-- Page description -->
-    <p class="description"><?php esc_html_e( 'A feature-packed WordPress or ClassicPress starter plugin for building custom-tailored websites.', 'chcd-plugin' ); ?></p>
+    <p class="description"><?php esc_html_e( 'A feature-packed WordPress or ClassicPress starter plugin for building custom-tailored websites.', chcd_plugin() :: DOMAIN ); ?></p>
 	<!-- Begin jQuery tabbed content -->
 	<div class="backend-tabbed-content">
 		<ul>
@@ -113,19 +113,19 @@ $page_tabs = apply_filters( 'chcd_tabs_page_about', $tabs );
 		do_action( 'chcd_content_page_about_before' ); ?>
 		<!-- Begin content -->
 		<div id="intro"><!-- Introduction content -->
-			<?php include_once CHCD_PATH . 'admin/partials/plugin-page-intro.php'; ?>
+			<?php include_once chcd_plugin()->path() . 'admin/partials/plugin-page-intro.php'; ?>
 		</div>
 		<div id="settings"><!-- Site Settings content -->
-			<?php include_once CHCD_PATH . 'admin/partials/plugin-page-site-settings.php'; ?>
+			<?php include_once chcd_plugin()->path() . 'admin/partials/plugin-page-site-settings.php'; ?>
 		</div>
 		<div id="scripts"><!-- Script Options content -->
-			<?php include_once CHCD_PATH . 'admin/partials//plugin-page-script-options.php'; ?>
+			<?php include_once chcd_plugin()->path() . 'admin/partials//plugin-page-script-options.php'; ?>
 		</div>
 		<div id="media"><!-- Media Options content -->
-			<?php include_once CHCD_PATH . 'admin/partials/plugin-page-media-options.php'; ?>
+			<?php include_once chcd_plugin()->path() . 'admin/partials/plugin-page-media-options.php'; ?>
 		</div>
 		<div id="tools"><!-- Dev Tools content -->
-			<?php include_once CHCD_PATH . 'admin/partials/plugin-page-dev-tools.php'; ?>
+			<?php include_once chcd_plugin()->path() . 'admin/partials/plugin-page-dev-tools.php'; ?>
 		</div>
 		<?php // Hook for adding tabbed content.
 		do_action( 'chcd_content_page_about_after' ); ?>

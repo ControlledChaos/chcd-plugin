@@ -16,6 +16,6 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 } ?>
 <div>
-	<h3><?php _e( 'Remove Emoji Script', 'chcd-plugin' ); ?></h3>
+	<h3><?php _e( 'Remove Emoji Script', chcd_plugin() :: DOMAIN ); ?></h3>
 	<p><?php _e( 'WordPress/ClassicPress includes this script to allow emojis to work in older browsers. If your users work with modern browsers than this script is unnecessary.' ); ?></p>
 </div>

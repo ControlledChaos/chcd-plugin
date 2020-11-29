@@ -196,7 +196,7 @@ class Posts_Per_Page {
 	 * @return void
 	 */
 	public function add_settings() {
-		add_options_page( __( 'Posts Per Page', 'chcd-plugin' ), __( 'Posts Per Page', 'chcd-plugin' ), 'manage_options', 'posts-per-page', [ $this, 'view_settings' ] );
+		add_options_page( __( 'Posts Per Page', chcd_plugin() :: DOMAIN ), __( 'Posts Per Page', chcd_plugin() :: DOMAIN ), 'manage_options', 'posts-per-page', [ $this, 'view_settings' ] );
 	}
 
 	/**
@@ -211,20 +211,20 @@ class Posts_Per_Page {
 		?>
 		<div class="wrap posts-per-page">
 			<div class="icon32" id="icon-options-general"></div>
-			<h1><?php _e( 'Posts Per Page', 'chcd-plugin' ); ?></h1>
-			<h2><?php _e( 'Overview', 'chcd-plugin' ); ?></h2>
+			<h1><?php _e( 'Posts Per Page', chcd_plugin() :: DOMAIN ); ?></h1>
+			<h2><?php _e( 'Overview', chcd_plugin() :: DOMAIN ); ?></h2>
 			<p><?php _e( 'The settings below allow you to specify how many posts per page are displayed to readers depending on the which type of page is being viewed.' ); ?></p>
 			<p><?php _e( 'Different values can be set for your your main view, category views, tag views, author views, archive views, search views, and
 			views for custom post types. For each of these views, a different setting is available for the first page and subsequent pages. In addition to these, a default value is available that
-			can be set for any other pages not covered by this.', 'chcd-plugin' ); ?></p>
-			<p><?php _e( 'The initial value used on activation was pulled from the setting <em>Blog Pages show at most</em> found in the', 'chcd-plugin' ); ?> <a href="<?php echo site_url( '/wp-admin/options-reading.php' ); ?>" title="Reading Settings"><?php _e( 'Reading Settings', 'chcd-plugin' ); ?></a></p>
+			can be set for any other pages not covered by this.', chcd_plugin() :: DOMAIN ); ?></p>
+			<p><?php _e( 'The initial value used on activation was pulled from the setting <em>Blog Pages show at most</em> found in the', chcd_plugin() :: DOMAIN ); ?> <a href="<?php echo site_url( '/wp-admin/options-reading.php' ); ?>" title="Reading Settings"><?php _e( 'Reading Settings', chcd_plugin() :: DOMAIN ); ?></a></p>
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'chcd_ppp_options' );
 					do_settings_sections( 'chcd_ppp' );
 					do_settings_sections( 'chcd_ppp_custom' );
 				?>
-			<p class="submit"><input type="submit" class="button-primary" value="<?php _e( 'Save Changes', 'chcd-plugin' ); ?>" /></p></form>
+			<p class="submit"><input type="submit" class="button-primary" value="<?php _e( 'Save Changes', chcd_plugin() :: DOMAIN ); ?>" /></p></form>
 		</div>
 		<?php
 	}
@@ -243,13 +243,13 @@ class Posts_Per_Page {
 		add_settings_section( 'chcd_ppp_section_main', '', [ $this, 'output_main_section_text' ], 'chcd_ppp' );
 		add_settings_section( 'chcd_ppp_section_custom', '', [ $this, 'output_custom_section_text' ], 'chcd_ppp_custom' );
 
-		add_settings_field( 'chcd_ppp_index_count',     __( 'Main Index posts per page', 'chcd-plugin' ), [ $this, 'output_index_count_text' ],    'chcd_ppp', 'chcd_ppp_section_main' );
-		add_settings_field( 'chcd_ppp_category_count',  __( 'Category posts per page', 'chcd-plugin' ),   [ $this, 'output_category_count_text' ], 'chcd_ppp', 'chcd_ppp_section_main' );
-		add_settings_field( 'chcd_ppp_archive_count',   __( 'Archive posts per page', 'chcd-plugin' ),    [ $this, 'output_archive_count_text' ],  'chcd_ppp', 'chcd_ppp_section_main' );
-		add_settings_field( 'chcd_ppp_tag_count',       __( 'Tag posts per page', 'chcd-plugin' ),        [ $this, 'output_tag_count_text' ],      'chcd_ppp', 'chcd_ppp_section_main' );
-		add_settings_field( 'chcd_ppp_author_count',    __( 'Author posts per page', 'chcd-plugin' ),     [ $this, 'output_author_count_text' ],   'chcd_ppp', 'chcd_ppp_section_main' );
-		add_settings_field( 'chcd_ppp_search_count',    __( 'Search posts per page', 'chcd-plugin' ),     [ $this, 'output_search_count_text' ],   'chcd_ppp', 'chcd_ppp_section_main' );
-		add_settings_field( 'chcd_ppp_default_count',   __( 'Default posts per page', 'chcd-plugin' ),    [ $this, 'output_default_count_text' ],  'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_index_count',     __( 'Main Index posts per page', chcd_plugin() :: DOMAIN ), [ $this, 'output_index_count_text' ],    'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_category_count',  __( 'Category posts per page', chcd_plugin() :: DOMAIN ),   [ $this, 'output_category_count_text' ], 'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_archive_count',   __( 'Archive posts per page', chcd_plugin() :: DOMAIN ),    [ $this, 'output_archive_count_text' ],  'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_tag_count',       __( 'Tag posts per page', chcd_plugin() :: DOMAIN ),        [ $this, 'output_tag_count_text' ],      'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_author_count',    __( 'Author posts per page', chcd_plugin() :: DOMAIN ),     [ $this, 'output_author_count_text' ],   'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_search_count',    __( 'Search posts per page', chcd_plugin() :: DOMAIN ),     [ $this, 'output_search_count_text' ],   'chcd_ppp', 'chcd_ppp_section_main' );
+		add_settings_field( 'chcd_ppp_default_count',   __( 'Default posts per page', chcd_plugin() :: DOMAIN ),    [ $this, 'output_default_count_text' ],  'chcd_ppp', 'chcd_ppp_section_main' );
 
 		add_settings_field( 'chcd_ppp_post_type_count', '', [ $this, 'output_post_type_count_text' ], 'chcd_ppp_custom', 'chcd_ppp_section_custom' );
 
@@ -280,13 +280,13 @@ class Posts_Per_Page {
 	 */
 	public function output_main_section_text() {
 		?>
-		<h2><?php _e( 'Main Settings', 'chcd-plugin' ); ?></h2>
+		<h2><?php _e( 'Main Settings', chcd_plugin() :: DOMAIN ); ?></h2>
 		<p><?php _e( 'This section allows you to modify page view types that are
 		associated with WordPress by default. When an option is set to 0, it will not modify any page requests for
-		that view and will instead allow default values to pass through.', 'chcd-plugin' ); ?></p>
-		<p><?php _e( 'Please Note', 'chcd-plugin' ); ?>:
+		that view and will instead allow default values to pass through.', chcd_plugin() :: DOMAIN ); ?></p>
+		<p><?php _e( 'Please Note', chcd_plugin() :: DOMAIN ); ?>:
 		<em><?php _e( 'For each setting, the box on the LEFT controls the the number of posts displayed on	the first page of that view while
-		the box on the RIGHT controls the number of posts seen on pages 2, 3, 4, etc... of that view.', 'chcd-plugin' ); ?></em></p>
+		the box on the RIGHT controls the number of posts seen on pages 2, 3, 4, etc... of that view.', chcd_plugin() :: DOMAIN ); ?></em></p>
 		<?php
 	}
 
@@ -300,7 +300,7 @@ class Posts_Per_Page {
 	public function output_custom_section_text() {
 
 		?>
-		<h2><?php _e( 'Custom Post Type Specific Settings', 'chcd-plugin' ); ?></h2>
+		<h2><?php _e( 'Custom Post Type Specific Settings', chcd_plugin() :: DOMAIN ); ?></h2>
 		<p><?php _e( 'This section contains a list of all of your registered custom post
 		types. In order to not conflict with other plugins or themes, these are set to 0 by default. When an option is
 		set to 0, it will not modify any page requests for that custom post type archive. For Custom Posts Per Page to

@@ -131,7 +131,7 @@ class Meta_Description {
 		$search_desc      = wp_strip_all_tags(
 			sprintf(
 				'%1s \'%2s\'',
-				__( 'Showing results for', 'chcd-plugin' ),
+				__( 'Showing results for', chcd_plugin() :: DOMAIN ),
 				$search_query
 			)
 		);

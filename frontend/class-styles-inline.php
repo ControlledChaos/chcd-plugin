@@ -70,10 +70,10 @@ class Inline_Frontend_Styles {
 	 */
 	public function styles() {
 
-		$fancybox    = file_get_contents( esc_html( CHCD_PATH . 'frontend/assets/css/jquery.fancybox.min.css' ) );
-		$slick       = file_get_contents( esc_html( CHCD_PATH . 'frontend/assets/css/slick.min.css' ) );
-		$slick_theme = file_get_contents( esc_html( CHCD_PATH . 'frontend/assets/css/slick-theme.min.css' ) );
-		$tooltipster = file_get_contents( esc_html( CHCD_PATH . 'frontend/assets/css/tooltipster.bundle.min.css' ) );
+		$fancybox    = file_get_contents( esc_html( chcd_plugin()->path() . 'frontend/assets/css/jquery.fancybox.min.css' ) );
+		$slick       = file_get_contents( esc_html( chcd_plugin()->path() . 'frontend/assets/css/slick.min.css' ) );
+		$slick_theme = file_get_contents( esc_html( chcd_plugin()->path() . 'frontend/assets/css/slick-theme.min.css' ) );
+		$tooltipster = file_get_contents( esc_html( chcd_plugin()->path() . 'frontend/assets/css/tooltipster.bundle.min.css' ) );
 
 		// Fancybox 3.
 		if ( get_option( 'chcd_enqueue_fancybox_styles' ) ) {

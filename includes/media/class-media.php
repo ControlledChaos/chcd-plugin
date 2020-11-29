@@ -94,13 +94,13 @@ class Media {
 	private function dependencies() {
 
 		// Add SVG media upload support.
-		include_once CHCD_PATH . 'includes/media/class-svg-support.php';
+		include_once chcd_plugin()->path() . 'includes/media/class-svg-support.php';
 
 		// Replace WP gallery shortcode if Fancybox option is used.
 		$fancybox = get_option( 'chcd_enqueue_fancybox_script' );
 
 		if ( $fancybox ) {
-			require_once CHCD_PATH . 'includes/media/class-gallery-shortcode.php';
+			require_once chcd_plugin()->path() . 'includes/media/class-gallery-shortcode.php';
 		}
 
 	}
@@ -134,14 +134,14 @@ class Media {
 	public function image_sizes() {
 
 		// For link embedding and sharing on social sites.
-		add_image_size( __( 'meta-image', 'chcd-plugin' ), 1200, 630, true );
+		add_image_size( __( 'meta-image', chcd_plugin() :: DOMAIN ), 1200, 630, true );
 
 		/**
 		 * For use as featured image in admin columns.
 		 *
 		 * @see admin/class-admin-pages.php
 		 */
-		add_image_size( __( 'column-thumbnail', 'chcd-plugin' ), 48, 48, true );
+		add_image_size( __( 'column-thumbnail', chcd_plugin() :: DOMAIN ), 48, 48, true );
 
 	}
 

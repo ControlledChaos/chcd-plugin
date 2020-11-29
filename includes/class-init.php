@@ -117,25 +117,25 @@ final class Init {
 	private function dependencies() {
 
 		// Translation functionality.
-		require_once CHCD_PATH . 'includes/class-i18n.php';
+		require_once chcd_plugin()->path() . 'includes/class-i18n.php';
 
 		// Admin/backend functionality, scripts and styles.
-		require_once CHCD_PATH . 'admin/class-admin.php';
+		require_once chcd_plugin()->path() . 'admin/class-admin.php';
 
 		// Frontend functionality, scripts and styles.
-		require_once CHCD_PATH . 'frontend/class-frontend.php';
+		require_once chcd_plugin()->path() . 'frontend/class-frontend.php';
 
 		// Various media and media library functionality.
-		require_once CHCD_PATH . 'includes/media/class-media.php';
+		require_once chcd_plugin()->path() . 'includes/media/class-media.php';
 
 		// Post types and taxonomies.
-		require_once CHCD_PATH . 'includes/post-types-taxes/class-post-type-tax.php';
+		require_once chcd_plugin()->path() . 'includes/post-types-taxes/class-post-type-tax.php';
 
 		// User funtionality.
-		require_once CHCD_PATH . 'includes/users/class-users.php';
+		require_once chcd_plugin()->path() . 'includes/users/class-users.php';
 
 		// Dev and maintenance tools.
-		require_once CHCD_PATH . 'includes/tools/class-tools.php';
+		require_once chcd_plugin()->path() . 'includes/tools/class-tools.php';
 
 	}
 }

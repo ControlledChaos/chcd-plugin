@@ -87,7 +87,7 @@ class Admin_Menu_Callbacks {
 
 		$option = get_option( 'chcd_site_settings_link_label' );
 
-		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_label" name="chcd_site_settings_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', 'chcd-plugin' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_label" name="chcd_site_settings_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
 
 		$html .= '<label for="chcd_site_settings_link_label"> ' . $args[0] . '</label></p>';
 
@@ -106,7 +106,7 @@ class Admin_Menu_Callbacks {
 
 		$option = get_option( 'chcd_site_settings_link_icon' );
 
-		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_icon" name="chcd_site_settings_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', 'chcd-plugin' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_icon" name="chcd_site_settings_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-admin-settings', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
 
 		$html .= '<label for="chcd_site_settings_link_icon"> ' . $args[0] . '</label>';
 
@@ -146,7 +146,7 @@ class Admin_Menu_Callbacks {
 
 		$option = get_option( 'chcd_site_plugin_link_label' );
 
-		$html = '<p><input type="text" size="50" id="chcd_site_plugin_link_label" name="chcd_site_plugin_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Plugin', 'chcd-plugin' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="chcd_site_plugin_link_label" name="chcd_site_plugin_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Plugin', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
 
 		$html .= '<label for="chcd_site_plugin_link_label"> ' . $args[0] . '</label></p>';
 
@@ -165,7 +165,7 @@ class Admin_Menu_Callbacks {
 
 		$option = get_option( 'chcd_site_plugin_link_icon' );
 
-		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_icon" name="chcd_site_plugin_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-welcome-learn-more', 'chcd-plugin' ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_icon" name="chcd_site_plugin_link_icon" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'dashicons-welcome-learn-more', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
 
 		$html .= '<label for="chcd_site_plugin_link_icon"> ' . $args[0] . '</label>';
 
