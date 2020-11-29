@@ -7,11 +7,10 @@
  * @author      Greg Sweet <greg@ccdzine.com>
  * @copyright   Copyright © 2018, Greg Sweet
  * @link        https://github.com/ControlledChaos/chcd-plugin
- * @link        https://controlledchaos.github.io/chcd-plugin/
  * @license     GPL-3.0+ http://www.gnu.org/licenses/gpl-3.0.txt
  *
  * Plugin Name:  Courtney Plugin
- * Plugin URI:   https://controlledchaos.github.io/chcd-plugin/
+ * Plugin URI:   https://github.com/ControlledChaos/chcd-plugin
  * Description:  A ClassicPress/WordPress plugin for the Courtney Hoffman Costume Designer website.
  * Version:      1.0.0
  * Author:       Controlled Chaos Design
@@ -56,6 +55,7 @@ if ( defined( 'ABSPATH' ) ) {
 
 // First check for other classes with the same name.
 if ( ! class_exists( 'CHCD_Plugin' ) ) :
+
 	final class CHCD_Plugin {
 
 		/**
@@ -223,7 +223,7 @@ if ( ! class_exists( 'CHCD_Plugin' ) ) :
 	 * @return object Returns the instance of the core class.
 	 */
 	function chcd_plugin() {
-		return CHCD_Plugin::instance();
+		return CHCD_Plugin :: instance();
 	}
 
 	// Begin plugin functionality.
