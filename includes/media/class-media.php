@@ -24,33 +24,6 @@ if ( ! defined( 'WPINC' ) ) {
  */
 class Media {
 
-	/**
-	 * Instance of the class
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return object Returns the instance.
-	 */
-	public static function instance() {
-
-		// Varialbe for the instance to be used outside the class.
-		static $instance = null;
-
-		if ( is_null( $instance ) ) {
-
-			// Set variable for new instance.
-			$instance = new self;
-
-			// Get class dependencies
-			$instance->dependencies();
-
-		}
-
-		// Return the instance.
-		return $instance;
-
-	}
-
     /**
 	 * Constructor method
 	 *
@@ -59,6 +32,9 @@ class Media {
 	 * @return self
 	 */
 	public function __construct() {
+
+		// Get class dependencies
+		$this->dependencies();
 
 		// Add categories and tags to media library items.
 		add_action( 'init' , [ $this, 'media_taxonomies' ] );
@@ -88,13 +64,10 @@ class Media {
 	 * Get class dependencies
 	 *
 	 * @since  1.0.0
-	 * @access private
+	 * @access protected
 	 * @return void
 	 */
-	private function dependencies() {
-
-		// Add SVG media upload support.
-		include_once chcd_plugin()->path() . 'includes/media/class-svg-support.php';
+	protected function dependencies() {
 
 		// Replace WP gallery shortcode if Fancybox option is used.
 		$fancybox = get_option( 'chcd_enqueue_fancybox_script' );
@@ -318,18 +291,5 @@ class Media {
 
 }
 
-/**
- * Put an instance of the class into a function.
- *
- * @since  1.0.0
- * @access public
- * @return object Returns an instance of the class.
- */
-function chcd_media() {
-
-	return Media::instance();
-
-}
-
 // Run an instance of the class.
-chcd_media();
+new Media;
