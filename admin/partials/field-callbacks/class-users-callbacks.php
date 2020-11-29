@@ -1,6 +1,6 @@
 <?php
 /**
- * Callbacks for the Users tab on the Site Settings page.
+ * Callbacks for the Users tab on the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin\Partials\Field_Callbacks

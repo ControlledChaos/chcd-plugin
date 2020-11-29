@@ -181,8 +181,6 @@ class Admin {
 	 * @access public
 	 * @param  object $wp_admin_bar
 	 * @return void
-	 *
-	 * @todo Make this optional on the Site Settings screen.
 	 */
 	public function remove_wp_logo( $wp_admin_bar ) {
 
@@ -197,8 +195,6 @@ class Admin {
 	 * @access public
 	 * @global object wp_admin_bar
 	 * @return void
-	 *
-	 * @todo Make this optional on the Site Settings screen.
 	 */
 	public function adminbar_search() {
 
@@ -214,8 +210,6 @@ class Admin {
 	 * @since  1.0.0
 	 * @access public
 	 * @return void
-	 *
-	 * @todo Make this optional on the Site Settings screen.
 	 */
 	public function admin_only_updates() {
 

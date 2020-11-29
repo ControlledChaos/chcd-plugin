@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings for the Site Settings page.
+ * Settings for the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin
@@ -17,7 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Settings for the Site Settings page.
+ * Settings for the Site Options page.
  *
  * @since  1.0.0
  * @access public
@@ -110,7 +110,7 @@ class Settings_Fields_Site {
 			'at_glance'           => false,
 			'activity'            => false,
 			'settings_position'   => false,
-			'settings_link_label' => __( 'Site Settings', chcd_plugin() :: DOMAIN ),
+			'settings_link_label' => __( 'Site Options', chcd_plugin() :: DOMAIN ),
 			'settings_link_icon'  => 'dashicons-welcome-learn-more',
 			'plugin_position'     => false,
 			'plugin_link_label'   => false,

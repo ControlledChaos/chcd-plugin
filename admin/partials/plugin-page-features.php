@@ -1,12 +1,12 @@
 <?php
 /**
- * Help page introduction tab
+ * Help page features tab
  *
  * @package    Grande_Design
  * @subpackage Admin\Partials
  *
- * @since   1.0.0
- * @author  Greg Sweet <greg@ccdzine.com>
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
 namespace Grande_Design\Admin\Partials;
@@ -17,12 +17,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Slug for which to look.
-$slug = 'intro';
-
-// Stop here if the slug is not found.
-if ( ! $slug ) {
-	return;
-}
+$slug = 'features';
 
 // Post query arguments.
 $args = [

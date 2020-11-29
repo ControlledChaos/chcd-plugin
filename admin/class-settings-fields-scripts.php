@@ -179,12 +179,12 @@ class Settings_Fields_Scripts {
 			'chcd_enqueue_tooltipster'
 		);
 
-		// Site Settings section.
+		// Site Options section.
 		if ( chcd_plugin()->has_acf() ) {
 
 			add_settings_section( 'chcd-registered-fields-activate', __( 'Registered Fields Activation', chcd_plugin() :: DOMAIN ), [ $this, 'registered_fields_activate' ], 'chcd-registered-fields-activate' );
 
-			add_settings_field( 'chcd_acf_activate_settings_page', __( 'Site Settings Page', chcd_plugin() :: DOMAIN ), [ $this, 'registered_fields_page_callback' ], 'chcd-registered-fields-activate', 'chcd-registered-fields-activate', [ __( 'Deactive the field group for the "Site Settings" options page.', chcd_plugin() :: DOMAIN ) ] );
+			add_settings_field( 'chcd_acf_activate_settings_page', __( 'Site Options Page', chcd_plugin() :: DOMAIN ), [ $this, 'registered_fields_page_callback' ], 'chcd-registered-fields-activate', 'chcd-registered-fields-activate', [ __( 'Deactive the field group for the "Site Options" options page.', chcd_plugin() :: DOMAIN ) ] );
 
 			register_setting(
 				'chcd-registered-fields-activate',
@@ -461,7 +461,7 @@ class Settings_Fields_Scripts {
 	}
 
 	/**
-	 * Site Settings section.
+	 * Site Options section.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -478,7 +478,7 @@ class Settings_Fields_Scripts {
 	}
 
 	/**
-	 * Site Settings section callback.
+	 * Site Options section callback.
 	 *
 	 * @since  1.0.0
 	 * @access public

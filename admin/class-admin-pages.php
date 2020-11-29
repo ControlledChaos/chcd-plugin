@@ -179,7 +179,7 @@ class Admin_Pages {
 	 * @return void
 	 */
 	public function about_plugin_output() {
-		require chcd_plugin()->path() . 'admin/partials/plugin-page-about.php';
+		require chcd_plugin()->path() . 'admin/partials/plugin-page-help.php';
 	}
 
 	/**

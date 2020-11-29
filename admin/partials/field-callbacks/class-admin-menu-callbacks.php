@@ -1,6 +1,6 @@
 <?php
 /**
- * Callbacks for the Admin Menu tab on the Site Settings page.
+ * Callbacks for the Admin Menu tab on the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin\Partials\Field_Callbacks
@@ -57,7 +57,7 @@ class Admin_Menu_Callbacks {
 	public function __construct() {}
 
 	/**
-	 * Site Settings page position.
+	 * Site Options page position.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -76,7 +76,7 @@ class Admin_Menu_Callbacks {
 	}
 
 	/**
-	 * Site Settings page link label.
+	 * Site Options page link label.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -87,7 +87,7 @@ class Admin_Menu_Callbacks {
 
 		$option = get_option( 'chcd_site_settings_link_label' );
 
-		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_label" name="chcd_site_settings_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Settings', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
+		$html = '<p><input type="text" size="50" id="chcd_site_settings_link_label" name="chcd_site_settings_link_label" value="' . esc_attr( $option ) . '" placeholder="' . esc_attr( __( 'Site Options', chcd_plugin() :: DOMAIN ) ) . '" /><br />';
 
 		$html .= '<label for="chcd_site_settings_link_label"> ' . $args[0] . '</label></p>';
 
@@ -95,7 +95,7 @@ class Admin_Menu_Callbacks {
 	}
 
 	/**
-	 * Site Settings page link icon.
+	 * Site Options page link icon.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -110,7 +110,7 @@ class Admin_Menu_Callbacks {
 
 		$html .= '<label for="chcd_site_settings_link_icon"> ' . $args[0] . '</label>';
 
-		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Settings.' ) . '</span></p>';
+		$html .= '<br /><span class="description">' . esc_html( 'Takes affect in the admin menu only if the page is top level. Always takes affect on the plugin page tab for Site Options.' ) . '</span></p>';
 
 		echo $html;
 	}

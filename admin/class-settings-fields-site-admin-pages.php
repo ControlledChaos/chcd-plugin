@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings for the Admin Pages tab on the Site Settings page.
+ * Settings for the Admin Pages tab on the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin
@@ -100,21 +100,6 @@ class Settings_Fields_Site_Admin_Pages {
 			__( 'Admin Pages Settings', chcd_plugin() :: DOMAIN ),
 			[],
 			'chcd-site-admin-pages'
-		);
-
-		// Restore the TinyMCE editor.
-		add_settings_field(
-			'chcd_classic_editor',
-			__( 'Classic Editor', chcd_plugin() :: DOMAIN ),
-			[ Partials\Field_Callbacks\Admin_Pages_Callbacks::instance(), 'classic_editor' ],
-			'chcd-site-admin-pages',
-			'chcd-site-admin-pages',
-			[ esc_html__( 'Disable the block editor (a.k.a. Gutenberg) and restore the TinyMCE editor.', chcd_plugin() :: DOMAIN ) ]
-		);
-
-		register_setting(
-			'chcd-site-admin-pages',
-			'chcd_classic_editor'
 		);
 
 		// Use the admin header.

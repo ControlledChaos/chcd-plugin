@@ -398,7 +398,7 @@ function chcd_settings_links( $links, $file ) {
 			$links[] = sprintf(
 				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-settings-link">%2s</a>',
 				$url,
-				esc_attr( 'Site Settings', chcd_plugin() :: DOMAIN )
+				esc_attr( 'Site Options', chcd_plugin() :: DOMAIN )
 			);
 			$links[] = sprintf(
 				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-scripts-link">%2s</a>',

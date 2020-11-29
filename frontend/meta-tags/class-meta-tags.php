@@ -90,8 +90,8 @@ class Meta_Tags {
 	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
 	 * addon for free ACF, then check if meta tags have been disabled from
-	 * the ACF 'Site Settings' page. Otherwise check if meta tags have been
-	 * disabled from the standard 'Site Settings' page.
+	 * the ACF 'Site Options' page. Otherwise check if meta tags have been
+	 * disabled from the standard 'Site Options' page.
 	 *
 	 * @since  1.0.0
 	 * @access public

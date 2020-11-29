@@ -82,8 +82,8 @@ class Admin_Menu {
 	 * Remove menu items.
 	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
-	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
-	 * otherwise use the options from the standard 'Site Settings' page.
+	 * addon for free ACF. Use ACF options from the ACF 'Site Options' page,
+	 * otherwise use the options from the standard 'Site Options' page.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -157,8 +157,8 @@ class Admin_Menu {
 	 * Navigation menus position.
 	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
-	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
-	 * otherwise use the options from the standard 'Site Settings' page.
+	 * addon for free ACF. Use ACF options from the ACF 'Site Options' page,
+	 * otherwise use the options from the standard 'Site Options' page.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -256,8 +256,8 @@ class Admin_Menu {
 	 * Set the new Menus parent file URL.
 	 *
 	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
-	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
-	 * otherwise use the options from the standard 'Site Settings' page.
+	 * addon for free ACF. Use ACF options from the ACF 'Site Options' page,
+	 * otherwise use the options from the standard 'Site Options' page.
 	 *
 	 * @since  1.0.0
 	 * @access public

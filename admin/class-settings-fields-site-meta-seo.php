@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings for the Meta/SEO tab on the Site Settings page.
+ * Settings for the Meta/SEO tab on the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin

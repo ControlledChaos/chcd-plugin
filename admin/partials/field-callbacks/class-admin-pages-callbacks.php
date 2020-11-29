@@ -1,6 +1,6 @@
 <?php
 /**
- * Callbacks for the Admin Pages tab on the Site Settings page.
+ * Callbacks for the Admin Pages tab on the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin\Partials\Field_Callbacks

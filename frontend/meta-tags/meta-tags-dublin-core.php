@@ -10,7 +10,7 @@
  *
  * @link       http://dublincore.org/documents/dcmi-terms/
  *
- * @todo       Make these tags optional from the Site Settings page.
+ * @todo       Make these tags optional from the Site Options page.
  */
 
 namespace CHCD_Plugin\Frontend\Meta_Tags;

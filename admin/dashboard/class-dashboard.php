@@ -183,11 +183,7 @@ class Dashboard {
 	}
 
 	/**
-	 * Remove Dashboard metaboxes.
-	 *
-	 * Check for the Advanced Custom Fields PRO plugin, or the Options Page
-	 * addon for free ACF. Use ACF options from the ACF 'Site Settings' page,
-	 * otherwise use the options from the standard 'Site Settings' page.
+	 * Remove Dashboard metaboxes
 	 *
 	 * @since  1.0.0
 	 * @access public

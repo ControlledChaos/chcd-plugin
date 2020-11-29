@@ -117,9 +117,9 @@ class Settings_Page_Site {
 			if ( $link_label ) {
 				$label = $link_label;
 
-			// Otherwise use "Site Settings" as the label.
+			// Otherwise use "Site Options" as the label.
 			}  else {
-				$label = __( 'Site Settings', chcd_plugin() :: DOMAIN );
+				$label = __( 'Site Options', chcd_plugin() :: DOMAIN );
 			}
 
 			// Use the custom admin menu icon if the field is not empty.
@@ -195,9 +195,9 @@ class Settings_Page_Site {
 			if ( $link_label ) {
 				$label = $link_label;
 
-			// Otherwise use "Site Settings" as the label.
+			// Otherwise use "Site Options" as the label.
 			}  else {
-				$label = __( 'Site Settings', chcd_plugin() :: DOMAIN );
+				$label = __( 'Site Options', chcd_plugin() :: DOMAIN );
 			}
 
 			// Use the custom admin menu icon if the field is not empty.
@@ -278,7 +278,7 @@ class Settings_Page_Site {
 	}
 
 	/**
-     * Output for the Site Settings page contextual help tab.
+     * Output for the Site Options page contextual help tab.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -321,7 +321,7 @@ class Settings_Page_Site {
 	}
 
 	/**
-     * Get Site Settings page contextual tab sidebar content.
+     * Get Site Options page contextual tab sidebar content.
 	 *
 	 * @since  1.0.0
 	 * @access public
@@ -338,7 +338,7 @@ class Settings_Page_Site {
 	}
 
 	/**
-	 * Site Settings page output.
+	 * Site Options page output.
 	 *
 	 * @since  1.0.0
 	 * @access public

@@ -91,8 +91,8 @@ class Meta_Description {
 		/**
 		 * Check for the Advanced Custom Fields PRO plugin or the Options Page
 		 * addon for free ACF. If there is a blog page description from the ACF
-		 * 'Site Settings' page the we'll use that, otherwise we'll look for a
-		 * description on the standard 'Site Settings' page.
+		 * 'Site Options' page the we'll use that, otherwise we'll look for a
+		 * description on the standard 'Site Options' page.
 		 */
 		if ( chcd_plugin()->has_acf() ) {
 

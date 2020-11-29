@@ -1,6 +1,6 @@
 <?php
 /**
- * Settings for the Admin Menu tab on the Site Settings page.
+ * Settings for the Admin Menu tab on the Site Options page.
  *
  * @package    CHCD_Plugin
  * @subpackage Admin
@@ -102,10 +102,10 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd-site-admin-menu'
 		);
 
-		// Site Settings page position.
+		// Site Options page position.
 		add_settings_field(
 			'chcd_site_settings_position',
-			__( 'Site Settings Position', chcd_plugin() :: DOMAIN ),
+			__( 'Site Options Position', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_position' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
@@ -117,10 +117,10 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd_site_settings_position'
 		);
 
-		// Site Settings page link label.
+		// Site Options page link label.
 		add_settings_field(
 			'chcd_site_settings_link_label',
-			__( 'Site Settings Label', chcd_plugin() :: DOMAIN ),
+			__( 'Site Options Label', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_link_label' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',
@@ -132,10 +132,10 @@ class Settings_Fields_Site_Admin_Menu {
 			'chcd_site_settings_link_label'
 		);
 
-		// Site Settings page link icon if set to top level.
+		// Site Options page link icon if set to top level.
 		add_settings_field(
 			'chcd_site_settings_link_icon',
-			__( 'Site Settings Icon', chcd_plugin() :: DOMAIN ),
+			__( 'Site Options Icon', chcd_plugin() :: DOMAIN ),
 			[ Partials\Field_Callbacks\Admin_Menu_Callbacks::instance(), 'site_settings_link_icon' ],
 			'chcd-site-admin-menu',
 			'chcd-site-admin-menu',

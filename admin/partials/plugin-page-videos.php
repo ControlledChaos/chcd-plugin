@@ -1,12 +1,15 @@
 <?php
 /**
- * Help page introduction tab
+ * Help page videos tab
+ *
+ * Uses the universal slug partial for admin pages. Set this
+ * slug in the core plugin file.
  *
  * @package    Grande_Design
  * @subpackage Admin\Partials
  *
- * @since   1.0.0
- * @author  Greg Sweet <greg@ccdzine.com>
+ * @since      1.0.0
+ * @author     Greg Sweet <greg@ccdzine.com>
  */
 
 namespace Grande_Design\Admin\Partials;
@@ -17,7 +20,7 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 // Slug for which to look.
-$slug = 'intro';
+$slug = 'videos';
 
 // Stop here if the slug is not found.
 if ( ! $slug ) {
