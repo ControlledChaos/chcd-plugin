@@ -29,6 +29,22 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
+ * Get plugins path
+ *
+ * Used to check for active plugins with the `is_plugin_active` function.
+ *
+ * @example The following would check for the Advanced Custom Fields plugin:
+ *          ```
+ *          if ( is_plugin_active( 'advanced-custom-fields/acf.php' ) ) {
+ *          	// Do stuff.
+ *           }
+ *          ```
+ */
+if ( defined( 'ABSPATH' ) ) {
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+}
+
+/**
  * The core plugin class
  *
  * Defines constants, gets the initialization class file
@@ -39,8 +55,8 @@ if ( ! defined( 'WPINC' ) ) {
  */
 
 // First check for other classes with the same name.
-if ( ! class_exists( 'CHCD' ) ) :
-	final class CHCD {
+if ( ! class_exists( 'CHCD_Plugin' ) ) :
+	final class CHCD_Plugin {
 
 		/**
 		 * Plugin version
@@ -80,21 +96,7 @@ if ( ! class_exists( 'CHCD' ) ) :
 		 * @return object Returns the instance.
 		 */
 		public static function instance() {
-
-			// Varialbe for the instance to be used outside the class.
-			static $instance = null;
-
-			if ( is_null( $instance ) ) {
-
-				// Set variable for new instance.
-				$instance = new self;
-
-				// Require the core plugin class files.
-				$instance->dependencies();
-			}
-
-			// Return the instance.
-			return $instance;
+			return new self;
 		}
 
 		/**
@@ -104,7 +106,11 @@ if ( ! class_exists( 'CHCD' ) ) :
 		 * @access protected
 		 * @return self
 		 */
-		protected function __construct() {}
+		protected function __construct() {
+
+			// Require the core plugin class files.
+			$this->dependencies();
+		}
 
 		/**
 		 * Plugin folder path
@@ -195,9 +201,12 @@ if ( ! class_exists( 'CHCD' ) ) :
 		 * @access public
 		 * @return bool Returns true if the ACF Pro plugin is active.
 		 */
-		function has_acf() {
+		public function has_acf() {
 
-			if ( class_exists( 'acf_pro' ) ) {
+			if (
+				( defined( 'ABSPATH' ) && is_plugin_active( 'advanced-custom-fields-pro/acf.php' ) )
+				|| class_exists( 'acf_pro' ) )
+			{
 				return true;
 			} else {
 				return false;
@@ -211,10 +220,10 @@ if ( ! class_exists( 'CHCD' ) ) :
 	 *
 	 * @since  1.0.0
 	 * @access public
-	 * @return object Returns the instance of the `CHCD_Plugin` class.
+	 * @return object Returns the instance of the core class.
 	 */
 	function chcd_plugin() {
-		return CHCD::instance();
+		return CHCD_Plugin::instance();
 	}
 
 	// Begin plugin functionality.
@@ -230,19 +239,19 @@ endif;
  * @access public
  * @return void
  */
-register_activation_hook( __FILE__, '\chcd_activate_plugin' );
-register_deactivation_hook( __FILE__, '\chcd_deactivate_plugin' );
+register_activation_hook( __FILE__, 'chcd_activate_plugin' );
+register_deactivation_hook( __FILE__, 'chcd_deactivate_plugin' );
 
 /**
- * The code that runs during plugin activation.
+ * Plugin activation
+ *
+ * Runs the activation class during plugin activation.
  *
  * @since  1.0.0
  * @access public
  * @return void
  */
 function chcd_activate_plugin() {
-
-	// Run the activation class.
 	chcd_activate();
 }
 
@@ -252,30 +261,22 @@ if ( ! function_exists( 'chcd_plugin' ) ) {
 }
 
 /**
- * The code that runs during plugin deactivation.
+ * Plugin deactivation
+ *
+ * Runs the deactivation class during plugin deactivation.
  *
  * @since  1.0.0
  * @access public
  * @return void
  */
 function chcd_deactivate_plugin() {
-
-	// Run the deactivation class.
 	chcd_deactivate();
 }
 
 /**
- * Add a link to the plugin's about page on the plugins page.
+ * Plugin page link
  *
- * The about page in its original form is intended to be read by
- * developers for getting familiar with the plugin, so it is
- * included in the admin menu under plugins.
- *
- * If you would like to link the page elsewhere as you make it your own then
- * do so in admin/class-admin-pages.php, in the about_plugin method.
- *
- * Uses the universal slug partial for admin pages. Set this
- * slug in the core plugin file.
+ * Adds a link to the plugin's about page on the plugins page.
  *
  * @param  array $links Default plugin links on the 'Plugins' admin page.
  * @since  1.0.0
@@ -341,12 +342,9 @@ function chcd_about_link( $links ) {
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'chcd_about_link' );
 
 /**
- * Add links to the plugin settings pages on the plugins page.
+ * Plugin settings link
  *
- * Change the links to those which fill your needs.
- *
- * Uses the universal slug partial for admin pages. Set this
- * slug in the core plugin file.
+ * Adds links to the plugin settings pages on the plugins page.
  *
  * @param  array  $links Default plugin links on the 'Plugins' admin page.
  * @param  object $file Reference the root plugin file with header.
