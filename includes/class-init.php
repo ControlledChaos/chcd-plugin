@@ -109,10 +109,6 @@ final class Init {
 
 		// User funtionality.
 		require_once chcd_plugin()->path() . 'includes/users/class-users.php';
-
-		// Dev and maintenance tools.
-		require_once chcd_plugin()->path() . 'includes/tools/class-tools.php';
-
 	}
 }
 
