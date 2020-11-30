@@ -59,13 +59,6 @@ class Settings_Fields_Scripts {
 
 		// Register settings.
 		add_action( 'admin_init', [ $this, 'settings' ] );
-
-		// Include jQuery Migrate.
-		$migrate = get_option( 'chcd_jquery_migrate' );
-		if ( ! $migrate ) {
-			add_action( 'wp_default_scripts', [ $this, 'include_jquery_migrate' ] );
-		}
-
 	}
 
 	/**
@@ -106,14 +99,6 @@ class Settings_Fields_Scripts {
 			'chcd_inline_jquery'
 		);
 
-		// Include jQuery Migrate.
-		add_settings_field( 'chcd_jquery_migrate', __( 'jQuery Migrate', chcd_plugin() :: DOMAIN ), [ $this, 'chcd_jquery_migrate_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Use jQuery Migrate for backwards compatibility', chcd_plugin() :: DOMAIN ) ] );
-
-		register_setting(
-			'chcd-scripts-general',
-			'chcd_jquery_migrate'
-		);
-
 		// Remove emoji script.
 		add_settings_field( 'chcd_remove_emoji_script', __( 'Emoji Script', chcd_plugin() :: DOMAIN ), [ $this, 'remove_emoji_script_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Remove emoji script from <head>', chcd_plugin() :: DOMAIN ) ] );
 
@@ -128,14 +113,6 @@ class Settings_Fields_Scripts {
 		register_setting(
 			'chcd-scripts-general',
 			'chcd_remove_script_version'
-		);
-
-		// Minify HTML.
-		add_settings_field( 'chcd_html_minify', __( 'Minify HTML', chcd_plugin() :: DOMAIN ), [ $this, 'html_minify_callback' ], 'chcd-scripts-general', 'chcd-scripts-general', [ esc_html__( 'Minify HTML source code to increase load speed', chcd_plugin() :: DOMAIN ) ] );
-
-		register_setting(
-			'chcd-scripts-general',
-			'chcd_html_minify'
 		);
 
 		/**
@@ -232,27 +209,6 @@ class Settings_Fields_Scripts {
 	}
 
 	/**
-	 * Include jQuery Migrate.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return string
-	 */
-	public function chcd_jquery_migrate_callback( $args ) {
-
-		$option = get_option( 'chcd_jquery_migrate' );
-
-		$html = '<p><input type="checkbox" id="chcd_jquery_migrate" name="chcd_jquery_migrate" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="chcd_jquery_migrate"> '  . $args[0] . '</label><br />';
-
-		$html .= '<small><em>Some outdated plugins and themes may be dependent on an old version of jQuery</em></small></p>';
-
-		echo $html;
-
-	}
-
-	/**
 	 * Inline scripts.
 	 *
 	 * @since  1.0.0
@@ -325,25 +281,6 @@ class Settings_Fields_Scripts {
 		$html = '<p><input type="checkbox" id="chcd_remove_script_version" name="chcd_remove_script_version" value="1" ' . checked( 1, $option, false ) . '/>';
 
 		$html .= '<label for="chcd_remove_script_version"> '  . $args[0] . '</label></p>';
-
-		echo $html;
-
-	}
-
-	/**
-	 * Minify HTML source code.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return string
-	 */
-	public function html_minify_callback( $args ) {
-
-		$option = get_option( 'chcd_html_minify' );
-
-		$html = '<p><input type="checkbox" id="chcd_html_minify" name="chcd_html_minify" value="1" ' . checked( 1, $option, false ) . '/>';
-
-		$html .= '<label for="chcd_html_minify"> '  . $args[0] . '</label></p>';
 
 		echo $html;
 

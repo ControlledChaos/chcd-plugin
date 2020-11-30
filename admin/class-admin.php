@@ -50,7 +50,6 @@ class Admin {
 
 		// Return the instance.
 		return $instance;
-
 	}
 
 	/**
@@ -99,7 +98,6 @@ class Admin {
 
 		// Enqueue the JavaScript for the admin area.
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
-
 	}
 
 	/**
@@ -111,8 +109,20 @@ class Admin {
 	 */
 	private function dependencies() {
 
-		// The core settings class for the plugin.
-		require_once chcd_plugin()->path() . 'admin/class-settings.php';
+		// Settings fields for script loading and more.
+		require_once chcd_plugin()->path() . 'admin/class-settings-page-scripts.php';
+
+		// Settings fields for site customization.
+		require_once chcd_plugin()->path() . 'admin/class-settings-page-site.php';
+
+		// Settings fields for script loading and more.
+		require_once chcd_plugin()->path() . 'admin/class-settings-fields-scripts.php';
+
+		// Settings fields for site customization.
+		require_once chcd_plugin()->path() . 'admin/class-settings-fields-site.php';
+
+		// Settings fields for the media settings page.
+		require_once chcd_plugin()->path() . 'admin/class-settings-fields-media.php';
 
 		// Include custom fields for Advanced Custom Fields Pro, if active.
 		if ( chcd_plugin()->has_acf() ) {
@@ -133,7 +143,6 @@ class Admin {
 
 		// Filter by page template.
 		require_once chcd_plugin()->path() . 'admin/class-admin-template-filter.php';
-
 	}
 
 	/**
@@ -149,7 +158,6 @@ class Admin {
 		$remove_plugin_editor = remove_submenu_page( 'plugins.php', 'plugin-editor.php' );
 
 		return array( $remove_theme_editor, $remove_plugin_editor );
-
 	}
 
 	/**
@@ -171,7 +179,6 @@ class Admin {
 			wp_redirect( admin_url( '/', 'http' ), 302 );
 			exit;
 		}
-
 	}
 
 	/**
@@ -183,9 +190,7 @@ class Admin {
 	 * @return void
 	 */
 	public function remove_wp_logo( $wp_admin_bar ) {
-
 		$wp_admin_bar->remove_node( 'wp-logo' );
-
 	}
 
 	/**
@@ -201,7 +206,6 @@ class Admin {
 		global $wp_admin_bar;
 
 		$wp_admin_bar->remove_menu( 'search' );
-
 	}
 
 	/**
@@ -217,7 +221,6 @@ class Admin {
 		if ( ! current_user_can( 'update_core' ) ) {
 			remove_action( 'admin_notices', 'update_nag', 3 );
 		}
-
 	}
 
 	/**
@@ -256,7 +259,6 @@ class Admin {
 
 		// Echo the string.
 		echo $admin_footer;
-
 	}
 
 	/**
@@ -315,7 +317,6 @@ class Admin {
 		if ( $welcome ) {
 			wp_enqueue_style( chcd_plugin() :: SLUG . '-welcome', chcd_plugin()->url() . 'admin/assets/css/welcome.css', [], chcd_plugin() :: VERSION, 'all' );
 		}
-
 	}
 
 	/**
@@ -338,7 +339,6 @@ class Admin {
 		$form = ob_get_clean();
 
 		return $form;
-
 	}
 
 	/**
@@ -359,7 +359,6 @@ class Admin {
 		$form = $this->get_search_form();
 
 		return $form;
-
 	}
 
 	/**
@@ -389,9 +388,7 @@ class Admin {
 
 		// Enqueue Conditionalize for conditional form fields.
 		wp_enqueue_script( chcd_plugin() :: SLUG . '-conditionalize', chcd_plugin()->url() . 'admin/assets/js/conditionize.flexible.jquery.min.js', [ 'jquery' ], chcd_plugin() :: VERSION, true );
-
 	}
-
 }
 
 /**
@@ -402,9 +399,7 @@ class Admin {
  * @return object Returns an instance of the class.
  */
 function chcd_admin() {
-
 	return Admin::instance();
-
 }
 
 // Run an instance of the class.
