@@ -114,7 +114,7 @@ if ( $contact_page ) {
 		<?php if ( $resume_page ) : ?>
 		<li>
 			<h3><?php _e( 'Resume', chcd_plugin() :: DOMAIN ); ?></h3>
-			<div class="chcd-dashboard-icon resume-icon"><span class="dashicons dashicons-businessman"></span></div>
+			<div class="chcd-dashboard-icon resume-icon"><span class="dashicons dashicons-businesswoman"></span></div>
 			<p>
 				<a href="<?php echo admin_url( 'post.php?post=' . $resume_id . '&action=edit' ); ?>"><?php _e( 'Manage Info', chcd_plugin() :: DOMAIN ); ?></a>
 			</p>
