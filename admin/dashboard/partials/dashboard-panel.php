@@ -76,7 +76,7 @@ if ( $contact_page ) {
 
 	<ul class="chcd-dashboard-actions-list chcd-dashboard-post-type-actions">
 		<li>
-			<h3><?php _e( 'Media', chcd_plugin() :: DOMAIN ); ?></h3>
+			<h3><?php _e( 'Media Library', chcd_plugin() :: DOMAIN ); ?></h3>
 			<div class="chcd-dashboard-icon media-library-icon"><span class="dashicons dashicons-format-gallery"></span></div>
 			<p>
 				<a href="<?php echo admin_url( 'media-new.php' ); ?>"><?php _e( 'Add New', chcd_plugin() :: DOMAIN ); ?></a>
@@ -84,8 +84,8 @@ if ( $contact_page ) {
 			</p>
 		</li>
 		<li>
-			<h3><?php _e( 'Projects', chcd_plugin() :: DOMAIN ); ?></h3>
-			<div class="chcd-dashboard-icon features-icon"><span class="dashicons dashicons-art"></span></div>
+			<h3><?php _e( 'Film + TV', chcd_plugin() :: DOMAIN ); ?></h3>
+			<div class="chcd-dashboard-icon features-icon"><span class="dashicons dashicons-format-video"></span></div>
 			<p>
 				<a href="<?php echo admin_url( 'post-new.php?post_type=features' ); ?>"><?php _e( 'Add New', chcd_plugin() :: DOMAIN ); ?></a>
 				<a href="<?php echo admin_url( 'edit.php?post_type=features' ); ?>"><?php _e( 'View List', chcd_plugin() :: DOMAIN ); ?></a>
