@@ -11,7 +11,7 @@
  *
  * Plugin Name:  Courtney Plugin
  * Plugin URI:   https://github.com/ControlledChaos/chcd-plugin
- * Description:  A ClassicPress/WordPress plugin for the Courtney Hoffman Costume Designer website.
+ * Description:  DO NOT DELETE! Provides essential functionality for the Courtney Hoffman Costume Designer website.
  * Version:      1.0.0
  * Author:       Controlled Chaos Design
  * Author URI:   https://ccdzine.com/
@@ -328,8 +328,8 @@ function chcd_about_link( $links ) {
 		$about_page = [
 			sprintf(
 				'<a href="%1s" class="' . chcd_plugin() :: SLUG . '-page-link">%2s</a>',
-				admin_url( 'plugins.php?page=' . chcd_plugin() :: SLUG . '-page' ),
-				esc_attr( 'Documentation', chcd_plugin() :: DOMAIN )
+				admin_url( 'index.php?page=' . chcd_plugin() :: SLUG . '-page' ),
+				esc_attr( 'Website Help', chcd_plugin() :: DOMAIN )
 			),
 		];
 
