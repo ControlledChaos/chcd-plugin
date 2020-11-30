@@ -51,7 +51,7 @@ if ( $contact_page ) {
 
 <div class="chcd-dashboard-summary">
 
-	<h2><?php _e( 'Website Summary', chcd_plugin() :: DOMAIN ); ?></h2>
+	<h2 class="screen-reader-text"><?php _e( 'Website Summary', chcd_plugin() :: DOMAIN ); ?></h2>
 
 	<?php do_action( 'before_right_now' ); ?>
 
