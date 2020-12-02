@@ -79,20 +79,6 @@ class Admin {
 		// Credits in admin footer.
 		add_filter( 'admin_footer_text', [ $this, 'admin_footer' ], 1 );
 
-		/**
-		 * Backend search form template.
-		 *
-		 * The necessity for this came from a search widget in the custom welcome
-		 * panel with the Twenty Seventeen theme activated. The SVG used in the
-		 * theme template does not display. So the thought here is to use a basic
-		 * form as a reset.
-		 *
-		 * Filters have also been applied for changing placeholder and button text.
-		 *
-		 * @since 1.0.0
-		 */
-		add_filter( 'get_search_form', [ $this, 'search_form' ] );
-
 		// Enqueue the stylesheets for the admin area.
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_styles' ] );
 
@@ -109,14 +95,8 @@ class Admin {
 	 */
 	private function dependencies() {
 
-		// Settings fields for script loading and more.
-		require_once chcd_plugin()->path() . 'admin/class-settings-page-scripts.php';
-
 		// Settings fields for site customization.
 		require_once chcd_plugin()->path() . 'admin/class-settings-page-site.php';
-
-		// Settings fields for script loading and more.
-		require_once chcd_plugin()->path() . 'admin/class-settings-fields-scripts.php';
 
 		// Settings fields for site customization.
 		require_once chcd_plugin()->path() . 'admin/class-settings-fields-site.php';
@@ -293,7 +273,7 @@ class Admin {
 		 *
 		 * @since 1.0.0
 		 */
-		wp_enqueue_style( chcd_plugin() :: SLUG . '-tooltips', chcd_plugin()->url() . 'admin/assets/css/tooltips.min.css', [], chcd_plugin() :: VERSION, 'all' );
+		// wp_enqueue_style( chcd_plugin() :: SLUG . '-tooltips', chcd_plugin()->url() . 'admin/assets/css/tooltips.min.css', [], chcd_plugin() :: VERSION, 'all' );
 
 		/**
 		 * Enqueue Advanced Custom Fields Pro styles
@@ -320,48 +300,6 @@ class Admin {
 	}
 
 	/**
-	 * Get the backend search form template
-	 *
-	 * @since  1.0.0
-	 * @return mixed Returns the HTML of the search form.
-	 */
-	public function get_search_form() {
-
-		// Bail if not in admin.
-		if ( ! is_admin() ) {
-			return;
-		}
-
-		ob_start();
-
-		require chcd_plugin()->path() . 'admin/partials/searchform.php';
-
-		$form = ob_get_clean();
-
-		return $form;
-	}
-
-	/**
-	 * Output the backend search form.
-	 *
-	 * @since  1.0.0
-	 * @param  mixed $form
-	 * @return mixed Returns the HTML of the search form.
-	 */
-	public function search_form( $form ) {
-
-		// Bail if not in admin.
-		if ( ! is_admin() ) {
-			return;
-		}
-
-		// Get the HTML of the form.
-		$form = $this->get_search_form();
-
-		return $form;
-	}
-
-	/**
 	 * Enqueue the JavaScript for the admin area.
 	 *
 	 * @since  1.0.0
@@ -378,8 +316,6 @@ class Admin {
 		 *
 		 * For more control over tooltips, replace jQuery tooltips with Tooltipster,
 		 * which is included with this plugin.
-		 *
-		 * @todo Conditionally enqueue this depending on backend Tooltipster.
 		 */
 		wp_enqueue_script( 'jquery-ui-tooltip' );
 

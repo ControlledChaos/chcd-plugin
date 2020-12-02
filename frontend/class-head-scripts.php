@@ -24,30 +24,6 @@ if ( ! defined( 'WPINC' ) ) {
  */
 class Head_Scripts {
 
-	/**
-	 * Instance of the class
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return object Returns the instance.
-	 */
-	public static function instance() {
-
-		// Varialbe for the instance to be used outside the class.
-		static $instance = null;
-
-		if ( is_null( $instance ) ) {
-
-			// Set variable for new instance.
-			$instance = new self;
-
-		}
-
-		// Return the instance.
-		return $instance;
-
-	}
-
     /**
 	 * Constructor method
 	 *
@@ -115,18 +91,5 @@ class Head_Scripts {
 
 }
 
-/**
- * Put an instance of the class into a function.
- *
- * @since  1.0.0
- * @access public
- * @return object Returns an instance of the class.
- */
-function chcd_head_scripts() {
-
-	return Head_Scripts::instance();
-
-}
-
 // Run an instance of the class.
-chcd_head_scripts();
+new Head_Scripts;

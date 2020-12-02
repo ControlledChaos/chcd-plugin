@@ -25,30 +25,6 @@ if ( ! defined( 'WPINC' ) ) {
 class Enqueue_Frontend_Styles {
 
 	/**
-	 * Instance of the class
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return object Returns the instance.
-	 */
-	public static function instance() {
-
-		// Varialbe for the instance to be used outside the class.
-		static $instance = null;
-
-		if ( is_null( $instance ) ) {
-
-			// Set variable for new instance.
-			$instance = new self;
-
-		}
-
-		// Return the instance.
-		return $instance;
-
-	}
-
-	/**
 	 * Constructor method
 	 *
 	 * @since  1.0.0
@@ -58,7 +34,6 @@ class Enqueue_Frontend_Styles {
 	public function __construct() {
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'styles' ] );
-
 	}
 
 	/**
@@ -90,37 +65,10 @@ class Enqueue_Frontend_Styles {
 			}
 		}
 
-		// Slick.
-		if ( get_option( 'chcd_enqueue_slick' ) ) {
-			wp_enqueue_style( chcd_plugin() :: VERSION . '-slick', chcd_plugin()->url() . 'frontend/assets/css/slick.min.css', [], chcd_plugin() :: VERSION, 'all' );
-		}
-
-		// Slick theme.
-		if ( get_option( 'chcd_enqueue_slick' ) ) {
-			wp_enqueue_style( chcd_plugin() :: VERSION . '-slick-theme', chcd_plugin()->url() . 'frontend/assets/css/slick-theme.css', [], chcd_plugin() :: VERSION, 'all' );
-		}
-
 		// Tooltipster.
-		if ( get_option( 'chcd_enqueue_tooltipster' ) ) {
-			wp_enqueue_style( chcd_plugin() :: VERSION . '-tooltipster', chcd_plugin()->url() . 'frontend/assets/css/tooltipster.bundle.min.css', [], chcd_plugin() :: VERSION, 'all' );
-		}
-
+		// wp_enqueue_style( chcd_plugin() :: VERSION . '-tooltipster', chcd_plugin()->url() . 'frontend/assets/css/tooltipster.bundle.min.css', [], chcd_plugin() :: VERSION, 'all' );
 	}
-
-}
-
-/**
- * Put an instance of the class into a function.
- *
- * @since  1.0.0
- * @access public
- * @return object Returns an instance of the class.
- */
-function chcd_enqueue_frontend_styles() {
-
-	return Enqueue_Frontend_Styles::instance();
-
 }
 
 // Run an instance of the class.
-chcd_enqueue_frontend_styles();
+new Enqueue_Frontend_Styles;

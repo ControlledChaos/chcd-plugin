@@ -7,10 +7,7 @@
  *
  * @since      1.0.0
  * @author     Greg Sweet <greg@ccdzine.com>
- *
- * @link       Slick       https://github.com/kenwheeler/slick
  * @link       Tabslet     https://github.com/vdw/Tabslet
- * @link       Sticky-kit  https://github.com/leafo/sticky-kit
  * @link       Tooltipster https://github.com/iamceege/tooltipster
  * @link       Fancybox    http://fancyapps.com/fancybox/3/
  */
@@ -69,15 +66,6 @@ class Frontend {
 		// Deregister Dashicons for users not logged in.
 		add_action( 'wp_enqueue_scripts', [ $this, 'deregister_dashicons' ] );
 
-		// Get inline options.
-		$jquery  = get_option( 'chcd_inline_jquery' );
-
-		// Inline jQuery.
-		if ( $jquery ) {
-			add_action( 'wp_enqueue_scripts', [ $this, 'deregister_jquery' ] );
-			add_action( 'wp_footer', [ $this, 'get_jquery' ], 1 );
-		}
-
 		// Add Fancybox attributes to attachment page image link.
 		add_action( 'wp_footer', [ $this, 'attachment_fancybox' ] );
 
@@ -92,27 +80,9 @@ class Frontend {
 	 */
 	public function dependencies() {
 
-		// Get inline options.
-		$scripts = get_option( 'chcd_inline_scripts' );
-		$styles  = get_option( 'chcd_inline_styles' );
+		require_once chcd_plugin()->path() . 'frontend/class-styles-enqueue.php';
 
-		// Add styles inline if option selected.
-		if ( $styles ) {
-			require_once chcd_plugin()->path() . 'frontend/class-styles-inline.php';
-
-		// Otherwise enqueue styles.
-		} else {
-			require_once chcd_plugin()->path() . 'frontend/class-styles-enqueue.php';
-		}
-
-		// Add scripts inline if option selected.
-		if ( $scripts ) {
-			require_once chcd_plugin()->path() . 'frontend/class-scripts-inline.php';
-
-		// Otherwise enqueue scripts.
-		} else {
-			require_once chcd_plugin()->path() . 'frontend/class-scripts-enqueue.php';
-		}
+		require_once chcd_plugin()->path() . 'frontend/class-scripts-enqueue.php';
 
 		// Clean up some scripts in the `head` section.
 		require_once chcd_plugin()->path() . 'frontend/class-head-scripts.php';
